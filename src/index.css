@@ -13,5 +13,9 @@
   -webkit-text-stroke-width: .5px;
   font-size: 25px;
   font-weight: 400;
-  
+
+}
+
+span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background: #deff12;
 }

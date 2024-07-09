@@ -4,39 +4,87 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-
-// import "./styles.css";
+import "./css/HoverText.css";
 
 // import required modules
-import { Pagination, Autoplay } from "swiper/modules";
-import TitleHeader from "../shared/TitleHeader/TitleHeader";
+import { Autoplay } from "swiper/modules";
+import SectionTitle from "../shared/sectionTitle/SectionTitle";
+
+//import images
+import barbel from "../../assets/images/categoryImg/berbel.webp";
 const CategorySection = () => {
   return (
-    <div className="py-10">
-      <TitleHeader heading="exclusive" subHeading="Category collections"></TitleHeader>
-      <Swiper
-        // slidesPerView={4}
-        spaceBetween={30}
-        // pagination={{
-        //   clickable: true,
-        // }}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        modules={[Pagination, Autoplay]}
-        className="mySwiper h-[250px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-      >
-        <SwiperSlide className="bg-red-500">Slide 1</SwiperSlide>
-        <SwiperSlide className="bg-red-500">Slide 2</SwiperSlide>
-        <SwiperSlide className="bg-red-500">Slide 3</SwiperSlide>
-        <SwiperSlide className="bg-red-500">Slide 4</SwiperSlide>
-        <SwiperSlide className="bg-red-500">Slide 5</SwiperSlide>
-        <SwiperSlide className="bg-red-500">Slide 6</SwiperSlide>
-        <SwiperSlide className="bg-red-500">Slide 7</SwiperSlide>
-        <SwiperSlide className="bg-red-500">Slide 8</SwiperSlide>
-        <SwiperSlide className="bg-red-500">Slide 9</SwiperSlide>
-      </Swiper>
+    <div className="mt-14 text-center">
+      <SectionTitle
+        heading="exclusive"
+        subHeading="Category collections"
+      ></SectionTitle>
+      <div className=" mt-10">
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={1}
+          // autoplay={{
+          //   delay: 2500,
+          //   disableOnInteraction: false,
+          // }}
+          loop={true}
+          breakpoints={{
+            576: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 50,
+            },
+          }}
+          modules={[Autoplay]}
+          className="mySwiper"
+        >
+          <SwiperSlide>
+            <div
+              className="h-[300px] rounded-md hover-area "
+              style={{ backgroundImage: `url(${barbel})` }}
+            >
+              <div className="hover-text ">
+                <SectionTitle
+                  heading={"man's wordout"}
+                  subHeading={""}
+                ></SectionTitle>
+                <button className="btn btn-success">shop now</button>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div
+              className="h-[300px] bg-cover rounded-md"
+              style={{ backgroundImage: `url(${barbel})` }}
+            ></div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div
+              className="h-[300px] bg-cover rounded-md"
+              style={{ backgroundImage: `url(${barbel})` }}
+            ></div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div
+              className="h-[300px] bg-cover rounded-md"
+              style={{ backgroundImage: `url(${barbel})` }}
+            ></div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div
+              className="h-[300px] bg-cover rounded-md"
+              style={{ backgroundImage: `url(${barbel})` }}
+            ></div>
+          </SwiperSlide>
+        </Swiper>
+      </div>
     </div>
   );
 };
