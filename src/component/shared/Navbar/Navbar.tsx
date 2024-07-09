@@ -1,23 +1,29 @@
-import { NavLink } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
+
+import logo from "../../../assets/images/logo.webp";
 
 const Navbar = () => {
   const navItem = (
     <>
       <li>
-        <NavLink to={"/"}>Home</NavLink>
+        <a href={"/"}>Home</a>
       </li>
       <li>
-        <NavLink to={"/about"}>about</NavLink>
+        <a href={"/products"}>Product</a>
+      </li>
+      <li>
+        <a href={"/productManagement"}>Product Management</a>
+      </li>
+      <li>
+        <a href={"/about"}>About Us</a>
       </li>
     </>
   );
   return (
-    <div>
-      <div className="navbar bg-black text-white">
+    <div className="">
+      <div className="navbar text-white bg-[#16161683] absolute z-20 px-10 shadow-xl py-3">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="buthrefn" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -42,15 +48,15 @@ const Navbar = () => {
           </div>
           <div>
             <a className="">
-              <img src={logo} alt="" className="w-[150px] h-[50px]" />
+              <img src={logo} alt="" className="h-full " />
             </a>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navItem}</ul>
+          <ul className="menu menu-horizontal px-1 text-[16px] font-semibold">{navItem}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <a className="btn">Buthrefn</a>
         </div>
       </div>
     </div>

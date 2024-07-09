@@ -1,5 +1,5 @@
 import MainLayout from "./component/layout/MainLayout";
-import Navbar from "./component/Navbar/Navbar";
+import Navbar from "./component/shared/Navbar/Navbar";
 
 function App() {
   return (
