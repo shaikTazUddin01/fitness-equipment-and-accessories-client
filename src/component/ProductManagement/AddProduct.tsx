@@ -1,4 +1,4 @@
-import React from "react";
+import AddProductModal from "./AddProductModal";
 
 const AddProduct = () => {
   return (
@@ -21,25 +21,7 @@ const AddProduct = () => {
               ✕
             </button>
           </form>
-          <div>
-            <form className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Product Name</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Write Product Name"
-                  className="input input-bordered"
-                  required
-                />
-              </div>
-             
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
-              </div>
-            </form>
-          </div>
+          <AddProductModal></AddProductModal>
         </div>
       </dialog>
     </div>
