@@ -15,18 +15,20 @@ import barbel from "../../assets/images/categoryImg/berbel.webp";
 const CategorySection = () => {
   return (
     <div className="mt-14 text-center">
+      <div>
       <SectionTitle
         heading="exclusive"
         subHeading="Category collections"
       ></SectionTitle>
-      <div className=" mt-10">
+      </div>
+      <div className="mt-8">
         <Swiper
           slidesPerView={1}
           spaceBetween={1}
-          // autoplay={{
-          //   delay: 2500,
-          //   disableOnInteraction: false,
-          // }}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
           loop={true}
           breakpoints={{
             576: {
@@ -55,33 +57,103 @@ const CategorySection = () => {
                   heading={"man's wordout"}
                   subHeading={""}
                 ></SectionTitle>
-                <button className="btn btn-success">shop now</button>
+                <a href="">
+                  <button className="bg-primaryColor text-white px-3 py-2 rounded-sm">
+                    shop now
+                  </button>
+                </a>
               </div>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div
-              className="h-[300px] bg-cover rounded-md"
+              className="h-[300px] rounded-md hover-area "
               style={{ backgroundImage: `url(${barbel})` }}
-            ></div>
+            >
+              <div className="hover-text ">
+                <SectionTitle
+                  heading={"man's wordout"}
+                  subHeading={""}
+                ></SectionTitle>
+                <a href="">
+                  <button className="bg-primaryColor text-white px-3 py-2 rounded-sm">
+                    shop now
+                  </button>
+                </a>
+              </div>
+            </div>
           </SwiperSlide>
           <SwiperSlide>
             <div
-              className="h-[300px] bg-cover rounded-md"
+              className="h-[300px] rounded-md hover-area "
               style={{ backgroundImage: `url(${barbel})` }}
-            ></div>
+            >
+              <div className="hover-text ">
+                <SectionTitle
+                  heading={"man's wordout"}
+                  subHeading={""}
+                ></SectionTitle>
+                <a href="">
+                  <button className="bg-primaryColor text-white px-3 py-2 rounded-sm">
+                    shop now
+                  </button>
+                </a>
+              </div>
+            </div>
           </SwiperSlide>
           <SwiperSlide>
             <div
-              className="h-[300px] bg-cover rounded-md"
+              className="h-[300px] rounded-md hover-area "
               style={{ backgroundImage: `url(${barbel})` }}
-            ></div>
+            >
+              <div className="hover-text ">
+                <SectionTitle
+                  heading={"man's wordout"}
+                  subHeading={""}
+                ></SectionTitle>
+                <a href="">
+                  <button className="bg-primaryColor text-white px-3 py-2 rounded-sm">
+                    shop now
+                  </button>
+                </a>
+              </div>
+            </div>
           </SwiperSlide>
           <SwiperSlide>
             <div
-              className="h-[300px] bg-cover rounded-md"
+              className="h-[300px] rounded-md hover-area "
               style={{ backgroundImage: `url(${barbel})` }}
-            ></div>
+            >
+              <div className="hover-text ">
+                <SectionTitle
+                  heading={"man's wordout"}
+                  subHeading={""}
+                ></SectionTitle>
+                <a href="">
+                  <button className="bg-primaryColor text-white px-3 py-2 rounded-sm">
+                    shop now
+                  </button>
+                </a>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div
+              className="h-[300px] rounded-md hover-area "
+              style={{ backgroundImage: `url(${barbel})` }}
+            >
+              <div className="hover-text ">
+                <SectionTitle
+                  heading={"man's wordout"}
+                  subHeading={""}
+                ></SectionTitle>
+                <a href="">
+                  <button className="bg-primaryColor text-white px-3 py-2 rounded-sm">
+                    shop now
+                  </button>
+                </a>
+              </div>
+            </div>
           </SwiperSlide>
         </Swiper>
       </div>

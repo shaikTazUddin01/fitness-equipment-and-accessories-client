@@ -1,4 +1,4 @@
-const TitleHeader = ({
+const SectionTitle = ({
   heading,
   subHeading,
 }: {
@@ -23,4 +23,4 @@ const TitleHeader = ({
   );
 };
 
-export default TitleHeader;
+export default SectionTitle;

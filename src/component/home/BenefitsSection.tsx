@@ -1,22 +1,61 @@
-
+import SectionTitle from "../shared/sectionTitle/SectionTitle";
+import sectionImg from "../../assets/images/benefit/benefit-1.webp";
+import fastDelivery from '../../assets/images/benefit/fast-delivery_1.png'
 const BenefitsSection = () => {
   return (
-    <div className="grid grid-cols-2 items-center justify-center gap-10 py-20" >
-      <div className="h-[400px] bg-red-500 col-span-1"></div>
-      <div>
-        <h1>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
-          facere beatae voluptatem qui quos ex, eveniet aliquam labore impedit
-          consequuntur hic laborum doloribus earum voluptatum assumenda unde
-          deserunt adipisci quaerat? Nulla in voluptas voluptatum consequatur
-          illum commodi deserunt dolorem officia reiciendis dolores, ipsam ex
-          modi fugit quisquam minus quaerat quis autem amet? A, eius reiciendis!
-          Numquam eos veritatis voluptates ad id? Iste ratione adipisci, quis
-          autem culpa tempore dolorum eaque, quia nostrum asperiores debitis
-          expedita voluptatibus, omnis alias placeat minus in delectus esse at
-          aut consequatur. Modi, iure pariatur tenetur nostrum sint amet fugit
-          itaque a impedit, ratione laudantium? Doloribus?
-        </h1>
+    <div className="py-20">
+      <div className="text-center">
+        <SectionTitle
+          heading="benefis"
+          subHeading="using out product"
+        ></SectionTitle>
+      </div>
+      <div className="grid grid-cols-2 items-center justify-center gap-10 ">
+        <div className="h-[400px] col-span-1 rounded-md">
+          <img src={sectionImg} alt="" className="rounded-md" />
+        </div>
+        <div className="space-y-5">
+
+
+         <div className="flex text-white items-center justify-center gap-2">
+          <div className="w-[25%]">
+            <img src={fastDelivery} alt="" className="border-2 border-white rounded-full p-5" />
+          </div>
+          <div>
+            <h1 className="text-xl uppercase">FAst Delivery</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, accusantium! Mollitia doloribus iusto totam </p>
+          </div>
+         </div>
+         <div className="flex text-white items-center justify-center gap-2">
+          <div className="w-[25%]">
+            <img src={fastDelivery} alt="" className="border-2 border-white rounded-full p-5" />
+          </div>
+          <div>
+            <h1 className="text-xl uppercase">FAst Delivery</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, accusantium! Mollitia doloribus iusto totam </p>
+          </div>
+         </div>
+         <div className="flex text-white items-center justify-center gap-2">
+          <div className="w-[25%]">
+            <img src={fastDelivery} alt="" className="border-2 border-white rounded-full p-5" />
+          </div>
+          <div>
+            <h1 className="text-xl uppercase">FAst Delivery</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, accusantium! Mollitia doloribus iusto totam </p>
+          </div>
+         </div>
+         <div className="flex text-white items-center justify-center gap-2">
+          <div className="w-[25%]">
+            <img src={fastDelivery} alt="" className="border-2 border-white rounded-full p-5" />
+          </div>
+          <div>
+            <h1 className="text-xl uppercase">FAst Delivery</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, accusantium! Mollitia doloribus iusto totam </p>
+          </div>
+         </div>
+
+
+        </div>
       </div>
     </div>
   );
