@@ -4,9 +4,10 @@ import logo from "./assets/images/logo.webp";
 import "./index.css";
 import { useLocation } from "react-router-dom";
 
+
 function App() {
   const [welcomeLoading, setWelcomeLoading] = useState(true);
-  const location =useLocation()
+  const location = useLocation();
   // console.log(location.pathname);
   useEffect(() => {
     const time = setTimeout(() => {
@@ -17,17 +18,17 @@ function App() {
   }, [welcomeLoading]);
 
   // console.log(welcomeLoading);
-  if (welcomeLoading && (location?.pathname=='/')) {
+  if (welcomeLoading && location?.pathname == "/") {
     return (
       <div className="min-h-screen flex justify-center items-center flex-col">
         <img src={logo} alt="" className="welcomeLogo " />
-       
       </div>
     );
   }
   return (
     <>
       <MainLayout></MainLayout>
+      
     </>
   );
 }

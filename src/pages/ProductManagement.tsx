@@ -1,14 +1,15 @@
-import AddProduct from "../component/ProductManagement/AddProduct";
+
+import AddProductModal from "../component/ProductManagement/AddProductModal";
 import ProductsRow from "../component/ProductManagement/ProductsRow";
 import Loading from "../component/shared/Loading/Loading";
 import { useGetProductsQuery } from "../redux/features/products/products.api";
 import { TProduct } from "../Type";
 
 const ProductManagement = () => {
-  const { data, isLoading } = useGetProductsQuery(undefined);
+  const { data, isLoading } = useGetProductsQuery(undefined );
 
   const products = data?.data;
-
+// console.log("refatch--->",refetch());
   if (isLoading) {
     return <Loading></Loading>;
   }
@@ -19,8 +20,8 @@ const ProductManagement = () => {
           Click This Button To Create a New Product
         </h1>
 
-      {/* add product */}
-       <AddProduct></AddProduct>
+        {/* add product */}
+       <AddProductModal></AddProductModal>
       </div>
 
       <div className="overflow-x-auto">
