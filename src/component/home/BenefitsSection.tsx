@@ -6,7 +6,7 @@ const BenefitsSection = () => {
     <div className="py-20">
       <div className="text-center">
         <SectionTitle
-          heading="benefis"
+          heading="benefits"
           subHeading="using out product"
         ></SectionTitle>
       </div>

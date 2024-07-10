@@ -2,9 +2,9 @@ import HeroArea from "../component/home/HeroArea";
 import CategorySection from "../component/home/CategorySection";
 import FeaturedProducts from "../component/home/FeaturedProducts";
 import BenefitsSection from "../component/home/BenefitsSection";
-// import PhotoGallery from '../component/home/PhotoGallery';
-
+import "../index.css";
 const Home = () => {
+
   return (
     <div>
       <HeroArea></HeroArea>

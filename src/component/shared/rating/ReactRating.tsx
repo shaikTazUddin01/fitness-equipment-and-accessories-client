@@ -4,7 +4,7 @@ import Rating from "react-rating";
 
 const ReactRating = () => {
   return (
-    <div>
+    <div className="text-xl">
       <Rating
         emptySymbol={<FaRegStar></FaRegStar>}
         fullSymbol={<IoIosStar className="text-secondaryColor"></IoIosStar>}

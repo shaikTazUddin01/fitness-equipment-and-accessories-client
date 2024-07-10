@@ -1,7 +1,12 @@
-
+import { FaRegUser, FaSearch } from "react-icons/fa";
 import logo from "../../../assets/images/logo.webp";
+import { GrCart } from "react-icons/gr";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+  // console.log("path---->", currentPath);
   const navItem = (
     <>
       <li>
@@ -20,10 +25,18 @@ const Navbar = () => {
   );
   return (
     <div className="">
-      <div className="navbar text-white bg-[#1616169a] absolute z-20 shadow-xl max-w-7xl px-10">
+      <div
+        className={`navbar text-white bg-[#1616169a] ${
+          currentPath == "/" ? "absolute" : "relative"
+        }  z-20 shadow-xl max-w-7xl px-10`}
+      >
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="buthrefn" className="btn btn-ghost lg:hidden">
+            <div
+              tabIndex={0}
+              role="buthrefn"
+              className="btn btn-ghost lg:hidden"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -53,10 +66,14 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 text-[16px] font-semibold">{navItem}</ul>
+          <ul className="menu menu-horizontal px-1 text-[16px] font-semibold">
+            {navItem}
+          </ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Buthrefn</a>
+        <div className="navbar-end flex gap-4 items-center text-[18px] cursor-pointer">
+          <FaSearch></FaSearch>
+          <FaRegUser></FaRegUser>
+          <GrCart />
         </div>
       </div>
     </div>
