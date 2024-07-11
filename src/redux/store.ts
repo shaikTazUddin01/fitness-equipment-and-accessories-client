@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit"
 import { baseApi } from "./api/baseApi"
-
+import productReducer from './features/myCart/myCart.slice'
 
 export const store=configureStore({
     reducer:{
+        products:productReducer,
         [baseApi.reducerPath]:baseApi.reducer
     },
 

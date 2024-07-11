@@ -7,7 +7,7 @@ const AddProductModal = () => {
       <button
         className="btn btn-primary "
         onClick={() => {
-          const modal = document.getElementById("my_modal_3");
+          const modal = document.getElementById("create_product");
           if (modal) {
             (modal as HTMLDialogElement).showModal();
           }
@@ -15,7 +15,7 @@ const AddProductModal = () => {
       >
         Create Product
       </button>
-      <dialog id="my_modal_3" className="modal">
+      <dialog id="create_product" className="modal">
         <div className="modal-box">
           <form method="dialog">
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">

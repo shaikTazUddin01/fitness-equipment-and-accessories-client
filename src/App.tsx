@@ -3,6 +3,7 @@ import MainLayout from "./component/layout/MainLayout";
 import logo from "./assets/images/logo.webp";
 import "./index.css";
 import { useLocation } from "react-router-dom";
+import { Toaster } from "sonner";
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
   return (
     <>
       <MainLayout></MainLayout>
-      
+      <Toaster />
     </>
   );
 }

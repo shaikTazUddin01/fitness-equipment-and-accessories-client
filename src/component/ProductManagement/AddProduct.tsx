@@ -1,27 +1,41 @@
 import { useForm } from "react-hook-form";
 import { useCreateProductMutation } from "../../redux/features/products/products.api";
+import { toast } from "sonner";
 
 const AddProduct = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const [createProduct] = useCreateProductMutation();
+  //create a new product
   const onSubmit = async (data: any) => {
-    const productInFo = {
-      name: data?.name,
-      images: data?.image,
-      price: data?.price,
-      detail: data?.description,
-      category: data?.category,
-    };
-    const res = await createProduct(productInFo);
-    console.log(res);
-    if (res.data) {
-      alert("success");
-      const modal = document.getElementById("my_modal_3");
-      reset();
-      if (modal) {
-        (modal as HTMLDialogElement).close();
+    const toastId = toast.loading("Loading...");
+    try {
+      const productInFo = {
+        name: data?.name,
+        images: data?.image,
+        price: data?.price,
+        detail: data?.description,
+        category: data?.category,
+      };
+      const res = await createProduct(productInFo);
+
+      if (res.data) {
+        toast.success("successfully you create a new product", {
+          id: toastId,
+          duration: 1500,
+        });
+
+        const modal = document.getElementById("create_product");
+        reset();
+        if (modal) {
+          (modal as HTMLDialogElement).close();
+        }
       }
+    } catch (error) {
+      toast.error("something is wrong please try again", {
+        id: toastId,
+        duration: 1500,
+      });
     }
   };
   return (

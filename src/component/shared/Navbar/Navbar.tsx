@@ -73,7 +73,7 @@ const Navbar = () => {
         <div className="navbar-end flex gap-4 items-center text-[18px] cursor-pointer">
           <FaSearch></FaSearch>
           <FaRegUser></FaRegUser>
-          <GrCart />
+          <a href="/cart"><GrCart /></a>
         </div>
       </div>
     </div>

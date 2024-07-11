@@ -1,20 +1,33 @@
+import Swal from "sweetalert2";
 import { useDeleteProductMutation } from "../../redux/features/products/products.api";
 import { TProduct } from "../../Type";
+import UpdateProductModal from "./updateProduct/UpdateProductModal";
+import { toast } from "sonner";
 
 const ProductsRow = ({ product }: { product: TProduct }) => {
   const { images, name, price, _id, category, stockQuentity } = product;
 
   const [deleteProductItem] = useDeleteProductMutation();
-
-  const handleDelete = (id: string) => {
-    deleteProductItem(id);
-    // const deleteProduct = async () => {
-    //   const res=await fetch(`http://localhost:3000/api/product/${id}`,{
-    //     method:'delete'
-    //   })
-    //   console.log(res);
-    // };
-    // deleteProduct();
+//handle delete product
+  const handleDelete = async (id: string) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "To Delete This Product",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await deleteProductItem(id);
+        if (res) {
+          toast.warning("Successfully you Delete This Product", {
+            duration: 1500,
+          });
+        }
+      }
+    });
   };
   return (
     <tr className="">
@@ -42,7 +55,7 @@ const ProductsRow = ({ product }: { product: TProduct }) => {
           >
             Delete
           </button>
-          <button className="btn btn-success btn-xs">Edit</button>
+          <UpdateProductModal id={_id}></UpdateProductModal>
         </div>
       </td>
     </tr>

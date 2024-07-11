@@ -1,12 +1,15 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../component/shared/Loading/Loading";
 import { TProduct } from "../Type";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../redux/features/myCart/myCart.slice";
+import { toast } from "sonner";
 const ProductDetails = () => {
   const { id } = useParams();
   //   console.log(id);
   const [product, setProduct] = useState<TProduct | null>(null);
-
+  const dispatch = useDispatch();
   useEffect(() => {
     const product = async () => {
       try {
@@ -23,7 +26,13 @@ const ProductDetails = () => {
   if (!product) {
     return <Loading></Loading>;
   }
-
+  const handleAddToCart = () => {
+    
+    dispatch(addProduct(product));
+    toast.success("This Product is added to cart",{
+      duration:1000
+    })
+  };
   return (
     <div>
       <div className="hero bg-base-200 min-h-screen">
@@ -35,7 +44,12 @@ const ProductDetails = () => {
           <div>
             <h1 className="text-5xl font-bold">{product?.name}</h1>
             <p className="py-6">{product?.detail}</p>
-            <button className="btn btn-primary">BUY NOW</button>
+            <button
+              className="btn btn-primary"
+              onClick={() => handleAddToCart()}
+            >
+              Add To Cart
+            </button>
           </div>
         </div>
       </div>
