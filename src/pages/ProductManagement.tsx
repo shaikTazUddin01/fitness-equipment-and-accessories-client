@@ -33,6 +33,7 @@ const ProductManagement = () => {
               <th>Name</th>
               <th>Price</th>
               <th>Category</th>
+              <th>Stock Quentity</th>
               <th>Actions</th>
             </tr>
           </thead>

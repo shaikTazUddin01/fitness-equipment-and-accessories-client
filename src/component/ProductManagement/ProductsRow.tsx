@@ -1,7 +1,21 @@
+import { useDeleteProductMutation } from "../../redux/features/products/products.api";
 import { TProduct } from "../../Type";
 
 const ProductsRow = ({ product }: { product: TProduct }) => {
-  const {images,name,price,_id,category}=product
+  const { images, name, price, _id, category, stockQuentity } = product;
+
+  const [deleteProductItem] = useDeleteProductMutation();
+
+  const handleDelete = (id: string) => {
+    deleteProductItem(id);
+    // const deleteProduct = async () => {
+    //   const res=await fetch(`http://localhost:3000/api/product/${id}`,{
+    //     method:'delete'
+    //   })
+    //   console.log(res);
+    // };
+    // deleteProduct();
+  };
   return (
     <tr className="">
       <td>
@@ -19,11 +33,17 @@ const ProductsRow = ({ product }: { product: TProduct }) => {
       </td>
       <td>${price}</td>
       <td>{category}</td>
+      <td>{stockQuentity}</td>
       <td>
-      <div className="flex gap-2 justify-center items-center">
-        <button className="btn btn-error btn-xs">Delete</button>
-        <button className="btn btn-success btn-xs">Edit</button>
-      </div>
+        <div className="flex gap-2 justify-center items-center">
+          <button
+            className="btn btn-error btn-xs"
+            onClick={() => handleDelete(_id)}
+          >
+            Delete
+          </button>
+          <button className="btn btn-success btn-xs">Edit</button>
+        </div>
       </td>
     </tr>
   );

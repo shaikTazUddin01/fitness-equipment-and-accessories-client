@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../component/shared/Loading/Loading";
-
+import { TProduct } from "../Type";
 const ProductDetails = () => {
   const { id } = useParams();
   //   console.log(id);
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState<TProduct | null>(null);
 
   useEffect(() => {
     const product = async () => {
