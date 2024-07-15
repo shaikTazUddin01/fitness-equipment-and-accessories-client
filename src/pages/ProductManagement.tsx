@@ -6,9 +6,10 @@ import { useGetProductsQuery } from "../redux/features/products/products.api";
 import { TProduct } from "../Type";
 
 const ProductManagement = () => {
-  const { data, isLoading } = useGetProductsQuery(undefined );
+  const { data, isLoading } = useGetProductsQuery({});
 
   const products = data?.data;
+  console.log(products);
 // console.log("refatch--->",refetch());
   if (isLoading) {
     return <Loading></Loading>;

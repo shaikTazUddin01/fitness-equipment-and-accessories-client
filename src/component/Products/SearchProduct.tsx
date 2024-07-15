@@ -19,13 +19,13 @@ const SearchProduct = () => {
         <input
           type="text"
           placeholder="Search Here..."
-          className="input input-bordered "
+          className="input input-bordered border-primaryColor"
           {...register("searchItem")}
         />
       </div>
       <button
         type="submit"
-        className="bg-primaryColor text-white px-5 rounded-lg"
+        className="bg-primaryColor text-white px-5 rounded-lg hover:shadow-md hover:shadow-secondaryColor"
       >
         Search
       </button>

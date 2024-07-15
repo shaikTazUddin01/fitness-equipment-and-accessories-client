@@ -1,5 +1,5 @@
 import { TProduct } from "../../Type";
-import ReactRating from "../shared/rating/ReactRating";
+
 
 const ProductCard = ({ product }: { product: TProduct }) => {
   const { _id, name, price,images } = product;
@@ -9,7 +9,7 @@ const ProductCard = ({ product }: { product: TProduct }) => {
         <img
           src={images}
           alt={name}
-          className="rounded-xl"
+          className="rounded-xl w-[95%]"
         />
       </figure>
       <div className="card-body items-center text-center">

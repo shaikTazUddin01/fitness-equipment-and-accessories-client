@@ -3,13 +3,22 @@ import { useParams } from "react-router-dom";
 import Loading from "../component/shared/Loading/Loading";
 import { TProduct } from "../Type";
 import { useDispatch } from "react-redux";
-import { addProduct } from "../redux/features/myCart/myCart.slice";
+
 import { toast } from "sonner";
+import { productCart } from "../redux/features/myCart/myCart.slice";
+import { useAppDispatch, useAppSelector } from "../redux/hooks/hooks";
 const ProductDetails = () => {
   const { id } = useParams();
   //   console.log(id);
   const [product, setProduct] = useState<TProduct | null>(null);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  // get my cart
+  const mycartProduct = useAppSelector(
+    (state) => state.productCard?.productCart
+  );
+
+  console.log("my cart-->", mycartProduct);
+  // get products
   useEffect(() => {
     const product = async () => {
       try {
@@ -22,16 +31,35 @@ const ProductDetails = () => {
     };
     product();
   }, [id]);
-
+  // console.log(product);
   if (!product) {
     return <Loading></Loading>;
   }
+  // add product to cart
   const handleAddToCart = () => {
-    
-    dispatch(addProduct(product));
-    toast.success("This Product is added to cart",{
-      duration:1000
-    })
+    const isExists = mycartProduct?.find((item) => item?._id == product?._id);
+
+    console.log(isExists);
+    if (isExists) {
+      const myCartProductQuentity = isExists?.stockQuentity;
+      console.log(product?.stockQuentity);
+
+      if (product?.stockQuentity > myCartProductQuentity) {
+        toast.success("This Product is added to cart", {
+          duration: 1000,
+        });
+       return dispatch(productCart({ ...product, stockQuentity: 1 }));
+      } else {
+       return toast.warning("This Product is Stock Out", {
+          duration: 1000,
+        });
+      }
+    }
+
+    dispatch(productCart({ ...product, stockQuentity: 1 }));
+    toast.success("This Product is added to cart", {
+      duration: 1000,
+    });
   };
   return (
     <div>
