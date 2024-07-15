@@ -22,6 +22,7 @@ const Products = () => {
     searchProduct,
   });
   const products = data?.data;
+  console.log(products);
   //use loading
   if (isLoading) {
     return <Loading></Loading>;
@@ -35,12 +36,17 @@ const Products = () => {
       {/* product and search side bar */}
       <div className="w-[70%]">
         <FIlterProduct></FIlterProduct>
-
-        <div className="grid grid-cols-4 gap-5 mt-7">
-          {products?.map((item: TProduct) => (
-            <ProductCard key={item?._id} product={item}></ProductCard>
-          ))}
-        </div>
+        {products.length>0 ? (
+          <div className="grid grid-cols-4 gap-5 mt-7">
+            {products?.map((item: TProduct) => (
+              <ProductCard key={item?._id} product={item}></ProductCard>
+            ))}
+          </div>
+        ) : (
+          <div>
+            <h1 className="text-white text-2xl text-center mt-10">No Product Found.!</h1>
+          </div>
+        )}
       </div>
     </div>
   );
