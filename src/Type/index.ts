@@ -1,10 +1,16 @@
-export type TProduct={
+export type TProduct = {
+  _id: string;
+  name: string;
+  images: string;
+  price: number;
+  detail: string;
+  rating: number;
+  category: string;
+  stockQuentity: number;
+};
+
+export type TCategory = {
     _id:string;
-    name: string;
-    images: string;
-    price: number;
-   detail: string;
-    rating: number;
-    category:string;
-    stockQuentity:number;
-}
+  name: string;
+  image: string;
+};

@@ -10,16 +10,27 @@ import "./css/HoverText.css";
 import { Autoplay } from "swiper/modules";
 import SectionTitle from "../shared/sectionTitle/SectionTitle";
 
-//import images
-import barbel from "../../assets/images/categoryImg/berbel.webp";
+import { useGetCategoryQuery } from "../../redux/features/category/category.api";
+import { TCategory } from "../../Type";
+import Loading from "../shared/Loading/Loading";
 const CategorySection = () => {
+  //retrieve category data
+  const { data ,isLoading} = useGetCategoryQuery(undefined);
+
+
+  if (isLoading) {
+    return <Loading></Loading>
+  }
+
+  const categories = data?.data;
+
   return (
     <div className="mt-14 text-center">
       <div>
-      <SectionTitle
-        heading="exclusive"
-        subHeading="Category collections"
-      ></SectionTitle>
+        <SectionTitle
+          heading="exclusive"
+          subHeading="Our Categories"
+        ></SectionTitle>
       </div>
       <div className="mt-8">
         <Swiper
@@ -47,7 +58,32 @@ const CategorySection = () => {
           modules={[Autoplay]}
           className="mySwiper"
         >
-          <SwiperSlide>
+          {categories?.map((category: TCategory) => {
+            return (
+              <SwiperSlide key={category?._id}>
+                <div
+                  className="h-[300px] rounded-md hover-area "
+                  style={{ backgroundImage: `url(${category?.image})` }}
+                >
+                  <div className="bg-[#06060693] h-full w-full">
+                    <div className="hover-text ">
+                      <SectionTitle
+                        heading={`${category?.name}`}
+                        subHeading={""}
+                      ></SectionTitle>
+                      <a href="/products">
+                        <button className="bg-primaryColor text-secondaryColor px-3 py-2 rounded-md">
+                          shop now
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            );
+          })}
+
+          {/* <SwiperSlide>
             <div
               className="h-[300px] rounded-md hover-area "
               style={{ backgroundImage: `url(${barbel})` }}
@@ -136,25 +172,7 @@ const CategorySection = () => {
                 </a>
               </div>
             </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div
-              className="h-[300px] rounded-md hover-area "
-              style={{ backgroundImage: `url(${barbel})` }}
-            >
-              <div className="hover-text ">
-                <SectionTitle
-                  heading={"man's wordout"}
-                  subHeading={""}
-                ></SectionTitle>
-                <a href="">
-                  <button className="bg-primaryColor text-white px-3 py-2 rounded-sm">
-                    shop now
-                  </button>
-                </a>
-              </div>
-            </div>
-          </SwiperSlide>
+          </SwiperSlide> */}
         </Swiper>
       </div>
     </div>

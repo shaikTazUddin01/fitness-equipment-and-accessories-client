@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { TProduct } from "../../../Type";
+import { RootState } from "../../store";
 
 type TinitaialState = {
   products: TProduct[];
@@ -22,3 +23,5 @@ export const productsSlice = createSlice({
 
 export const {addProduct}=productsSlice.actions;
 export default productsSlice.reducer
+
+// export const AddProductToCart=(state:RootState)=>{return(state.products)}

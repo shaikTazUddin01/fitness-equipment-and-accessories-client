@@ -9,7 +9,7 @@ import { Autoplay } from "swiper/modules";
 import SectionTitle from "../shared/sectionTitle/SectionTitle";
 //import images
 import barbel from "../../assets/images/categoryImg/berbel.webp";
-import ReactRating from "../shared/rating/ReactRating";
+// import ReactRating from "../shared/rating/ReactRating";
 
 const FeaturedProducts = () => {
   return (
@@ -53,7 +53,7 @@ const FeaturedProducts = () => {
             >
               <div className=" flex flex-col text-center text-white space-y-2 pb-6">
                 <div>
-                  <ReactRating />
+                  {/* <ReactRating /> */}
 
                   <h1 className="text-xl font-semibold">Gym Accessiroes</h1>
                   <p>$80.00</p>

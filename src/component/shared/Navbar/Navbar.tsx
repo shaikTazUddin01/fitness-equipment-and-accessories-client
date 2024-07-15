@@ -3,7 +3,9 @@ import logo from "../../../assets/images/logo.webp";
 import { GrCart } from "react-icons/gr";
 import { useLocation } from "react-router-dom";
 
+
 const Navbar = () => {
+
   const location = useLocation();
   const currentPath = location.pathname;
   // console.log("path---->", currentPath);
@@ -28,7 +30,7 @@ const Navbar = () => {
       <div
         className={`navbar text-white bg-[#1616169a] ${
           currentPath == "/" ? "absolute" : "relative"
-        }  z-20 shadow-xl max-w-7xl px-10`}
+        }  z-20 shadow-xl max-w-7xl px-10 py-4`}
       >
         <div className="navbar-start">
           <div className="dropdown">
@@ -66,14 +68,16 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 text-[16px] font-semibold">
+          <ul className="menu menu-horizontal px-1 text-[18px] font-semibold">
             {navItem}
           </ul>
         </div>
-        <div className="navbar-end flex gap-4 items-center text-[18px] cursor-pointer">
+        <div className="navbar-end flex gap-4 items-center text-[20px] cursor-pointer">
           <FaSearch></FaSearch>
           <FaRegUser></FaRegUser>
-          <a href="/cart"><GrCart /></a>
+     
+          <a href="/cart"><GrCart /> </a>
+         
         </div>
       </div>
     </div>

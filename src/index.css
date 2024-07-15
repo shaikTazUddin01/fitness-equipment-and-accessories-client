@@ -8,7 +8,7 @@
 } */
 
 .title-text {
-  color: #deff12;
+  /* color: #deff12; */
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-width: .5px;
   font-size: 25px;
@@ -23,7 +23,7 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
 .welcomeLogo{
   height: 50px;
   animation-name: example;
-  animation-duration: 2s;
+  animation-duration: 4s;
 
 }
 
@@ -31,13 +31,25 @@ span.swiper-pagination-bullet.swiper-pagination-bullet-active {
  0%{
   height: 50px;
  }
+ 12.5%{
+  height: 40px;
+ }
  25%{
+  height: 50px;
+ }
+ 37.5%{
   height: 40px;
  }
  50%{
   height: 50px;
  }
+ 62.5%{
+  height: 40px;
+ }
  75%{
+  height: 50px;
+ }
+ 87.5%{
   height: 40px;
  }
  100%{

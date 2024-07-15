@@ -1,14 +1,16 @@
 const SectionTitle = ({
   heading,
-  subHeading,
+  subHeading
+
 }: {
   heading: string;
   subHeading: string;
+  
 }) => {
   return (
-    <div className="py-5">
+    <div className="py-5 text-white">
       {heading ? (
-        <h3 className=" title-text italic uppercase">{heading}</h3>
+        <h3 className="title-text italic uppercase text-white">{heading}</h3>
       ) : (
         ""
       )}

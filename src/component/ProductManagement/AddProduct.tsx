@@ -1,11 +1,18 @@
 import { useForm } from "react-hook-form";
 import { useCreateProductMutation } from "../../redux/features/products/products.api";
 import { toast } from "sonner";
+import { useGetCategoryQuery } from "../../redux/features/category/category.api";
+import Loading from "../shared/Loading/Loading";
 
 const AddProduct = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const [createProduct] = useCreateProductMutation();
+  const { data, isLoading } = useGetCategoryQuery(undefined);
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
+  const categoris=data?.data;
   //create a new product
   const onSubmit = async (data: any) => {
     const toastId = toast.loading("Loading...");
@@ -26,7 +33,7 @@ const AddProduct = () => {
         });
 
         const modal = document.getElementById("create_product");
-        reset();
+        // reset();
         if (modal) {
           (modal as HTMLDialogElement).close();
         }
@@ -81,13 +88,29 @@ const AddProduct = () => {
           <label className="label">
             <span className="label-text">Product Category</span>
           </label>
-          <input
+
+          <select className="select input input-bordered w-full " {...register("category")}>
+            <option disabled selected>
+              Select Category
+            </option>
+            {
+              categoris?.map((item:any)=>{
+                return(
+                  <option value={item?.name}>{item?.name}</option>
+                )
+              })
+            }
+            {/* <option>Han Solo</option>
+            <option>Greedo</option> */}
+          </select>
+
+          {/* <input
             type="text"
             placeholder="Product Category"
             className="input input-bordered"
             {...register("category")}
             required
-          />
+          /> */}
         </div>
         <div className="form-control">
           <label className="label">
