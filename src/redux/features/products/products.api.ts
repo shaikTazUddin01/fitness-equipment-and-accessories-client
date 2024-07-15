@@ -3,9 +3,16 @@ import { baseApi } from "../../api/baseApi";
 export const productsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query({
-      query: ({sortProductByPrice,searchProduct}) => ({
+      query: ({ sortProductByPrice, searchProduct }) => ({
         url: `/product`,
-        params: { sortProductByPrice,searchProduct},
+        params: { sortProductByPrice, searchProduct },
+        method: "GET",
+      }),
+      providesTags: ["Products"],
+    }),
+    getSingleProducts: builder.query({
+      query: ({_id}) => ({
+        url: `/product/${_id}`,
         method: "GET",
       }),
       providesTags: ["Products"],
@@ -26,7 +33,7 @@ export const productsApi = baseApi.injectEndpoints({
       invalidatesTags: ["Products"],
     }),
     updateProduct: builder.mutation({
-      query: ({id, updateProductInFo}) => ({
+      query: ({ id, updateProductInFo }) => ({
         url: `/product/${id}`,
         method: "PATCH",
         body: updateProductInFo,
@@ -38,7 +45,8 @@ export const productsApi = baseApi.injectEndpoints({
 
 export const {
   useGetProductsQuery,
+  useGetSingleProductsQuery,
   useCreateProductMutation,
   useDeleteProductMutation,
-  useUpdateProductMutation
+  useUpdateProductMutation,
 } = productsApi;

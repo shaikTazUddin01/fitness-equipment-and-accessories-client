@@ -15,8 +15,7 @@ const Products = () => {
   const searchProduct = useAppSelector(
     (state) => state.searchProduct.searchItem
   );
-
-
+  
 
   const { data, isLoading } = useGetProductsQuery({
     sortProductByPrice,

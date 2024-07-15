@@ -6,6 +6,7 @@ import Products from "../pages/Products";
 import ProductManagement from "../pages/ProductManagement";
 import ProductDetails from "../pages/ProductDetails";
 import Cart from "../pages/Cart";
+import CheckOut from "../pages/CheckOut";
 
 const Routers = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const Routers = createBrowserRouter([
       {
         path:'cart',
         element:<Cart></Cart>
+      },
+      {
+        path:'cashout/:id',
+        element:<CheckOut></CheckOut>
       }
     ]
   },

@@ -33,7 +33,7 @@ const AddProduct = () => {
         });
 
         const modal = document.getElementById("create_product");
-        // reset();
+        reset();
         if (modal) {
           (modal as HTMLDialogElement).close();
         }
