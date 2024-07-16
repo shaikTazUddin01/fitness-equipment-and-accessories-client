@@ -3,6 +3,7 @@ import CategorySection from "../component/home/CategorySection";
 import FeaturedProducts from "../component/home/FeaturedProducts";
 import BenefitsSection from "../component/home/BenefitsSection";
 import "../index.css";
+import PhotoGallery from "../component/home/PhotoGallery";
 const Home = () => {
 
   return (
@@ -11,7 +12,7 @@ const Home = () => {
       <CategorySection></CategorySection>
       <FeaturedProducts></FeaturedProducts>
       <BenefitsSection></BenefitsSection>
-      {/* <PhotoGallery></PhotoGallery> */}
+      <PhotoGallery></PhotoGallery>
     </div>
   );
 };

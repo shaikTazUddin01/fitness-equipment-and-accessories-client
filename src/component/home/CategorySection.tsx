@@ -15,24 +15,23 @@ import { TCategory } from "../../Type";
 import Loading from "../shared/Loading/Loading";
 const CategorySection = () => {
   //retrieve category data
-  const { data ,isLoading} = useGetCategoryQuery(undefined);
-
+  const { data, isLoading } = useGetCategoryQuery(undefined);
 
   if (isLoading) {
-    return <Loading></Loading>
+    return <Loading></Loading>;
   }
 
   const categories = data?.data;
 
   return (
-    <div className="mt-14 text-center">
-      <div>
+    <div className="mt-16 text-center">
+      <div className="text-secondaryColor">
         <SectionTitle
           heading="exclusive"
           subHeading="Our Categories"
         ></SectionTitle>
       </div>
-      <div className="mt-8">
+      <div className="mt-5">
         <Swiper
           slidesPerView={1}
           spaceBetween={1}
@@ -72,7 +71,7 @@ const CategorySection = () => {
                         subHeading={""}
                       ></SectionTitle>
                       <a href="/products">
-                        <button className="bg-primaryColor text-secondaryColor px-3 py-2 rounded-md">
+                        <button className="bg-primaryColor text-white px-3 py-2 rounded-md">
                           shop now
                         </button>
                       </a>

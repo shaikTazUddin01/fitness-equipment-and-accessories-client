@@ -1,14 +1,18 @@
-import React from 'react';
+import SectionTitle from "../shared/sectionTitle/SectionTitle";
+import PhotoAlbum from "react-photo-album";
+import photos from "./photos";
 
 const PhotoGallery = () => {
-    return (
-        <div className='py-10'>
-            <h1 className='text-4xl font-bold text-center'>Photo Gallery</h1>
-            <div className='bg-red-500 w-full h-[400px]'>
-
-            </div>
-        </div>
-    );
+  return (
+    <div className="py-14">
+      <div className="text-center text-secondaryColor">
+        <SectionTitle heading="Healthy" subHeading="User Mosaic"></SectionTitle>
+      </div>
+      <div className=" w-full mt-5">
+        <PhotoAlbum layout="rows" photos={photos} />;
+      </div>
+    </div>
+  );
 };
 
 export default PhotoGallery;

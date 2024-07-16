@@ -17,7 +17,7 @@ const ProductCard = ({ product }: { product: TProduct }) => {
         <p>${price}</p>
         <div className="card-actions">
           <a href={`/productDetails/${_id}`}>
-          <button className="btn btn-primary">View Details</button>
+          <button className="px-3 py-2 rounded-md bg-primaryColor text-white shadow shadow-secondaryColor">View Details</button>
           </a>
         </div>
       </div>

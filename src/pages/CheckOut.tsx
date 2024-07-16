@@ -40,7 +40,7 @@ const CheckOut = () => {
 
 {/* order summery section */}
       <div className="bg-slate-50 w-[30%] rounded-xl p-10 h-[350px] " >
-        <h1 className="text-[16px] font-semibold pb-2">Order Summary</h1>
+        <h1 className="text-xl font-semibold pb-2">Order Summary</h1>
         <div className="bg-primaryColor w-full h-[2px]"></div>
         <div className="flex justify-between pt-2 text-[16px]">
           <h1>Price Per Product</h1>

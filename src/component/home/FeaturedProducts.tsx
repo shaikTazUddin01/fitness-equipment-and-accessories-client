@@ -9,18 +9,29 @@ import { Autoplay } from "swiper/modules";
 import SectionTitle from "../shared/sectionTitle/SectionTitle";
 //import images
 import barbel from "../../assets/images/categoryImg/berbel.webp";
+import { useGetProductsQuery } from "../../redux/features/products/products.api";
+import Loading from "../shared/Loading/Loading";
+import ProductCard from "../Products/ProductCard";
+import { TProduct } from "../../Type";
 // import ReactRating from "../shared/rating/ReactRating";
 
 const FeaturedProducts = () => {
+  const { data, isLoading } = useGetProductsQuery({});
+  const products = data?.data;
+  console.log(products);
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
   return (
-    <div className="py-10">
-      <div className="text-4xl text-center font-bold py-10">
+    <div className="mt-16">
+      <div className="text-4xl text-center font-bold text-secondaryColor">
         <SectionTitle
           heading={"new Arrivals"}
           subHeading={"Feature Products"}
         ></SectionTitle>
       </div>
-      <div className=" ">
+      <div className=" mt-5">
         <Swiper
           slidesPerView={1}
           spaceBetween={1}
@@ -46,80 +57,13 @@ const FeaturedProducts = () => {
           modules={[Autoplay]}
           className="mySwiper"
         >
-          <SwiperSlide>
-            <div
-              className="h-[300px] rounded-md bg-cover flex justify-center items-end "
-              style={{ backgroundImage: `url(${barbel})` }}
-            >
-              <div className=" flex flex-col text-center text-white space-y-2 pb-6">
-                <div>
-                  {/* <ReactRating /> */}
-
-                  <h1 className="text-xl font-semibold">Gym Accessiroes</h1>
-                  <p>$80.00</p>
-                </div>
-                <a href="">
-                  <button className="bg-primaryColor text-white px-3 py-2 rounded-sm">
-                    shop now
-                  </button>
-                </a>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div
-              className="h-[300px] rounded-md hover-area "
-              style={{ backgroundImage: `url(${barbel})` }}
-            >
-              <div className="hover-text ">
-                <SectionTitle
-                  heading={"man's wordout"}
-                  subHeading={""}
-                ></SectionTitle>
-                <a href="">
-                  <button className="bg-primaryColor text-white px-3 py-2 rounded-sm">
-                    shop now
-                  </button>
-                </a>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div
-              className="h-[300px] rounded-md hover-area "
-              style={{ backgroundImage: `url(${barbel})` }}
-            >
-              <div className="hover-text ">
-                <SectionTitle
-                  heading={"man's wordout"}
-                  subHeading={""}
-                ></SectionTitle>
-                <a href="">
-                  <button className="bg-primaryColor text-white px-3 py-2 rounded-sm">
-                    shop now
-                  </button>
-                </a>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div
-              className="h-[300px] rounded-md hover-area "
-              style={{ backgroundImage: `url(${barbel})` }}
-            >
-              <div className="hover-text ">
-                <SectionTitle
-                  heading={"man's wordout"}
-                  subHeading={""}
-                ></SectionTitle>
-                <a href="">
-                  <button className="bg-primaryColor text-white px-3 py-2 rounded-sm">
-                    shop now
-                  </button>
-                </a>
-              </div>
-            </div>
-          </SwiperSlide>
+          {products.slice(0, 8).map((product: TProduct) => {
+            return (
+              <SwiperSlide className="">
+                <ProductCard product={product}></ProductCard>
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </div>
     </div>

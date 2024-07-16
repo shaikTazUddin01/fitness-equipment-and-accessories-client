@@ -8,9 +8,9 @@ const SectionTitle = ({
   
 }) => {
   return (
-    <div className="py-5 text-white">
+    <div className="py-5 ">
       {heading ? (
-        <h3 className="title-text italic uppercase text-white">{heading}</h3>
+        <h3 className="title-text italic uppercase ">{heading}</h3>
       ) : (
         ""
       )}

@@ -8,7 +8,7 @@ const Cart = () => {
   console.log(cartProduct);
   return (
     <div className="min-h-screen">
-      <div className="overflow-x-auto mt-14">
+      <div className="overflow-x-auto mt-16">
         <table className="table text-white  text-center">
           {/* head */}
           <thead className="text-white">

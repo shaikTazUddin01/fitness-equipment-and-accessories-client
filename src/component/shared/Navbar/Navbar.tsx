@@ -73,8 +73,10 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end flex gap-4 items-center text-[20px] cursor-pointer">
+          <a href="/products">
           <FaSearch></FaSearch>
-          <FaRegUser></FaRegUser>
+          </a>
+          {/* <FaRegUser></FaRegUser> */}
      
           <a href="/cart"><GrCart /> </a>
          
