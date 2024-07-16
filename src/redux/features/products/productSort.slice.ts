@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type TinitaialState = {
-  sort?: string;
+  sort?: string | null;
  
 };
 

@@ -5,6 +5,7 @@ import searchProductReducer from "./features/products/searchProduct.slice";
 import productSortReducer from "./features/products/productSort.slice";
 import categoryfilterReducer from "./features/products/categoryFilter.slice";
 import productCardReducer from "./features/myCart/myCart.slice";
+import resetSliceReducer from "./features/products/resetFilter.slice"
 import {
   persistStore,
   persistReducer,
@@ -31,6 +32,7 @@ export const store = configureStore({
     searchProduct: searchProductReducer,
     sortProduct: productSortReducer,
     categoryFilter: categoryfilterReducer,
+    resetFilter: resetSliceReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

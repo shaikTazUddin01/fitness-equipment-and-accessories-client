@@ -71,8 +71,8 @@ const CategorySection = () => {
                         subHeading={""}
                       ></SectionTitle>
                       <a href="/products">
-                        <button className="bg-primaryColor text-white px-3 py-2 rounded-md">
-                          shop now
+                        <button className="btn btn-neutral rounded-md">
+                          Shop Now
                         </button>
                       </a>
                     </div>

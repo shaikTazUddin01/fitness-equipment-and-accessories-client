@@ -32,6 +32,8 @@ const Products = () => {
     return <Loading></Loading>;
   }
 
+  
+
   return (
     <div className="min-h-screen pb-20 pt-10 flex gap-5">
       {/* filter category left side bar */}

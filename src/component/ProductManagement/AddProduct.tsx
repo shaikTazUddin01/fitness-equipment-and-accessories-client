@@ -100,17 +100,10 @@ const AddProduct = () => {
                 )
               })
             }
-            {/* <option>Han Solo</option>
-            <option>Greedo</option> */}
+           
           </select>
 
-          {/* <input
-            type="text"
-            placeholder="Product Category"
-            className="input input-bordered"
-            {...register("category")}
-            required
-          /> */}
+          
         </div>
         <div className="form-control">
           <label className="label">
@@ -125,7 +118,7 @@ const AddProduct = () => {
         </div>
 
         <div className="form-control mt-6">
-          <button className="btn btn-primary" type="submit">
+          <button className="btn btn-neutral" type="submit">
             Create Product
           </button>
         </div>

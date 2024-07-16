@@ -5,7 +5,7 @@ const UpdateProductModal = (id : Record<string,string>) => {
   return (
     <div>
       <button
-        className="btn btn-primary "
+        className="btn btn-warning "
         onClick={() => {
           const modal = document.getElementById("update_modal");
           if (modal) {

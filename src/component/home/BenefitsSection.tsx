@@ -8,6 +8,7 @@ import { IoAirplaneOutline } from "react-icons/io5";
 const BenefitsSection = () => {
   return (
     <div className="mt-16">
+      {/* section title */}
       <div className="text-center text-secondaryColor">
         <SectionTitle
           heading="benefits"

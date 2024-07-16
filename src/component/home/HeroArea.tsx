@@ -31,7 +31,7 @@ const HeroArea = () => {
             style={{
               backgroundImage: `url(${hero2})`,
             }}
-            className="bg-cover h-[630px] "
+            className="bg-cover bg-center h-[400px] md:h-[630px] "
           >
             <div className="flex justify-center items-center h-full bg-[#00000033]">
               {/* <div className=" text-white px-36 text-center">
@@ -47,7 +47,7 @@ const HeroArea = () => {
             style={{
               backgroundImage: `url(${hero1})`,
             }}
-            className="bg-cover h-[630px]"
+            className="bg-cover bg-center h-[400px] md:h-[630px] "
           ></div>
         </SwiperSlide>
       </Swiper>

@@ -5,7 +5,7 @@ const AddProductModal = () => {
   return (
     <div>
       <button
-        className="btn btn-primary "
+        className="btn btn-neutral "
         onClick={() => {
           const modal = document.getElementById("create_product");
           if (modal) {

@@ -15,7 +15,7 @@ const SectionTitle = ({
         ""
       )}
       {subHeading ? (
-        <h1 className="text-white text-5xl tracking-[.4px] font-bold uppercase">
+        <h1 className="text-white text-2xl md:text-5xl tracking-[.4px] font-bold uppercase">
           {subHeading}
         </h1>
       ) : (

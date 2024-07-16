@@ -1,18 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useAppDispatch } from "../../redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { searchProduct } from "../../redux/features/products/searchProduct.slice";
 
 
 const SearchProduct = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit,reset } = useForm();
 
   const dispatch = useAppDispatch();
 
+  //get reset value
+  const resetFilter=useAppSelector((state)=>state.resetFilter.reset)
+
+// handle search
   const handleSearch = (data: any) => {
-    console.log();
     dispatch(searchProduct({ searchItem: data?.searchItem }));
   };
+  //reset search field
+  useEffect(()=>{
+    if (resetFilter ==="reset") {
+      reset()
+  }
+  },[reset,resetFilter])
   return (
     <form action="" className="flex gap-2" onClick={handleSubmit(handleSearch)}>
       <div className="form-control w-full">
@@ -25,7 +34,7 @@ const SearchProduct = () => {
       </div>
       <button
         type="submit"
-        className="bg-primaryColor text-white px-5 rounded-lg hover:shadow-md hover:shadow-secondaryColor"
+        className="btn btn-neutral"
       >
         Search
       </button>

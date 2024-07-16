@@ -50,7 +50,7 @@ const ProductsRow = ({ product }: { product: TProduct }) => {
       <td>
         <div className="flex gap-2 justify-center items-center">
           <button
-            className="btn btn-error btn-xs"
+            className="btn btn-error"
             onClick={() => handleDelete(_id)}
           >
             Delete
