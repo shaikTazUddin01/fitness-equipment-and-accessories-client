@@ -1,43 +1,50 @@
 import { useForm } from "react-hook-form";
 import { useGetCategoryQuery } from "../../redux/features/category/category.api";
 import Loading from "../shared/Loading/Loading";
-
-import { useAppDispatch } from "../../redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { categoryFilter } from "../../redux/features/products/categoryFilter.slice";
-// import { useState } from "react";
 
 const SidebarFilter = () => {
   const { data, isLoading } = useGetCategoryQuery(undefined);
-  const { register, handleSubmit } = useForm();
-//   const [filtercat,setFilterCat]=useState();
-
+  const { register, handleSubmit, setValue, getValues } = useForm();
   const dispatch = useAppDispatch();
+  //get selected category
+  const selectedCategory = useAppSelector(
+    (state) => state.categoryFilter.categoris
+  );
 
   if (isLoading) {
-    return <Loading></Loading>;
+    return <Loading />;
   }
+
   const filterByCategory = (data: any) => {
-    // console.log(data);
-    // setFilterCat(data)
     dispatch(categoryFilter({ categoryFilter: data }));
   };
-// console.log(filtercat?.'Cardio Equipment');
+
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = event.target;
+    setValue(name, checked);
+    // console.log(name,checked);
+    const currentValues = getValues();
+    filterByCategory(currentValues);
+    // console.log(currentValues)
+  };
+
   return (
-    <div className="bg-white  w-full rounded-lg p-5">
+    <div className="bg-white w-full rounded-lg p-5">
       <h1 className="text-[20px] font-semibold">Categories</h1>
       <div className="divider mt-0"></div>
       <div>
-        <form onChange={handleSubmit(filterByCategory)}>
+        <form onSubmit={handleSubmit(filterByCategory)}>
           {data?.data?.map((category: Record<string, string>) => {
-           
             return (
-                
               <div className="flex items-center mb-2" key={category?._id}>
                 <input
                   type="checkbox"
-                  className="checkbox "
+                  className="checkbox"
                   {...register(`${category?.name}`)}
-                  
+                  checked={selectedCategory.includes(category?.name)}
+                  onChange={handleCheckboxChange}
                 />
                 <label className="ml-2">{category?.name}</label>
               </div>

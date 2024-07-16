@@ -8,7 +8,7 @@ import "./css/HoverText.css";
 import { Autoplay } from "swiper/modules";
 import SectionTitle from "../shared/sectionTitle/SectionTitle";
 //import images
-import barbel from "../../assets/images/categoryImg/berbel.webp";
+
 import { useGetProductsQuery } from "../../redux/features/products/products.api";
 import Loading from "../shared/Loading/Loading";
 import ProductCard from "../Products/ProductCard";
@@ -57,7 +57,7 @@ const FeaturedProducts = () => {
           modules={[Autoplay]}
           className="mySwiper"
         >
-          {products.slice(0, 8).map((product: TProduct) => {
+          {products?.slice(0, 8).map((product: TProduct) => {
             return (
               <SwiperSlide className="">
                 <ProductCard product={product}></ProductCard>

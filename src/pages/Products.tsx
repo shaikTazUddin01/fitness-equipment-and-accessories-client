@@ -15,14 +15,18 @@ const Products = () => {
   const searchProduct = useAppSelector(
     (state) => state.searchProduct.searchItem
   );
-  
+  //get selected category
+  const selectedCategory = useAppSelector(
+    (state) => state.categoryFilter.categoris
+  );
 
   const { data, isLoading } = useGetProductsQuery({
     sortProductByPrice,
     searchProduct,
+    selectedCategory
   });
   const products = data?.data;
-  console.log(products);
+  // console.log(products);
   //use loading
   if (isLoading) {
     return <Loading></Loading>;
