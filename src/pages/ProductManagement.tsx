@@ -15,9 +15,9 @@ const ProductManagement = () => {
     return <Loading></Loading>;
   }
   return (
-    <div className="min-h-screen py-20">
-      <div className="bg-white p-3 rounded-lg mb-10 text-end flex justify-center gap-20 items-center">
-        <h1 className="text-xl font-semibold">
+    <div className="min-h-screen py-20 px-3 xl:px-0">
+      <div className="bg-white p-3 rounded-lg mb-10 text-end flex flex-col md:flex-row justify-center gap-2 md:gap-20 items-center">
+        <h1 className=" text-xl font-semibold text-center md:text-left">
           Click This Button To Create a New Product
         </h1>
 
@@ -25,7 +25,7 @@ const ProductManagement = () => {
        <AddProductModal></AddProductModal>
       </div>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto ">
         <table className="table text-white border text-center">
           {/* head */}
           <thead className="text-white">

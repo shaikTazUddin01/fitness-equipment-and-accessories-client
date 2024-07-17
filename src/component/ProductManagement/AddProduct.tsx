@@ -96,7 +96,7 @@ const AddProduct = () => {
             {
               categoris?.map((item:any)=>{
                 return(
-                  <option value={item?.name}>{item?.name}</option>
+                  <option key={item?._id} value={item?.name}>{item?.name}</option>
                 )
               })
             }

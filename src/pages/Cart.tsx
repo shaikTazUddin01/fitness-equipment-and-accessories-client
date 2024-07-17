@@ -7,7 +7,7 @@ const Cart = () => {
 
   console.log(cartProduct);
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen px-3 xl:px-0 pb-20">
       <div className="overflow-x-auto mt-16">
         <table className="table text-white  text-center">
           {/* head */}
@@ -16,7 +16,7 @@ const Cart = () => {
               <th>Image</th>
               <th>Name</th>
               <th>Price</th>
-              <th>Category</th>
+              {/* <th>Category</th> */}
               <th>Quentity</th>
               <th>Total</th>
               <th>Actions</th>

@@ -35,16 +35,16 @@ const Products = () => {
   
 
   return (
-    <div className="min-h-screen pb-20 pt-10 flex gap-5">
+    <div className="min-h-screen pb-20 pt-10 flex flex-col-reverse md:flex-row gap-5 px-5 xl:px-0">
       {/* filter category left side bar */}
-      <div className="w-[25%] rounded-lg">
+      <div className="md:w-[25%] rounded-lg">
         <SidebarFilter></SidebarFilter>
       </div>
       {/* product and search side bar */}
-      <div className="w-[75%]">
+      <div className="md:w-[75%]">
         <FIlterProduct></FIlterProduct>
         {products.length > 0 ? (
-          <div className="grid grid-cols-3 gap-5 mt-7">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-7">
             {products?.map((item: TProduct) => (
               <ProductCard key={item?._id} product={item}></ProductCard>
             ))}

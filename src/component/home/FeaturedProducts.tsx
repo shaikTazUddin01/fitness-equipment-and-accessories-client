@@ -26,13 +26,13 @@ const FeaturedProducts = () => {
   }
   return (
     <div className="mt-16">
-      <div className="text-4xl text-center font-bold text-secondaryColor">
+      <div className="text-4xl mb-5 text-center font-bold text-secondaryColor">
         <SectionTitle
           heading={"new Arrivals"}
           subHeading={"Feature Products"}
         ></SectionTitle>
       </div>
-      <div className=" mt-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
         {/* <Swiper
           slidesPerView={1}
           spaceBetween={1}
@@ -62,9 +62,9 @@ const FeaturedProducts = () => {
         </Swiper> */}
         {products?.slice(0, 8).map((product: TProduct) => {
           return (
-            <div className="">
+           
               <ProductCard product={product}></ProductCard>
-            </div>
+           
           );
         })}
       </div>

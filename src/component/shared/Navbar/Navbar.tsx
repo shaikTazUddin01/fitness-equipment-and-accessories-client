@@ -1,11 +1,9 @@
-import {  FaSearch } from "react-icons/fa";
-import logo from "../../../assets/images/logo.webp";
+import { FaSearch } from "react-icons/fa";
+import logo from "../../../assets/logo.png";
 import { GrCart } from "react-icons/gr";
 import { useLocation } from "react-router-dom";
 
-
 const Navbar = () => {
-
   const location = useLocation();
   const currentPath = location.pathname;
   // console.log("path---->", currentPath);
@@ -58,7 +56,6 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-black text-white rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
-               
               {navItem}
             </ul>
           </div>
@@ -69,19 +66,19 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
- 
           <ul className="menu menu-horizontal px-1 text-[18px] font-semibold">
             {navItem}
           </ul>
         </div>
         <div className="navbar-end flex gap-4 items-center text-[20px] cursor-pointer">
           <a href="/products">
-          <FaSearch></FaSearch>
+            <FaSearch></FaSearch>
           </a>
           {/* <FaRegUser></FaRegUser> */}
-     
-          <a href="/cart"><GrCart /> </a>
-         
+
+          <a href="/cart">
+            <GrCart />{" "}
+          </a>
         </div>
       </div>
     </div>

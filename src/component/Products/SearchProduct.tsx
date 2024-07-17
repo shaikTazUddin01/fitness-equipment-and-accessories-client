@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { searchProduct } from "../../redux/features/products/searchProduct.slice";
@@ -24,7 +24,7 @@ const SearchProduct = () => {
   },[reset,resetFilter])
   return (
     <form action="" className="flex gap-2" onClick={handleSubmit(handleSearch)}>
-      <div className="form-control w-full">
+      <div className="form-control w-[70%]">
         <input
           type="text"
           placeholder="Search Here..."

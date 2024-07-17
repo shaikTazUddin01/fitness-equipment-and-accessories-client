@@ -76,7 +76,7 @@ const SidebarFilter = () => {
                     type="checkbox"
                     className="checkbox"
                     {...register(`${category?.name}`)}
-                    checked={selectedCategory.includes(category?.name)}
+                    checked={selectedCategory!.includes(category?.name)}
                     onChange={handleCheckboxChange}
                   />
                   <label className="ml-2">{category?.name}</label>

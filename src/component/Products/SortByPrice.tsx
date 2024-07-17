@@ -27,7 +27,7 @@ const SortByPrice = () => {
   return (
     <form action="" onChange={handleSubmit(handleSortByPrice)}>
       <select
-        className="select select-primary w-[150px] max-w-xs border-primaryColor"
+        className="select select-success w-full md:w-[150px] max-w-xs border-primaryColor "
         {...register("sort")}
       >
         <option defaultValue="">Sort By Price</option>

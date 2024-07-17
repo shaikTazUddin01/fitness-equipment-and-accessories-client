@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 import { TProduct } from "../../Type";
 
 const CartTableRow = ({ mycart }:{mycart:TProduct}) => {
-  const { images, name, price, _id, category, stockQuentity } = mycart;
+  const { images, name, price, _id, stockQuentity } = mycart;
 
   const { data } = useGetSingleProductsQuery({ _id });
 
@@ -34,7 +34,7 @@ const CartTableRow = ({ mycart }:{mycart:TProduct}) => {
   //increse product
 
   const handleIncrease = () => {
-    if (productStock > myProduct.stockQuentity) {
+    if (productStock > myProduct!.stockQuentity) {
       return dispatch(productCart(mycart));
     } else {
       toast.warning("this product is stock out");
@@ -78,7 +78,7 @@ const CartTableRow = ({ mycart }:{mycart:TProduct}) => {
         <div className="font-bold">{name}</div>
       </td>
       <td>$ {price}</td>
-      <td>{category}</td>
+      {/* <td>{category}</td> */}
       <td>
         <div className="flex gap-2 justify-center items-center">
           <button onClick={handledecrease}> - </button>
@@ -86,18 +86,22 @@ const CartTableRow = ({ mycart }:{mycart:TProduct}) => {
           <button onClick={handleIncrease}> + </button>
         </div>
       </td>
-      <td>$ {price *  myProduct.stockQuentity}</td>
+      <td>$ {price *  myProduct!.stockQuentity}</td>
       <td>
-        <div className="flex gap-2 justify-center items-center">
+        <div className="flex flex-col md:flex-row gap-2 justify-center items-center">
           <button
-            className="btn btn-error btn-xs"
+            className="btn btn-error btn-md md:btn-xs"
             onClick={handleRemoveProduct}
           >
             Remove product
           </button>
+          <button className="btn btn-warning  btn-md md:btn-xs">
           <a href={`/cashout/${_id}`}>
-          <button className="btn btn-success btn-xs">Order Now</button>
+            
+            Order Now
+            
           </a>
+            </button>
         </div>
       </td>
     </tr>

@@ -1,8 +1,8 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 //images
-import hero1 from "../../assets/images/hero-1.webp";
-import hero2 from "../../assets/images/hero-2.webp";
+import hero1 from "../../assets/hero-1.webp";
+import hero2 from "../../assets/hero-2.webp";
 
 // Import Swiper styles
 import "swiper/css";

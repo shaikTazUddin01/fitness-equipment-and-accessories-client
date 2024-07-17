@@ -1,30 +1,89 @@
-# React + TypeScript + Vite
+ ## Project Name : Fitness Equipment and Accessories.
+ **website Live Link : [https://elaborate-choux-38d5a9.netlify.app](https://elaborate-choux-38d5a9.netlify.app/)** </br>
+ **Server Live Link : [https://fitness-equipment-server-silk.vercel.app](https://fitness-equipment-server-silk.vercel.app/)** 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
 
-Currently, two official plugins are available:
+1. **User View Product Details**
+2. **User Add Product into cart**
+3. **Increase or Decrease product item**
+4. **Order product in cash on delivery**
+5. **Removed product from cart**
+6. **In Product Management create a new product**
+7. **Delete and Update Product**
+8. **Filter Product base category**
+9. **Search product base on product name**
+10. **Sort product asc or dsc order base on price**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Technology Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. **Node.js**
+2. **Express.js**
+3. **Mongoose**
+4. **TypeScript**
+5. **React**
+6. **Redux**
+7. **Tailwind CSS**
+8. **Swiper Js**
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+## Instructions on how to run the Server Side locally
+
+1. **Clone or download the repository:**
+   - First you clone the repository .
+    
+   - Or download the repository .
+
+2. **Open the project:**
+   - Open the project directory.
+
+3. **Install packages:**
+   - Open a command terminal or Git Bash to run the following command to install all necessary packages:
+     ```
+     npm install
+     ```
+
+4. **Set up environment variables:**
+   - Create a `.env` file in the root of the project.
+   - Add the following environment variables in the `.env` file:
+     ```
+     PORT=5000
+
+     DATABASE_URL=mongodb+srv://<username>:<password>@cluster0.25fgudl.mongodb.net/fitnessCare?retryWrites=true&w=majority&appName=Cluster0
+
+     
+     
+     ```
+     Replace `username` and `password` with your MongoDB `username` and `password`. <br>
+    
+5. **Run the application:**
+   - Open a terminal in the project directory and run the following command to start the project:
+     ```
+     npm run start
+     ```
+   - Your project should now be running.
+
+## Instructions on how to run the Client Side locally
+
+1. **Clone or download the repository:**
+   - First you clone the repository .
+    
+   - Or download the repository .
+
+
+2. **Open the project:**
+   - Open the project directory.
+
+3. **Install packages:**
+   - Open a command terminal or Git Bash to run the following command to install all necessary packages:
+     ```
+     npm install
+     ```
+3. **Run the project:**
+   - Open a command terminal or Git Bash to run the following command to run the website:
+     ```
+     npm run dev
+     ```

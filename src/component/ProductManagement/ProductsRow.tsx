@@ -1,10 +1,10 @@
 import Swal from "sweetalert2";
 import { useDeleteProductMutation } from "../../redux/features/products/products.api";
-import { TProduct } from "../../Type";
+// import { TProduct } from "../../Type";
 import UpdateProductModal from "./updateProduct/UpdateProductModal";
 import { toast } from "sonner";
 
-const ProductsRow = ({ product }: { product: TProduct }) => {
+const ProductsRow = ({ product }: { product: any }) => {
   const { images, name, price, _id, category, stockQuentity } = product;
 
   const [deleteProductItem] = useDeleteProductMutation();
@@ -55,7 +55,7 @@ const ProductsRow = ({ product }: { product: TProduct }) => {
           >
             Delete
           </button>
-          <UpdateProductModal id={_id}></UpdateProductModal>
+          <UpdateProductModal product={product}></UpdateProductModal>
         </div>
       </td>
     </tr>

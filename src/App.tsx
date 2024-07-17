@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import MainLayout from "./component/layout/MainLayout";
-import logo from "./assets/images/logo.webp";
 import "./index.css";
 import { useLocation } from "react-router-dom";
 import { Toaster } from "sonner";
+import Loading from "./component/shared/Loading/Loading";
 
 
 function App() {
@@ -21,9 +21,7 @@ function App() {
   // console.log(welcomeLoading);
   if (welcomeLoading && location?.pathname == "/") {
     return (
-      <div className="min-h-screen flex justify-center items-center flex-col">
-        <img src={logo} alt="" className="welcomeLogo " />
-      </div>
+     <Loading></Loading>
     );
   }
   return (
