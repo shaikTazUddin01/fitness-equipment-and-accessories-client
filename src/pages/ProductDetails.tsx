@@ -85,7 +85,7 @@ const ProductDetails = () => {
               {product?.stockQuentity} piece
             </p>
             <button
-              className="bg-primaryColor text-white px-3 py-2 rounded-md hover:shadow-md hover:shadow-secondaryColor"
+              className="btn btn-neutral"
               onClick={() => handleAddToCart()}
             >
               Add To Cart

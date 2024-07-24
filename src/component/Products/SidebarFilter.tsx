@@ -9,7 +9,8 @@ import { resetFilter } from "../../redux/features/products/resetFilter.slice";
 import Swal from "sweetalert2";
 import { toast } from "sonner";
 
-const SidebarFilter = () => {
+const SidebarFilter = ({autoselected}:{autoselected:string}) => {
+  console.log("object-->",autoselected);
   const { data, isLoading } = useGetCategoryQuery(undefined);
   const { register, handleSubmit, setValue, getValues, reset } = useForm();
   const dispatch = useAppDispatch();
@@ -29,7 +30,7 @@ const SidebarFilter = () => {
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
     setValue(name, checked);
-    // console.log(name,checked);
+    console.log(name,checked);
     const currentValues = getValues();
     filterByCategory(currentValues);
     // console.log(currentValues)

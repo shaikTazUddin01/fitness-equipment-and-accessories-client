@@ -13,15 +13,14 @@ const img8="https://i.ibb.co/chLhFnM/p-8.jpg"
 
 
 const photos: Photo[] = [
-  { asset: img1, width: 1080, height: 1250 },
-  { asset: img2, width: 1080, height: 1520 },
-  { asset: img3, width: 1080, height: 1300 },
-  { asset: img4, width: 1080, height: 1520 },
-
+  { asset: img1, width: 1080, height: 1200 },
   { asset: img5, width: 1080, height: 720 },
-  { asset: img6, width: 1080, height: 1149 },
-  { asset: img7, width: 1080, height: 1520 },
+  { asset: img7, width: 1080, height: 1320 },
+  { asset: img6, width: 1080, height: 1049 },
+  { asset: img4, width: 1080, height: 1320 },
   { asset: img8, width: 1080, height: 1200 },
+  { asset: img2, width: 1080, height: 1420 },
+  { asset: img3, width: 1080, height: 1250 },
 ].map(({ asset, width, height }) => ({
   src: asset,
   width,

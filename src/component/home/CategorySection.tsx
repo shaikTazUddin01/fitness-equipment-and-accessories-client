@@ -1,27 +1,27 @@
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "./css/HoverText.css";
-
-// import required modules
 import { Autoplay } from "swiper/modules";
 import SectionTitle from "../shared/sectionTitle/SectionTitle";
-
 import { useGetCategoryQuery } from "../../redux/features/category/category.api";
 import { TCategory } from "../../Type";
 import Loading from "../shared/Loading/Loading";
+import { useNavigate } from "react-router-dom";
+
 const CategorySection = () => {
-  //retrieve category data
   const { data, isLoading } = useGetCategoryQuery(undefined);
+  const navigate = useNavigate();
 
   if (isLoading) {
-    return <Loading></Loading>;
+    return <Loading />;
   }
 
   const categories = data?.data;
+
+  const handleNavigate = (categoryName: string) => {
+    navigate('/products', { state: { category: categoryName } });
+  };
 
   return (
     <div className="mt-16 text-center">
@@ -57,121 +57,30 @@ const CategorySection = () => {
           modules={[Autoplay]}
           className="mySwiper"
         >
-          {categories?.map((category: TCategory) => {
-            return (
-              <SwiperSlide key={category?._id}>
-                <div
-                  className="h-[300px] rounded-md hover-area "
-                  style={{ backgroundImage: `url(${category?.image})` }}
-                >
-                  <div className="bg-[#06060693] h-full w-full">
-                    <div className="hover-text ">
-                      <SectionTitle
-                        heading={`${category?.name}`}
-                        subHeading={""}
-                      ></SectionTitle>
-                      <a href="/products">
-                        <button className="btn btn-neutral rounded-md">
-                          Shop Now
-                        </button>
-                      </a>
-                    </div>
+          {categories?.map((category: TCategory) => (
+            <SwiperSlide key={category?._id}>
+              <div
+                className="h-[300px] rounded-md hover-area"
+                style={{ backgroundImage: `url(${category?.image})` }}
+                onClick={() => handleNavigate(category?.name)}
+              >
+                <div className="bg-[#06060693] h-full w-full">
+                  <div className="hover-text">
+                    <SectionTitle
+                      heading={`${category?.name}`}
+                      subHeading=""
+                    ></SectionTitle>
+                    <button
+                      className="btn btn-neutral rounded-md"
+                      
+                    >
+                      Shop Now
+                    </button>
                   </div>
                 </div>
-              </SwiperSlide>
-            );
-          })}
-
-          {/* <SwiperSlide>
-            <div
-              className="h-[300px] rounded-md hover-area "
-              style={{ backgroundImage: `url(${barbel})` }}
-            >
-              <div className="hover-text ">
-                <SectionTitle
-                  heading={"man's wordout"}
-                  subHeading={""}
-                ></SectionTitle>
-                <a href="">
-                  <button className="bg-primaryColor text-white px-3 py-2 rounded-sm">
-                    shop now
-                  </button>
-                </a>
               </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div
-              className="h-[300px] rounded-md hover-area "
-              style={{ backgroundImage: `url(${barbel})` }}
-            >
-              <div className="hover-text ">
-                <SectionTitle
-                  heading={"man's wordout"}
-                  subHeading={""}
-                ></SectionTitle>
-                <a href="">
-                  <button className="bg-primaryColor text-white px-3 py-2 rounded-sm">
-                    shop now
-                  </button>
-                </a>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div
-              className="h-[300px] rounded-md hover-area "
-              style={{ backgroundImage: `url(${barbel})` }}
-            >
-              <div className="hover-text ">
-                <SectionTitle
-                  heading={"man's wordout"}
-                  subHeading={""}
-                ></SectionTitle>
-                <a href="">
-                  <button className="bg-primaryColor text-white px-3 py-2 rounded-sm">
-                    shop now
-                  </button>
-                </a>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div
-              className="h-[300px] rounded-md hover-area "
-              style={{ backgroundImage: `url(${barbel})` }}
-            >
-              <div className="hover-text ">
-                <SectionTitle
-                  heading={"man's wordout"}
-                  subHeading={""}
-                ></SectionTitle>
-                <a href="">
-                  <button className="bg-primaryColor text-white px-3 py-2 rounded-sm">
-                    shop now
-                  </button>
-                </a>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div
-              className="h-[300px] rounded-md hover-area "
-              style={{ backgroundImage: `url(${barbel})` }}
-            >
-              <div className="hover-text ">
-                <SectionTitle
-                  heading={"man's wordout"}
-                  subHeading={""}
-                ></SectionTitle>
-                <a href="">
-                  <button className="bg-primaryColor text-white px-3 py-2 rounded-sm">
-                    shop now
-                  </button>
-                </a>
-              </div>
-            </div>
-          </SwiperSlide> */}
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </div>

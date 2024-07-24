@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <div className="">
       <div
-        className={`navbar text-white bg-[#1616169a] ${
+        className={`navbar text-white bg-[#161616b7] ${
           currentPath == "/" ? "absolute" : "relative"
         }  z-20 shadow-xl max-w-7xl px-10 py-4`}
       >
@@ -60,7 +60,7 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="hidden lg:flex">
-            <a className="">
+            <a href="/">
               <img src={logo} alt="" className="h-full " />
             </a>
           </div>

@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { searchProduct } from "../../redux/features/products/searchProduct.slice";
-
+import debounce from 'lodash/debounce';
 
 const SearchProduct = () => {
   const { register, handleSubmit,reset } = useForm();
@@ -12,9 +12,19 @@ const SearchProduct = () => {
   //get reset value
   const resetFilter=useAppSelector((state)=>state.resetFilter.reset)
 
+  // Debounced search handler
+  const debouncedSearch = useCallback(
+    debounce((data) => {
+      dispatch(searchProduct({ searchItem: data.searchItem }));
+    }, 200), 
+    [dispatch]
+  );
+
+
 // handle search
   const handleSearch = (data: any) => {
-    dispatch(searchProduct({ searchItem: data?.searchItem }));
+    // dispatch(searchProduct({ searchItem: data?.searchItem }));
+    debouncedSearch(data)
   };
   //reset search field
   useEffect(()=>{

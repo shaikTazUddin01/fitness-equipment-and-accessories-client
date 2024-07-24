@@ -7,8 +7,12 @@ import { TProduct } from "../Type";
 import FIlterProduct from "../component/Products/FIlterProduct";
 import { useAppSelector } from "../redux/hooks/hooks";
 import SidebarFilter from "../component/Products/SidebarFilter";
+import { useLocation } from "react-router-dom";
 
 const Products = () => {
+  const location = useLocation();
+  const categoryFromState = location.state?.category;
+  // console.log(categoryFromState);
   // get sort value
   const sortProductByPrice = useAppSelector((state) => state.sortProduct?.sort);
   // get search value
@@ -23,7 +27,7 @@ const Products = () => {
   const { data, isLoading } = useGetProductsQuery({
     sortProductByPrice,
     searchProduct,
-    selectedCategory
+    selectedCategory :selectedCategory?.length ? selectedCategory : [categoryFromState]
   });
   const products = data?.data;
   // console.log(products);
@@ -38,7 +42,7 @@ const Products = () => {
     <div className="min-h-screen pb-20 pt-10 flex flex-col-reverse md:flex-row gap-5 px-5 xl:px-0">
       {/* filter category left side bar */}
       <div className="md:w-[25%] rounded-lg">
-        <SidebarFilter></SidebarFilter>
+        <SidebarFilter autoselected={categoryFromState}></SidebarFilter>
       </div>
       {/* product and search side bar */}
       <div className="md:w-[75%]">

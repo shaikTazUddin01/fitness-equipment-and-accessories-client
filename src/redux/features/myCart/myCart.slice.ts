@@ -23,6 +23,9 @@ export const productCartSlice = createSlice({
         state.productCart.push(action.payload);
       }
     },
+    clearCart:(state)=>{
+      state.productCart=[]
+    },
     decrementProductInToCart: (state, action) => {
       const existingProduct = state.productCart.find(
         (item) => item._id === action.payload._id
@@ -32,14 +35,14 @@ export const productCartSlice = createSlice({
       }
     },
     removedItem: (state, action) => {
-     
-        state.productCart=state.productCart.filter((item)=>item._id !==action.payload._id)
-      
+      state.productCart = state.productCart.filter(
+        (item) => item._id !== action.payload._id
+      );
     },
   },
 });
 
-export const { productCart, decrementProductInToCart ,removedItem} =
+export const { productCart, decrementProductInToCart, removedItem,clearCart } =
   productCartSlice.actions;
 export default productCartSlice.reducer;
 

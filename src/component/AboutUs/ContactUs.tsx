@@ -9,8 +9,8 @@ const ContactUs = () => {
           subHeading=" Out Anytime"
         ></SectionTitle>
       </div>
-      <div className="flex flex-col md:flex-row md:gap-10 items-center text-white">
-        <div className="w-full md:w-2/4 ">
+      <div className="flex flex-col md:flex-row md:gap-10  items-center text-white">
+        <div className="w-full md:w-2/4 text-center">
           <p className="text-xl md:text-2xl font-semibold mb-3">
             Office Address :<br />
             <span className="text-lg md:text-xl font-medium ">
