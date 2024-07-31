@@ -1,13 +1,14 @@
 import ProductCard from "../component/Products/ProductCard";
 import { useGetProductsQuery } from "../redux/features/products/products.api";
 
-import Loading from "../component/shared/Loading/Loading";
+
 import { TProduct } from "../Type";
 
 import FIlterProduct from "../component/Products/FIlterProduct";
 import { useAppSelector } from "../redux/hooks/hooks";
 import SidebarFilter from "../component/Products/SidebarFilter";
 import { useLocation } from "react-router-dom";
+import Spring from "../component/shared/Loading/Spring";
 
 const Products = () => {
   const location = useLocation();
@@ -33,7 +34,7 @@ const Products = () => {
   // console.log(products);
   //use loading
   if (isLoading) {
-    return <Loading></Loading>;
+    return <Spring></Spring>;
   }
 
   

@@ -10,10 +10,10 @@ import SectionTitle from "../shared/sectionTitle/SectionTitle";
 //import images
 
 import { useGetProductsQuery } from "../../redux/features/products/products.api";
-import Loading from "../shared/Loading/Loading";
 import ProductCard from "../Products/ProductCard";
 import { TProduct } from "../../Type";
 import { IoIosArrowDown } from "react-icons/io";
+import Spring from "../shared/Loading/Spring";
 // import ReactRating from "../shared/rating/ReactRating";
 
 const FeaturedProducts = () => {
@@ -22,7 +22,7 @@ const FeaturedProducts = () => {
   console.log(products);
 
   if (isLoading) {
-    return <Loading></Loading>;
+    return <Spring></Spring>;
   }
   return (
     <div className="mt-16">

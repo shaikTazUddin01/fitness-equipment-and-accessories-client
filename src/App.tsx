@@ -25,10 +25,13 @@ function App() {
     );
   }
   return (
-    <>
+    <div className="bg-primaryColor ">
+      <div className="max-w-7xl mx-auto">
       <MainLayout></MainLayout>
       <Toaster />
-    </>
+
+      </div>
+    </div>
   );
 }
 

@@ -45,10 +45,10 @@ const HeroArea = () => {
                 
                 <div className="flex gap-2 justify-center lg:justify-start">
                   <a href="/products">
-                    <button className="btn btn-warning">Shop Now</button>
+                    <button className="md:px-7 md:text-[15px] btn btn-warning">Shop Now</button>
                   </a>
                   <a href="/about">
-                    <button className="btn btn-neutral">Learn More</button>
+                    <button className="md:px-7 md:text-[15px] btn btn-neutral">Learn More</button>
                   </a>
                 </div>
               </div>
@@ -74,10 +74,10 @@ const HeroArea = () => {
                 
                 <div className="flex gap-2 justify-center lg:justify-start">
                   <a href="/products">
-                    <button className="btn btn-warning">Shop Now</button>
+                    <button className="md:px-7 md:text-[15px] btn btn-warning">Shop Now</button>
                   </a>
                   <a href="/about">
-                    <button className="btn btn-neutral">Learn More</button>
+                    <button className="md:px-7 md:text-[15px] btn btn-neutral">Learn More</button>
                   </a>
                 </div>
               </div>

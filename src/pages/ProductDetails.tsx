@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Loading from "../component/shared/Loading/Loading";
 import { TProduct } from "../Type";
 import { toast } from "sonner";
 import { productCart } from "../redux/features/myCart/myCart.slice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks/hooks";
+import Spring from "../component/shared/Loading/Spring";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -33,7 +33,7 @@ const ProductDetails = () => {
   }, [id]);
   // console.log(product);
   if (!product) {
-    return <Loading></Loading>;
+    return <Spring></Spring>
   }
   // add product to cart
   const handleAddToCart = () => {

@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { useGetCategoryQuery } from "../../redux/features/category/category.api";
-import Loading from "../shared/Loading/Loading";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { categoryFilter } from "../../redux/features/products/categoryFilter.slice";
 import { sortProduct } from "../../redux/features/products/productSort.slice";
@@ -8,6 +7,7 @@ import { searchProduct } from "../../redux/features/products/searchProduct.slice
 import { resetFilter } from "../../redux/features/products/resetFilter.slice";
 import Swal from "sweetalert2";
 import { toast } from "sonner";
+import Spring from "../shared/Loading/Spring";
 
 const SidebarFilter = ({autoselected}:{autoselected:string}) => {
   console.log("object-->",autoselected);
@@ -20,7 +20,7 @@ const SidebarFilter = ({autoselected}:{autoselected:string}) => {
   );
 
   if (isLoading) {
-    return <Loading />;
+    return <Spring />;
   }
 
   const filterByCategory = (data: any) => {

@@ -6,15 +6,15 @@ import { Autoplay } from "swiper/modules";
 import SectionTitle from "../shared/sectionTitle/SectionTitle";
 import { useGetCategoryQuery } from "../../redux/features/category/category.api";
 import { TCategory } from "../../Type";
-import Loading from "../shared/Loading/Loading";
 import { useNavigate } from "react-router-dom";
+import Spring from "../shared/Loading/Spring";
 
 const CategorySection = () => {
   const { data, isLoading } = useGetCategoryQuery(undefined);
   const navigate = useNavigate();
 
   if (isLoading) {
-    return <Loading />;
+    return <Spring />;
   }
 
   const categories = data?.data;
@@ -60,7 +60,7 @@ const CategorySection = () => {
           {categories?.map((category: TCategory) => (
             <SwiperSlide key={category?._id}>
               <div
-                className="h-[300px] rounded-md hover-area"
+                className="h-[300px] rounded-md hover-area bg-black"
                 style={{ backgroundImage: `url(${category?.image})` }}
                 onClick={() => handleNavigate(category?.name)}
               >

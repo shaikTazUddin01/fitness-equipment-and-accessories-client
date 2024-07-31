@@ -2,7 +2,8 @@ import { useForm } from "react-hook-form";
 import { useCreateProductMutation } from "../../redux/features/products/products.api";
 import { toast } from "sonner";
 import { useGetCategoryQuery } from "../../redux/features/category/category.api";
-import Loading from "../shared/Loading/Loading";
+
+import Spring from "../shared/Loading/Spring";
 
 const AddProduct = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -10,7 +11,7 @@ const AddProduct = () => {
   const [createProduct] = useCreateProductMutation();
   const { data, isLoading } = useGetCategoryQuery(undefined);
   if (isLoading) {
-    return <Loading></Loading>;
+    return <Spring></Spring>;
   }
   const categoris=data?.data;
   //create a new product

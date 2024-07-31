@@ -7,6 +7,8 @@ import ProductManagement from "../pages/ProductManagement";
 import ProductDetails from "../pages/ProductDetails";
 import Cart from "../pages/Cart";
 import CheckOut from "../pages/CheckOut";
+import Dashboard from "../pages/Admin/Dashboard";
+import DashboardLayout from "../component/layout/DashBoardLayout";
 
 const Routers = createBrowserRouter([
   {
@@ -45,6 +47,21 @@ const Routers = createBrowserRouter([
       }
     ]
   },
+  {
+    path:'/admin',
+    element:<DashboardLayout></DashboardLayout>,
+    children:[
+      {
+        index:true,
+        element:<Dashboard></Dashboard>,
+      },
+      {
+        path:'dashboard',
+        element:<Dashboard></Dashboard>
+      }
+    ]
+
+  }
 ]);
 
 export default Routers;

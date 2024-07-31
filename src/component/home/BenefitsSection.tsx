@@ -17,7 +17,7 @@ const BenefitsSection = () => {
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-10 mt-5">
         <div className="h-auto col-span-1 rounded-md ">
-          <img src="https://i.ibb.co/pwkrchP/benefit-1.webp" alt="" className="rounded-md" />
+          <img src="https://i.ibb.co/pwkrchP/benefit-1.webp" alt="image" className="rounded-md" />
         </div>
         <div className="space-y-7 lg:pr-5 text-justify ">
           {/* benefit -1 */}

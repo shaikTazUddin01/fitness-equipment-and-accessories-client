@@ -8,8 +8,8 @@ import { persistor, store } from "./redux/store.ts";
 import { PersistGate } from "redux-persist/integration/react";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <div className="bg-primaryColor">
-    <div className="max-w-7xl mx-auto">
+  <div className="">
+    <div className="">
       <React.StrictMode>
         <Provider store={store}>
           <PersistGate persistor={persistor}>
