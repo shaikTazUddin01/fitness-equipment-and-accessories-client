@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Layout } from "antd";
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
+import { Toaster } from "sonner";
 
 const { Header, Content } = Layout;
 
@@ -23,6 +24,7 @@ const App: React.FC = () => {
             }}
           >
             <Outlet></Outlet>
+            <Toaster></Toaster>
           </div>
         </Content>
         {/* <Footer style={{ textAlign: 'center' }}>

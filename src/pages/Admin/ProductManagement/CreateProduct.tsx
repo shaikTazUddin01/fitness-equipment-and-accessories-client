@@ -48,8 +48,8 @@ const CreateProduct = () => {
       }
     };
     return (
-      <Row justify={'center'} align={'middle'}>
-        <Col span={12}>
+      <Row justify={'center'} align={'middle'} >
+        <Col sm={24} md={12}>
         <div className="card bg-base-100 w-full shadow-2xl mt-2">
         <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
           <div className="form-control">
