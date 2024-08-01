@@ -1,34 +1,35 @@
-import { Button, Space, Table, TableColumnsType, TableProps } from "antd";
-import ProductsRow from "../../../component/ProductManagement/ProductsRow";
+import { Button, Col, Space, Table, TableColumnsType, TableProps } from "antd";
+// import ProductsRow from "../../../component/ProductManagement/ProductsRow";
 import Spring from "../../../component/shared/Loading/Spring";
 import {
   useDeleteProductMutation,
   useGetProductsQuery,
 } from "../../../redux/features/products/products.api";
-import { TProduct } from "../../../Type";
+// import { TProduct } from "../../../Type";
 import Swal from "sweetalert2";
 import { toast } from "sonner";
+import { TProduct } from "../../../Type";
 
 interface DataType {
   key: React.Key;
   name: string;
-  _id: string;
-  images: string;
-  price: number;
+  //   _id: string;
+  image: string;
+  price: string;
   category: string;
-  stockQuentity: string;
+  stockQuentity: number;
 }
 
 const ManageProduct = () => {
   const { data: Pdata, isLoading } = useGetProductsQuery({});
+  const [deleteProductItem] = useDeleteProductMutation();
 
-  const products = Pdata?.data;
+  const products: TProduct[] = Pdata?.data;
 
   if (isLoading) {
     return <Spring></Spring>;
   }
 
-  const [deleteProductItem] = useDeleteProductMutation();
   //handle delete product
   const handleDelete = async (id: string) => {
     Swal.fire({
@@ -109,7 +110,9 @@ const ManageProduct = () => {
         console.log("item", item);
         return (
           <Space>
-            <Button type="primary">Edit</Button>
+            <a href={`/admin/update-product/${item?.key}`}>
+              <Button type="primary" >Edit</Button>
+            </a>
             <Button
               type="primary"
               danger
@@ -120,6 +123,7 @@ const ManageProduct = () => {
           </Space>
         );
       },
+      //   width:'%'
     },
   ];
 
@@ -143,7 +147,16 @@ const ManageProduct = () => {
     console.log("params", pagination, filters, sorter, extra);
   };
 
-  return <Table columns={columns} dataSource={tableData} onChange={onChange} />;
+  return (
+    <Col lg={{ offset: 4 }}>
+      <Table
+        columns={columns}
+        scroll={{ x: 400 }}
+        dataSource={tableData}
+        onChange={onChange}
+      />
+    </Col>
+  );
 };
 
 export default ManageProduct;

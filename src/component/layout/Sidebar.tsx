@@ -12,14 +12,14 @@ import SidebarGenarator from "../../utiles/sidebarGenarator";
 import { adminPaths } from "../../route/admin.routes";
 const { Sider } = Layout;
 
-const items =SidebarGenarator(adminPaths,'admin')
+const items = SidebarGenarator(adminPaths, "admin");
 
 const Sidebar = () => {
   return (
     <Sider
       breakpoint="lg"
       collapsedWidth="0"
-      style={{height:'100vh' ,position:'sticky', top:0}}
+      style={{ height: "100vh", position: "fixed", top: 0, zIndex: 1000 }}
       onBreakpoint={(broken) => {
         console.log(broken);
       }}
@@ -38,7 +38,6 @@ const Sidebar = () => {
         defaultSelectedKeys={["4"]}
         items={items}
         className="h-[100%] sticky top-0"
-        
       />
     </Sider>
   );

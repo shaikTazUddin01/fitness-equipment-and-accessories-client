@@ -10,8 +10,12 @@ const App: React.FC = () => {
   return (
     <Layout className="h-[100%]">
       <Sidebar></Sidebar>
-      <Layout>
-        <Header style={{ padding: 0 }}>
+      <Layout
+      
+      >
+        <Header style={{ padding: 0 }}
+        
+        >
           <div className="flex justify-end">
             <Button className="items-center mt-4 mr-4 btn btn-warning btn-sm">Logout</Button>
           </div>
@@ -21,15 +25,14 @@ const App: React.FC = () => {
             style={{
               padding: 24,
               minHeight: 360,
+              position:"relative"
+            
             }}
           >
             <Outlet></Outlet>
             <Toaster></Toaster>
           </div>
         </Content>
-        {/* <Footer style={{ textAlign: 'center' }}>
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
-        </Footer> */}
       </Layout>
     </Layout>
   );

@@ -3,7 +3,7 @@ import { TPath, TsideBar } from "../Type";
 
 const SidebarGenarator = (item: TPath[], role: string) => {
   const router = item.reduce((acc: TsideBar[], item) => {
-    if (item?.path && item?.element) {
+    if (item?.path && item?.name) {
       acc.push({
         key: item?.name,
         label: <NavLink to={`/${role}/${item?.path}`}>{item?.name}</NavLink>,

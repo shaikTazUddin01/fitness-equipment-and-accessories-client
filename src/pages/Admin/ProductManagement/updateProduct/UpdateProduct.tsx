@@ -1,39 +1,58 @@
 import { useForm } from "react-hook-form";
-import { useCreateProductMutation } from "../../../redux/features/products/products.api";
-import { useGetCategoryQuery } from "../../../redux/features/category/category.api";
-import Spring from "../../../component/shared/Loading/Spring";
-import { toast } from "sonner";
+
+// import { toast } from "sonner";
 import { Col, Row } from "antd";
+import { useGetCategoryQuery } from "../../../../redux/features/category/category.api";
+import Spring from "../../../../component/shared/Loading/Spring";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  useGetSingleProductsQuery,
+  useUpdateProductMutation,
+} from "../../../../redux/features/products/products.api";
+import { toast } from "sonner";
 
-const CreateProduct = () => {
+const UpdateProduct = () => {
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
-  const [createProduct] = useCreateProductMutation();
-  const { data, isLoading } = useGetCategoryQuery(undefined);
-  if (isLoading) {
+  //get id by params
+  const { id } = useParams();
+  //get single product data
+  const { data: SPdata } = useGetSingleProductsQuery({
+    _id: id,
+  });
+  //update mutacion
+  const [updateProduct] = useUpdateProductMutation();
+
+  const { data: CData, isLoading: CisLoading } = useGetCategoryQuery(undefined);
+  // use loading
+  if ( CisLoading) {
     return <Spring></Spring>;
   }
-  const categoris = data?.data;
-  //create a new product
-  const onSubmit = async (data: any) => {
+  // destructring data
+  const categoris = CData?.data;
+  const { name, price, category, detail, images } = SPdata.data;
+
+  // handle update
+  const onSubmit = async (data: Record<string, string>) => {
     const toastId = toast.loading("Loading...");
     try {
-      const productInFo = {
+      const updateProductInFo = {
         name: data?.name,
         images: data?.image,
         price: data?.price,
         detail: data?.description,
         category: data?.category,
       };
-      const res = await createProduct(productInFo);
+
+      const res = await updateProduct({ id, updateProductInFo });
 
       if (res.data) {
-        toast.success("successfully you create a new product", {
+        toast.success("update successfully", {
           id: toastId,
           duration: 1500,
         });
-
-        
+        navigate("/admin/manage-product");
       }
     } catch (error) {
       toast.error("something is wrong please try again", {
@@ -43,8 +62,9 @@ const CreateProduct = () => {
     }
   };
   return (
-    <Row justify={"center"} align={"middle"}  >
-      <Col sm={24} md={12} lg={{span:12,offset:4}}  >
+    <Row justify={"center"} align={"middle"}>
+      {/* {id} */}
+      <Col sm={24} md={12} lg={{ span: 12, offset: 4 }}>
         <div className="card bg-base-100 w-full shadow-2xl mb-5">
           <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control">
@@ -56,6 +76,7 @@ const CreateProduct = () => {
                 placeholder="Product Name"
                 className="input input-bordered"
                 {...register("name")}
+                defaultValue={name}
                 required
               />
             </div>
@@ -65,6 +86,7 @@ const CreateProduct = () => {
               </label>
               <input
                 type="text"
+                defaultValue={images}
                 placeholder="Product Image Link"
                 className="input input-bordered"
                 {...register("image")}
@@ -80,6 +102,7 @@ const CreateProduct = () => {
                 placeholder="Product Price"
                 className="input input-bordered"
                 {...register("price")}
+                defaultValue={price}
                 required
               />
             </div>
@@ -91,6 +114,7 @@ const CreateProduct = () => {
               <select
                 className="select input input-bordered w-full "
                 {...register("category")}
+                defaultValue={category}
               >
                 <option disabled selected>
                   Select Category
@@ -112,13 +136,14 @@ const CreateProduct = () => {
                 placeholder="Product description"
                 className="input input-bordered"
                 {...register("description")}
+                defaultValue={detail}
                 required
               />
             </div>
 
             <div className="form-control mt-6">
               <button className="btn btn-neutral" type="submit">
-                Create Product
+                Update Product
               </button>
             </div>
           </form>
@@ -128,5 +153,4 @@ const CreateProduct = () => {
   );
 };
 
-export default CreateProduct;
-
+export default UpdateProduct;
