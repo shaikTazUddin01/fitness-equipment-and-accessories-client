@@ -21,7 +21,9 @@ function App() {
   // console.log(welcomeLoading);
   if (welcomeLoading && location?.pathname == "/") {
     return (
-     <Loading></Loading>
+    <div className="min-h-screen flex justify-center items-center bg-primaryColor">
+       <Loading></Loading>
+    </div>
     );
   }
   return (

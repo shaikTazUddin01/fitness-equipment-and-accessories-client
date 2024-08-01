@@ -1,53 +1,36 @@
-import { useState } from "react";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Button, Layout, theme } from "antd";
-import { Outlet } from "react-router-dom";
+import React from "react";
+import { Button, Layout } from "antd";
 import Sidebar from "./Sidebar";
+import { Outlet } from "react-router-dom";
 
 const { Header, Content } = Layout;
 
-const DashboardLayout = () => {
-  const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
-
+const App: React.FC = () => {
   return (
-    <Layout>
-      <Sidebar collapsed={collapsed}></Sidebar>
+    <Layout className="h-screen">
+      <Sidebar></Sidebar>
       <Layout>
-        <Header
-          style={{ padding: 0 }}
-          className="flex justify-between items-center"
-        >
-          <Button
-            type="text"
-            className="text-white"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: "16px",
-              width: 64,
-              height: 64,
-            }}
-          />
-          <Button className=" mr-5">Logout</Button>
+        <Header style={{ padding: 0 }}>
+          <div className="flex justify-end">
+            <Button className="items-center mt-4 mr-4">LogOut</Button>
+          </div>
         </Header>
-        <Content
-          style={{
-            margin: "24px 16px",
-            padding: 24,
-            minHeight: 280,
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG,
-          }}
-        >
-          {/* Content */}
-          <Outlet></Outlet>
+        <Content style={{ margin: "24px 16px 0" }}>
+          <div
+            style={{
+              padding: 24,
+              minHeight: 360,
+            }}
+          >
+            <Outlet></Outlet>
+          </div>
         </Content>
+        {/* <Footer style={{ textAlign: 'center' }}>
+          Ant Design ©{new Date().getFullYear()} Created by Ant UED
+        </Footer> */}
       </Layout>
     </Layout>
   );
 };
 
-export default DashboardLayout;
+export default App;

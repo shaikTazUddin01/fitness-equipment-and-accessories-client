@@ -63,3 +63,10 @@ html {
   scroll-behavior: smooth;
 }
 
+/* sidebar */
+span.ant-layout-sider-zero-width-trigger.ant-layout-sider-zero-width-trigger-left {
+  top: 15px;
+  /* background-color: #2f2f2e; */
+  /* left: 10px; */
+  /* border-radius: 10px; */
+}

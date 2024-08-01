@@ -14,3 +14,5 @@ export type TCategory = {
   name: string;
   image: string;
 };
+
+export * from './path'
