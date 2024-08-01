@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { TPath, TRoute } from "../Type";
+import { TPath, TsideBar } from "../Type";
 
 const SidebarGenarator = (item: TPath[], role: string) => {
-  const router = item.reduce((acc: any, item) => {
+  const router = item.reduce((acc: TsideBar[], item) => {
     if (item?.path && item?.element) {
       acc.push({
         key: item?.name,

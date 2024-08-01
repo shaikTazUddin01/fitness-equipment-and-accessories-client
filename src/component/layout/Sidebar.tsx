@@ -7,7 +7,7 @@ import { Layout, Menu } from "antd";
 // import { createElement } from "react";
 // import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import SidebarGenarator from "../../utiles/sidebarGenarator";
 import { adminPaths } from "../../route/admin.routes";
 const { Sider } = Layout;
@@ -19,6 +19,7 @@ const Sidebar = () => {
     <Sider
       breakpoint="lg"
       collapsedWidth="0"
+      style={{height:'100vh' ,position:'sticky', top:0}}
       onBreakpoint={(broken) => {
         console.log(broken);
       }}

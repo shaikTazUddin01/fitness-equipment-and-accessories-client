@@ -11,3 +11,8 @@ export type TRoute = {
     path: string;
     element: ReactNode;
   };
+export type TsideBar = {
+    key: string;
+    label: ReactNode;
+    children?:TsideBar[]
+  };

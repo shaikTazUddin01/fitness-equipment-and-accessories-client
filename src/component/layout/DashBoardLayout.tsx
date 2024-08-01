@@ -7,12 +7,12 @@ const { Header, Content } = Layout;
 
 const App: React.FC = () => {
   return (
-    <Layout className="h-screen">
+    <Layout className="h-[100%]">
       <Sidebar></Sidebar>
       <Layout>
         <Header style={{ padding: 0 }}>
           <div className="flex justify-end">
-            <Button className="items-center mt-4 mr-4">LogOut</Button>
+            <Button className="items-center mt-4 mr-4 btn btn-warning btn-sm">Logout</Button>
           </div>
         </Header>
         <Content style={{ margin: "24px 16px 0" }}>
