@@ -3,7 +3,7 @@ import App from "../App";
 import Home from "../pages/Home";
 import AboutUs from "../pages/AboutUs";
 import Products from "../pages/Products";
-import ProductManagement from "../pages/ProductManagement";
+// import ProductManagement from "../pages/ProductManagement";
 import ProductDetails from "../pages/ProductDetails";
 import Cart from "../pages/Cart";
 import CheckOut from "../pages/CheckOut";
@@ -29,11 +29,11 @@ const Routers = createBrowserRouter([
         element:<Products></Products>
 
       },
-      {
-        path:'productManagement',
-        element:<ProductManagement></ProductManagement>
+      // {
+      //   path:'productManagement',
+      //   element:<ProductManagement></ProductManagement>
 
-      },
+      // },
       {
         path:'productDetails/:id',
         element:<ProductDetails></ProductDetails>

@@ -8,7 +8,14 @@ export const categoryAPi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    createCategory:builder.mutation({
+      query:(data)=>({
+        url:'/category',
+        method:"POST",
+        body:data
+      })
+    })
   }),
 });
 
-export const {useGetCategoryQuery}=categoryAPi
+export const {useGetCategoryQuery,useCreateCategoryMutation}=categoryAPi

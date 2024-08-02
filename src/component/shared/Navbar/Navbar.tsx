@@ -13,11 +13,11 @@ const Navbar = () => {
         <a href={"/"}>Home</a>
       </li>
       <li>
-        <a href={"/products"}>Product</a>
+        <a href={"/products"}>Collection</a>
       </li>
-      <li>
+      {/* <li>
         <a href={"/productManagement"}>Product Management</a>
-      </li>
+      </li> */}
       <li>
         <a href={"/about"}>About Us</a>
       </li>
@@ -65,7 +65,7 @@ const Navbar = () => {
             </a>
           </div>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden lg:flex ">
           <ul className="menu menu-horizontal px-1 text-[18px] font-semibold">
             {navItem}
           </ul>

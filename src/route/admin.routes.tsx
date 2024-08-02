@@ -1,3 +1,5 @@
+import CreateCategory from "../pages/Admin/CategoryManagement/CreateCategory";
+import ManageCategory from "../pages/Admin/CategoryManagement/ManageCategory";
 import Dashboard from "../pages/Admin/Dashboard";
 import CreateProduct from "../pages/Admin/ProductManagement/CreateProduct";
 import ManageProduct from "../pages/Admin/ProductManagement/ManageProduct";
@@ -33,6 +35,22 @@ export const adminPaths = [
     element: <UpdateProduct></UpdateProduct>,
   }
   ,
+  {
+    name: "Category Management",
+    children: [
+      {
+        name: "Create Category",
+        path: "create-category",
+        element: <CreateCategory></CreateCategory>,
+      },
+      {
+        name: "Manage Category",
+        path: "manage-category",
+        element: <ManageCategory></ManageCategory>,
+      },
+      
+    ],
+  },
   {
     name: "User Management",
     children: [

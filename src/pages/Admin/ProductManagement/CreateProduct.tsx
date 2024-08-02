@@ -1,4 +1,3 @@
-
 import { useCreateProductMutation } from "../../../redux/features/products/products.api";
 import { useGetCategoryQuery } from "../../../redux/features/category/category.api";
 import Spring from "../../../component/shared/Loading/Spring";
@@ -9,10 +8,7 @@ import THInput from "../../../component/form/THInput";
 import THTextArea from "../../../component/form/THTextArea";
 import THSelect from "../../../component/form/THSelect";
 
-
 const CreateProduct = () => {
-  
-
   const [createProduct] = useCreateProductMutation();
   const { data, isLoading } = useGetCategoryQuery(undefined);
   if (isLoading) {
@@ -21,8 +17,8 @@ const CreateProduct = () => {
   const categoris = data?.data;
   //create a new product
   const onSubmit = async (data: any) => {
-    const toastId = toast.loading("Loading...",{
-      duration:2000
+    const toastId = toast.loading("Loading...", {
+      duration: 2000,
     });
     console.log(data);
     try {
@@ -40,8 +36,6 @@ const CreateProduct = () => {
           id: toastId,
           duration: 1500,
         });
-
-        
       }
     } catch (error) {
       toast.error("something is wrong please try again", {
@@ -51,48 +45,43 @@ const CreateProduct = () => {
     }
   };
   return (
-    <Row justify={"center"} align={"middle"}  >
-      <Col span={11} >
+    <Row justify={"center"} align={"middle"}>
+      <Col span={11}>
         <div className="card bg-base-100 w-full shadow-2xl mb-5">
           {/* <form className="card-body" onSubmit={handleSubmit(onSubmit)}> */}
           <THForm onSubmit={onSubmit}>
-              <THInput name={'name'} label={'Product Name'} type={'text'}></THInput>
-              <THInput name={'image'} label={'Product Image'} type={'text'}></THInput>
-              <THInput name={'price'} label={'Product Price'} type={'number'}></THInput>
-         
-            {/* 
-          
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Product Category</span>
-              </label>
+            <THInput
+              name={"name"}
+              label={"Product Name"}
+              type={"text"}
+            ></THInput>
+            <THInput
+              name={"image"}
+              label={"Product Image"}
+              type={"text"}
+            ></THInput>
+            <THInput
+              name={"price"}
+              label={"Product Price"}
+              type={"number"}
+            ></THInput>
 
-              <select
-                className="select input input-bordered w-full "
-                {...register("category")}
-              >
-                <option disabled selected>
-                  Select Category
-                </option>
-                {categoris?.map((item: any) => {
-                  return (
-                    <option key={item?._id} value={item?.name}>
-                      {item?.name}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
- */}
- <THSelect label="Product Category" name="category" items={categoris}></THSelect>
-            <THTextArea label="Product description" name="description"></THTextArea>
+            <THSelect
+              label="Product Category"
+              name="category"
+              items={categoris}
+            ></THSelect>
+            <THTextArea
+              label="Product description"
+              name="description"
+            ></THTextArea>
 
             <div className="form-control mt-6">
               <button className="btn btn-neutral" type="submit">
                 Create Product
               </button>
             </div>
-            </THForm>
+          </THForm>
         </div>
       </Col>
     </Row>
@@ -100,4 +89,3 @@ const CreateProduct = () => {
 };
 
 export default CreateProduct;
-
