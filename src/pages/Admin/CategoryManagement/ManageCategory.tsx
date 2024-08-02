@@ -27,8 +27,12 @@ const ManageCategory = () => {
       if (result.isConfirmed) {
         const res = await deleteCategory(id);
         console.log(res);
-        if (res) {
+        if (res?.data?.data) {
           toast.warning("Successfully you Delete This Product", {
+            duration: 1500,
+          });
+        } else {
+          toast.warning("something is wrong please try again..!", {
             duration: 1500,
           });
         }
@@ -38,8 +42,8 @@ const ManageCategory = () => {
 
   return (
     <div className="mb-10">
-      <div className="overflow-x-auto bg-white">
-        <table className="table text-center">
+      <div className="overflow-x-auto bg-white rounded-xl">
+        <table className="table text-center ">
           {/* head */}
           <thead>
             <tr className="text-[16px] text-black">
@@ -62,7 +66,9 @@ const ManageCategory = () => {
                   </td>
                   <td>{name}</td>
                   <td className="space-x-3">
-                    <button className="btn btn-success btn-sm">Edit</button>
+                    <a href={`/admin/update-category/${_id}`}>
+                      <button className="btn btn-success btn-sm">Edit</button>
+                    </a>
                     <button
                       className="btn btn-error btn-sm"
                       onClick={() => handleDelete(_id)}

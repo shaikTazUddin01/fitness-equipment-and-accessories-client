@@ -22,7 +22,7 @@ const ProductDetails = () => {
   useEffect(() => {
     const product = async () => {
       try {
-        const res = await fetch(`https://fitness-equipment-server-silk.vercel.app/api/product/${id}`);
+        const res = await fetch(`http://localhost:3000/api/product/${id}`);
         const data = await res.json();
         setProduct(data?.data);
       } catch (error) {
@@ -33,7 +33,7 @@ const ProductDetails = () => {
   }, [id]);
   // console.log(product);
   if (!product) {
-    return <Spring></Spring>
+    return <Spring></Spring>;
   }
   // add product to cart
   const handleAddToCart = () => {
@@ -67,13 +67,12 @@ const ProductDetails = () => {
       <div className=" hero bg-base-200 min-h-screen ">
         <div className="flex  flex-col gap-10 lg:flex-row px-5 md:px-20 my-16 xl:my-0 items-center ">
           <div className="w-full lg:w-[40%] md:bg-white lg:bg-none md:shadow-2xl flex justify-center rounded-xl">
-            <img
-              src={product?.images}
-              className="max-w-sm rounded-lg w-full"
-            />
+            <img src={product?.images} className="max-w-sm rounded-lg w-full" />
           </div>
           <div className=" lg:w-[60%]">
-            <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold">{product?.name}</h1>
+            <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold">
+              {product?.name}
+            </h1>
             <h1 className="text-lg ">category : {product?.category}</h1>
             <p className="py-6 text-justify">{product?.detail}</p>
             <p className=" text-xl">
@@ -92,9 +91,7 @@ const ProductDetails = () => {
             </button>
           </div>
         </div>
-      
       </div>
-
     </div>
   );
 };

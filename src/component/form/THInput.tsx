@@ -5,9 +5,10 @@ type TInput={
   label:string;
   name:string;
   type:string;
+  defaultFieldValue?:string;
 }
 
-const THInput = ({label,name,type}:TInput) => {
+const THInput = ({label,name,type,defaultFieldValue}:TInput) => {
   const { register } = useFormContext();
   return (
     <div className="form-control">
@@ -19,6 +20,7 @@ const THInput = ({label,name,type}:TInput) => {
         placeholder={`${label}`}
         className="input input-bordered"
         {...register(name)}
+        defaultValue={defaultFieldValue}
         required
       />
     </div>

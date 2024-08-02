@@ -1,5 +1,6 @@
 import CreateCategory from "../pages/Admin/CategoryManagement/CreateCategory";
 import ManageCategory from "../pages/Admin/CategoryManagement/ManageCategory";
+import UpdateCategory from "../pages/Admin/CategoryManagement/UpdataCategory";
 import Dashboard from "../pages/Admin/Dashboard";
 import CreateProduct from "../pages/Admin/ProductManagement/CreateProduct";
 import ManageProduct from "../pages/Admin/ProductManagement/ManageProduct";
@@ -50,6 +51,10 @@ export const adminPaths = [
       },
       
     ],
+  },{
+    name: "",
+    path: "update-category/:id",
+    element: <UpdateCategory/>,
   },
   {
     name: "User Management",
