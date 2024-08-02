@@ -148,7 +148,7 @@ const ManageProduct = () => {
   };
 
   return (
-    <Col lg={{ offset: 4 }}>
+    <Col>
       <Table
         columns={columns}
         scroll={{ x: 400 }}

@@ -30,7 +30,7 @@ const UpdateProduct = () => {
     return <Spring></Spring>;
   }
   // destructring data
-  const categoris = CData?.data;
+  const categoris = CData.data;
   const { name, price, category, detail, images } = SPdata.data;
 
   // handle update
@@ -64,7 +64,7 @@ const UpdateProduct = () => {
   return (
     <Row justify={"center"} align={"middle"}>
       {/* {id} */}
-      <Col sm={24} md={12} lg={{ span: 12, offset: 4 }}>
+      <Col sm={24} md={12}>
         <div className="card bg-base-100 w-full shadow-2xl mb-5">
           <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control">

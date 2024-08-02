@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Layout } from "antd";
+import { Button, Col, Layout } from "antd";
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
 import { Toaster } from "sonner";
@@ -20,6 +20,7 @@ const App: React.FC = () => {
             <Button className="items-center mt-4 mr-4 btn btn-warning btn-sm">Logout</Button>
           </div>
         </Header>
+        <Col lg={{ span: 20, offset: 4 }}>
         <Content style={{ margin: "24px 16px 0" }}>
           <div
             style={{
@@ -29,10 +30,12 @@ const App: React.FC = () => {
             
             }}
           >
+
             <Outlet></Outlet>
             <Toaster></Toaster>
           </div>
         </Content>
+        </Col>
       </Layout>
     </Layout>
   );
