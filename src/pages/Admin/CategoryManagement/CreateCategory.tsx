@@ -11,7 +11,7 @@ const CreateCategory = () => {
     const toastId = toast.loading("Loading...", {
         duration: 2000,
       });
-      console.log(data);
+     
       try {
       
         const res = await createCategory(data);

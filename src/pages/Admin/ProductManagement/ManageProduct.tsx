@@ -1,6 +1,6 @@
 import { Button, Col, Space, Table, TableColumnsType, TableProps } from "antd";
 // import ProductsRow from "../../../component/ProductManagement/ProductsRow";
-import Spring from "../../../component/shared/Loading/Spring";
+
 import {
   useDeleteProductMutation,
   useGetProductsQuery,
@@ -9,6 +9,7 @@ import {
 import Swal from "sweetalert2";
 import { toast } from "sonner";
 import { TProduct } from "../../../Type";
+import DashboardSpring from "../../../component/shared/Loading/DashboardSpring";
 
 interface DataType {
   key: React.Key;
@@ -27,7 +28,7 @@ const ManageProduct = () => {
   const products: TProduct[] = Pdata?.data;
 
   if (isLoading) {
-    return <Spring></Spring>;
+    return <DashboardSpring></DashboardSpring>;
   }
 
   //handle delete product
