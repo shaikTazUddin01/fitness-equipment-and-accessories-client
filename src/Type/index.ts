@@ -15,4 +15,8 @@ export type TCategory = {
   image: string;
 };
 
+
+
+
 export * from './path'
+export * from './loginerr'

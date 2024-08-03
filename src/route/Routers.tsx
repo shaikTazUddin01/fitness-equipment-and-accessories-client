@@ -11,6 +11,7 @@ import DashboardLayout from "../component/layout/DashBoardLayout";
 import { adminPaths } from "./admin.routes";
 import routerGenerator from "../utiles/routerGenerator";
 import Login from "../pages/Admin/Login";
+import AdminProtectedRoute from "../component/layout/AdminProtectedRoute";
 
 const Routers = createBrowserRouter([
   {
@@ -51,7 +52,7 @@ const Routers = createBrowserRouter([
   },
   {
     path:'/admin',
-    element:<DashboardLayout></DashboardLayout>,
+    element:<AdminProtectedRoute><DashboardLayout></DashboardLayout></AdminProtectedRoute>,
     children:routerGenerator(adminPaths)
 
   },
