@@ -10,6 +10,7 @@ import CheckOut from "../pages/CheckOut";
 import DashboardLayout from "../component/layout/DashBoardLayout";
 import { adminPaths } from "./admin.routes";
 import routerGenerator from "../utiles/routerGenerator";
+import Login from "../pages/Admin/Login";
 
 const Routers = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const Routers = createBrowserRouter([
     element:<DashboardLayout></DashboardLayout>,
     children:routerGenerator(adminPaths)
 
+  },
+  {
+    path:"/admin-login",
+    element:<Login></Login>
   }
 ]);
 

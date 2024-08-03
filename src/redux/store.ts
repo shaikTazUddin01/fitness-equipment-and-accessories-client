@@ -6,6 +6,7 @@ import productSortReducer from "./features/products/productSort.slice";
 import categoryfilterReducer from "./features/products/categoryFilter.slice";
 import productCardReducer from "./features/myCart/myCart.slice";
 import resetSliceReducer from "./features/products/resetFilter.slice"
+import adminInfoReducer from "./features/LoginManagement/AdminSlice"
 import {
   persistStore,
   persistReducer,
@@ -33,6 +34,7 @@ export const store = configureStore({
     sortProduct: productSortReducer,
     categoryFilter: categoryfilterReducer,
     resetFilter: resetSliceReducer,
+    adminLoginInfo:adminInfoReducer
   },
 
   middleware: (getDefaultMiddleware) =>

@@ -1,38 +1,24 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { TProduct } from "../Type";
+
 import { toast } from "sonner";
 import { productCart } from "../redux/features/myCart/myCart.slice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks/hooks";
 import Spring from "../component/shared/Loading/Spring";
+import { useGetSingleProductsQuery } from "../redux/features/products/products.api";
 
 const ProductDetails = () => {
   const { id } = useParams();
+  const { data, isLoading } = useGetSingleProductsQuery({ _id: id });
 
-  //   console.log(id);
-  const [product, setProduct] = useState<TProduct | null>(null);
+  const product = data?.data;
+
   const dispatch = useAppDispatch();
   // get my cart
   const mycartProduct = useAppSelector(
     (state) => state.productCard?.productCart
   );
 
-  console.log("my cart-->", mycartProduct);
-  // get products
-  useEffect(() => {
-    const product = async () => {
-      try {
-        const res = await fetch(`http://localhost:3000/api/product/${id}`);
-        const data = await res.json();
-        setProduct(data?.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    product();
-  }, [id]);
-  // console.log(product);
-  if (!product) {
+  if (isLoading) {
     return <Spring></Spring>;
   }
   // add product to cart

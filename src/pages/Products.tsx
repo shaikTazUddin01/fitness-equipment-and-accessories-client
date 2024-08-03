@@ -12,17 +12,17 @@ import Spring from "../component/shared/Loading/Spring";
 
 const Products = () => {
   const location = useLocation();
-  const categoryFromState = location.state?.category;
+  const categoryFromState = location?.state?.category;
   // console.log(categoryFromState);
   // get sort value
-  const sortProductByPrice = useAppSelector((state) => state.sortProduct?.sort);
+  const sortProductByPrice = useAppSelector((state) => state?.sortProduct?.sort);
   // get search value
   const searchProduct = useAppSelector(
-    (state) => state.searchProduct.searchItem
+    (state) => state?.searchProduct?.searchItem
   );
   //get selected category
   const selectedCategory = useAppSelector(
-    (state) => state.categoryFilter.categoris
+    (state) => state.categoryFilter?.categoris
   );
 
   const { data, isLoading } = useGetProductsQuery({

@@ -27,15 +27,8 @@ export const adminPaths = [
         path: "manage-product",
         element: <ManageProduct></ManageProduct>,
       },
-      
     ],
   },
-  {
-    name: "",
-    path: "update-product/:id",
-    element: <UpdateProduct></UpdateProduct>,
-  }
-  ,
   {
     name: "Category Management",
     children: [
@@ -49,12 +42,7 @@ export const adminPaths = [
         path: "manage-category",
         element: <ManageCategory></ManageCategory>,
       },
-      
     ],
-  },{
-    name: "",
-    path: "update-category/:id",
-    element: <UpdateCategory/>,
   },
   {
     name: "User Management",
@@ -66,4 +54,16 @@ export const adminPaths = [
       },
     ],
   },
+
+  {
+    name: "",
+    path: "update-product/:id",
+    element: <UpdateProduct></UpdateProduct>,
+  },
+  {
+    name: "",
+    path: "update-category/:id",
+    element: <UpdateCategory />,
+  },
+ 
 ];
