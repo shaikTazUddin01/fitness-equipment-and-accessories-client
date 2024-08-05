@@ -11,6 +11,8 @@ const ManageCategory = () => {
   const { data, isLoading } = useGetCategoryQuery(undefined);
   const [deleteCategory] = useDeleteCategoryMutation();
   const categorys: TCategory[] = data?.data;
+
+  console.log("categoris-->",categorys);
   if (isLoading) {
     return <DashboardSpring></DashboardSpring>;
   }

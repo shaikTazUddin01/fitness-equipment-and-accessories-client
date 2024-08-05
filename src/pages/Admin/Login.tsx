@@ -54,7 +54,10 @@ const Login = () => {
         }
       }
     } catch (error) {
-      toast.error("something is wrong please try again");
+      toast.error("something is wrong please try again",{
+        id: toastId,
+        duration: 1500,
+      });
     }
   };
   return (
@@ -68,7 +71,7 @@ const Login = () => {
         md={{ span: 12 }}
         lg={{ span: 7 }}
         xxl={{ span: 5 }}
-        className="bg-[#ffffff88] rounded-md font-semibold"
+        className="bg-[#ffffff88] rounded-md font-semibold border-primaryColor border-2 "
       >
         <THForm onSubmit={onSubmit}>
           <h1 className="text-2xl text-center uppercase font-semibold">

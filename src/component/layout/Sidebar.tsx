@@ -20,8 +20,9 @@ const Sidebar = () => {
       breakpoint="lg"
       collapsedWidth="0"
       style={{ height: "100vh", position: "fixed", top: 0, zIndex: 1000 }}
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onBreakpoint={(broken) => {
-        console.log(broken);
+        // console.log(broken);
       }}
       onCollapse={(collapsed, type) => {
         console.log(collapsed, type);

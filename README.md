@@ -1,5 +1,5 @@
  ## Project Name : Fitness Equipment and Accessories.
- **website Live Link : [https://elaborate-choux-38d5a9.netlify.app](https://elaborate-choux-38d5a9.netlify.app/)** </br>
+ **website Live Link : [https://thunder-fitnesscare.netlify.app](https://thunder-fitnesscare.netlify.app/)** </br>
  **Server Live Link : [https://fitness-equipment-server-silk.vercel.app](https://fitness-equipment-server-silk.vercel.app/)** 
 
 ## Features
