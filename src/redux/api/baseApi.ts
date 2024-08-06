@@ -1,6 +1,6 @@
 import { fetchBaseQuery, createApi, BaseQueryFn, FetchArgs, BaseQueryApi, DefinitionType } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
-import { toast } from "sonner";
+// import { toast } from "sonner";
 import { adminInFo, adminLogout } from "../features/auth/AdminAuthSlice";
 
 const baseQuery = fetchBaseQuery({
@@ -46,7 +46,7 @@ const baseQueryWithRefreshToken :BaseQueryFn<FetchArgs,BaseQueryApi,DefinitionTy
       result = await baseQuery(args, api, extraOptions);
       // console.log(user);
     } else {
-      toast.warning("session is expired or invalid please login again")
+      // toast.warning("session is expired or invalid please login again")
       api.dispatch(adminLogout());
     }
   }

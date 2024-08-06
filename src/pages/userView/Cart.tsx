@@ -1,5 +1,6 @@
-import { useAppSelector } from "../redux/hooks/hooks";
-import CartTableRow from "../component/cart/CartTableRow";
+import CartTableRow from "../../component/cart/CartTableRow";
+import { useAppSelector } from "../../redux/hooks/hooks";
+
 
 
 

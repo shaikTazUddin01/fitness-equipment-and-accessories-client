@@ -1,14 +1,12 @@
-import ProductCard from "../component/Products/ProductCard";
-import { useGetProductsQuery } from "../redux/features/products/products.api";
-
-
-import { TProduct } from "../Type";
-
-import FIlterProduct from "../component/Products/FIlterProduct";
-import { useAppSelector } from "../redux/hooks/hooks";
-import SidebarFilter from "../component/Products/SidebarFilter";
 import { useLocation } from "react-router-dom";
-import Spring from "../component/shared/Loading/Spring";
+import { useAppSelector } from "../../redux/hooks/hooks";
+import { useGetProductsQuery } from "../../redux/features/products/products.api";
+import Spring from "../../component/shared/Loading/Spring";
+import SidebarFilter from "../../component/Products/SidebarFilter";
+import FIlterProduct from "../../component/Products/FIlterProduct";
+import ProductCard from "../../component/Products/ProductCard";
+import { TProduct } from "../../Type";
+
 
 const Products = () => {
   const location = useLocation();

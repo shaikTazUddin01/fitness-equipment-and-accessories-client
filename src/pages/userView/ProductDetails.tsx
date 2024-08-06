@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom";
 
 import { toast } from "sonner";
-import { productCart } from "../redux/features/myCart/myCart.slice";
-import { useAppDispatch, useAppSelector } from "../redux/hooks/hooks";
-import Spring from "../component/shared/Loading/Spring";
-import { useGetSingleProductsQuery } from "../redux/features/products/products.api";
+import { useGetSingleProductsQuery } from "../../redux/features/products/products.api";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
+import Spring from "../../component/shared/Loading/Spring";
+import { productCart } from "../../redux/features/myCart/myCart.slice";
+
 
 const ProductDetails = () => {
   const { id } = useParams();

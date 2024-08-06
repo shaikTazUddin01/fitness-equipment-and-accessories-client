@@ -1,7 +1,8 @@
-import CompanyOverView from "../component/AboutUs/CompanyOverView";
-import ContactUs from "../component/AboutUs/ContactUs";
-import TeamInTo from "../component/AboutUs/TeamInTo";
-import Testimonials from "../component/AboutUs/Testimonials";
+import CompanyOverView from "../../component/AboutUs/CompanyOverView";
+import ContactUs from "../../component/AboutUs/ContactUs";
+import TeamInTo from "../../component/AboutUs/TeamInTo";
+import Testimonials from "../../component/AboutUs/Testimonials";
+
 
 // import SectionTitle from '../component/shared/sectionTitle/SectionTitle';
 const AboutUs = () => {

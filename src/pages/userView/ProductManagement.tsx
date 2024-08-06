@@ -1,9 +1,9 @@
+import AddProductModal from "../../component/ProductManagement/AddProductModal";
+import ProductsRow from "../../component/ProductManagement/ProductsRow";
+import Spring from "../../component/shared/Loading/Spring";
+import { useGetProductsQuery } from "../../redux/features/products/products.api";
+import { TProduct } from "../../Type";
 
-import AddProductModal from "../component/ProductManagement/AddProductModal";
-import ProductsRow from "../component/ProductManagement/ProductsRow";
-import Spring from "../component/shared/Loading/Spring";
-import { useGetProductsQuery } from "../redux/features/products/products.api";
-import { TProduct } from "../Type";
 
 const ProductManagement = () => {
   const { data, isLoading } = useGetProductsQuery({});

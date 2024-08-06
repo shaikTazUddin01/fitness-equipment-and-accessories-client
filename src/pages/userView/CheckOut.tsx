@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
-import { useAppSelector } from "../redux/hooks/hooks";
-import { TProduct } from "../Type";
-import PlaceOrder from "../component/checkOut/PlaceOrder";
+import { TProduct } from "../../Type";
+import { useAppSelector } from "../../redux/hooks/hooks";
+import PlaceOrder from "../../component/checkOut/PlaceOrder";
+
 
 const CheckOut = () => {
   const { id } = useParams();
