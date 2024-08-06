@@ -5,19 +5,21 @@ import bgImg from "../../assets/hero-5.jpg";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 // import { useLoginAdminMutation } from "../../redux/features/auth/AdminLogin";
 import { toast, Toaster } from "sonner";
-import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
-import { isErrorResponse, isFetchBaseQueryError, TUser } from "../../Type";
+
 
 // import { useDispatch } from "react-redux";
-import { adminInFo } from "../../redux/features/auth/AdminAuthSlice";
-import verifyToken from "../../utiles/verifyToken";
-import { useLocation, useNavigate } from "react-router-dom";
+
+import {  useNavigate } from "react-router-dom";
 import { useUserSignUpMutation } from "../../redux/features/auth/User/user";
+import THSelect from "../../component/form/THSelect";
+import { genderOPtions } from "./constant";
+import { isErrorResponse, isFetchBaseQueryError } from "../../Type";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 
 const SignUp = () => {
   const [userSignUp] = useUserSignUpMutation();
   // const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // const location = useLocation();
 
@@ -26,20 +28,23 @@ const SignUp = () => {
     const toastId = toast.loading("loading..");
     try {
       const res = await userSignUp(data);
-      console.log(data);
-      console.log(res);
+      // console.log(data);
+      // console.log(res);
 
       if (res?.data) {
         toast.success("Sign Up  success", {
           id: toastId,
           duration: 1500,
         });
-        navigate('/login')
-      }else{
-        toast.error(res?.error?.message, {
-          id: toastId,
-          duration: 1500,
-        });
+        navigate("/login");
+      }else if ("error" in res && isFetchBaseQueryError(res.error)) {
+        const errorData = (res.error as FetchBaseQueryError).data;
+        if (isErrorResponse(errorData)) {
+          toast.error(errorData.message, {
+            id: toastId,
+            duration: 1500,
+          });
+        }
       }
     } catch (error) {
       toast.error("something is wrong please try again", {
@@ -72,8 +77,8 @@ const SignUp = () => {
               <THInput name="age" type="number" label="Age"></THInput>
             </Col>
 
-            <Col span={12}>
-              <THInput name="gender" type="text" label="Gender"></THInput>
+            <Col span={12} >
+              <THSelect name='gender' label="Gender" items={genderOPtions}></THSelect>
             </Col>
           </Row>
           <THInput name="email" type="email" label="Email"></THInput>
@@ -91,7 +96,7 @@ const SignUp = () => {
           <p className="text-center">
             i have an account.!
             <span className="text-[#0e07e6]">
-              <a href="/login"> Login</a>
+              <a href="/login"> signUp</a>
             </span>
           </p>
         </THForm>

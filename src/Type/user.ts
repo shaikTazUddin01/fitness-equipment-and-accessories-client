@@ -18,7 +18,7 @@ export interface CustomJwtPayload {
     [key: string]: any; 
 }
 
-export type TUser = {
+export type TAdmin = {
     exp: number;
     iat: number;
     role: string;
@@ -26,6 +26,20 @@ export type TUser = {
   };
 
   export type TAdminInitialState = {
+    user: null | TAdmin;
+    token: null | string;
+  };
+export type TUser = {
+    exp: number;
+    iat: number;
+    role: string;
+    email:string;
+    name?: string;
+    phoneNumber?: string;
+    address?: string;
+  };
+
+  export type TUserInitialState = {
     user: null | TUser;
     token: null | string;
   };

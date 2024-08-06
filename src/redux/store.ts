@@ -7,6 +7,7 @@ import categoryfilterReducer from "./features/products/categoryFilter.slice";
 import productCardReducer from "./features/myCart/myCart.slice";
 import resetSliceReducer from "./features/products/resetFilter.slice"
 import adminInfoReducer from "./features/auth/AdminAuthSlice"
+import userInFoReducer from "./features/auth/User/userAuthSlice"
 import {
   persistStore,
   persistReducer,
@@ -27,10 +28,15 @@ const adminInfoConfig = {
   key: "admin",
   storage,
 };
+const userInfoConfig = {
+  key: "user",
+  storage,
+};
 
 const persistedmyCart = persistReducer(myCartpersistConfig, productCardReducer);
 //persistedadmin
 const persistedmyadmin = persistReducer(adminInfoConfig, adminInfoReducer);
+const persistedUser = persistReducer(userInfoConfig, userInFoReducer);
 
 export const store = configureStore({
   reducer: {
@@ -40,7 +46,8 @@ export const store = configureStore({
     sortProduct: productSortReducer,
     categoryFilter: categoryfilterReducer,
     resetFilter: resetSliceReducer,
-    adminLoginInfo:persistedmyadmin
+    adminLoginInfo:persistedmyadmin,
+    userLoginInfo:persistedUser
   },
 
   middleware: (getDefaultMiddleware) =>

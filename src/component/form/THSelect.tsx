@@ -4,7 +4,7 @@ import { useFormContext } from "react-hook-form";
 type TSelect={
     label:string;
     name:string;
-    items:ReactNode[];
+    items:{name:string}[];
   }
 const THSelect = ({name,label,items}:TSelect) => {
     const {register}=useFormContext()
@@ -21,9 +21,9 @@ const THSelect = ({name,label,items}:TSelect) => {
           <option disabled selected>
             ---Select One---
           </option>
-          {items?.map((item: any) => {
+          {items?.map((item: any,idx) => {
             return (
-              <option key={item?._id} value={item?.name}>
+              <option key={idx} value={item?.name}>
                 {item?.name}
               </option>
             );

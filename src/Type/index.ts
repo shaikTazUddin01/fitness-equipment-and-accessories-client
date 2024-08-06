@@ -19,4 +19,4 @@ export type TCategory = {
 
 
 export * from './path'
-export * from './loginerr'
+export * from './user'
