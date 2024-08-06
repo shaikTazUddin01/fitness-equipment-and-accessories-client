@@ -20,7 +20,7 @@ const Login = () => {
 
   const location = useLocation();
   
-
+// console.log(login);
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const toastId = toast.loading("loading..");
     try {
@@ -32,6 +32,7 @@ const Login = () => {
           duration: 1500,
         });
         //decoded token
+        // console.log(res);
         const token = res?.data?.data?.accessToken;
         const user = verifyToken(token) as TUser;
 

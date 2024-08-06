@@ -13,7 +13,7 @@ const CompanyOverView = () => {
                 <img src="https://i.ibb.co/pfzH357/Strength-Training-Equipment.webp" alt="img" className='rounded-xl '/>
             </div>
             <div className="text-justify">
-                <p className='space-y-5 mt-5 md:mt-0 text-white'>
+                <div className='space-y-5 mt-5 md:mt-0 text-white'>
                     <h1 className='text-2xl font-medium'> Fitness Equipment and Accessories Empowering Your Fitness Journey .</h1>
                     <ul className='space-y-5'>
                         <li>
@@ -26,7 +26,7 @@ const CompanyOverView = () => {
                             <span className='font-bold'>Our Vision:</span> Our vision is to become a global leader in the fitness industry, inspiring a culture of health and well-being. We aim to set the standard for quality and innovation in fitness equipment and accessories, making fitness accessible and enjoyable for everyone, everywhere.
                         </li>
                     </ul>
-                </p>
+                </div>
             </div>
         </div>
       </div>

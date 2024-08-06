@@ -9,8 +9,9 @@ import Swal from "sweetalert2";
 import { toast } from "sonner";
 import Spring from "../shared/Loading/Spring";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const SidebarFilter = ({autoselected}:{autoselected:string}) => {
-  console.log("object-->",autoselected);
+  // console.log("object-->",autoselected);
   const { data, isLoading } = useGetCategoryQuery(undefined);
   const { register, handleSubmit, setValue, getValues, reset } = useForm();
   const dispatch = useAppDispatch();

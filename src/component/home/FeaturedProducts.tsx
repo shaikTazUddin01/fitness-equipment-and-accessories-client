@@ -19,7 +19,7 @@ import Spring from "../shared/Loading/Spring";
 const FeaturedProducts = () => {
   const { data, isLoading } = useGetProductsQuery({});
   const products = data?.data;
-  console.log(products);
+  // console.log(products);
 
   if (isLoading) {
     return <Spring></Spring>;
@@ -33,39 +33,8 @@ const FeaturedProducts = () => {
         ></SectionTitle>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
-        {/* <Swiper
-          slidesPerView={1}
-          spaceBetween={1}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          loop={true}
-          breakpoints={{
-            576: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 3,
-              spaceBetween: 40,
-            },
-            1024: {
-              slidesPerView: 4,
-              spaceBetween: 50,
-            },
-          }}
-          modules={[Autoplay]}
-          className="mySwiper"
-        >
-        
-        </Swiper> */}
         {products?.slice(0, 8).map((product: TProduct) => {
-          return (
-           
-              <ProductCard product={product}></ProductCard>
-           
-          );
+          return <ProductCard key={product?._id} product={product}></ProductCard>;
         })}
       </div>
       <div className="flex justify-center mt-10">
