@@ -73,24 +73,24 @@ const ManageProduct = () => {
     {
       title: "Name",
       dataIndex: "name",
-      filters: [
-        {
-          text: "Joe",
-          value: "Joe",
-        },
-        {
-          text: "Category 1",
-          value: "Category 1",
-        },
-        {
-          text: "Category 2",
-          value: "Category 2",
-        },
-      ],
-      filterMode: "tree",
-      filterSearch: true,
-      onFilter: (value, record) => record.name.includes(value as string),
-      width: "30%",
+      // filters: [
+      //   {
+      //     text: "Joe",
+      //     value: "Joe",
+      //   },
+      //   {
+      //     text: "Category 1",
+      //     value: "Category 1",
+      //   },
+      //   {
+      //     text: "Category 2",
+      //     value: "Category 2",
+      //   },
+      // ],
+      // filterMode: "tree",
+      // filterSearch: true,
+      // onFilter: (value, record) => record.name.includes(value as string),
+      // width: "30%",
     },
     {
       title: "Price",
@@ -128,7 +128,7 @@ const ManageProduct = () => {
     },
   ];
 
-  const tableData: DataType[] = products.map(
+  const tableData: DataType[] = products?.map(
     ({ _id, images, name, price, category, stockQuentity }) => ({
       key: _id,
       image: images,

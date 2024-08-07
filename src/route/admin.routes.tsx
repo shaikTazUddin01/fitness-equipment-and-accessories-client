@@ -1,3 +1,4 @@
+import CreateAdmin from "../pages/Admin/AdminManagement/CreateAdmin";
 import CreateCategory from "../pages/Admin/CategoryManagement/CreateCategory";
 import ManageCategory from "../pages/Admin/CategoryManagement/ManageCategory";
 import UpdateCategory from "../pages/Admin/CategoryManagement/UpdataCategory";
@@ -11,7 +12,7 @@ import ShowUser from "../pages/Admin/UserManagement/ShowUser";
 export const adminPaths = [
   {
     name: "Dashboard",
-    path: "dashboard",
+    path: "/admin",
     element: <Dashboard></Dashboard>,
   },
   {
@@ -45,11 +46,52 @@ export const adminPaths = [
     ],
   },
   {
+    name: "Admin Management",
+    children: [
+      {
+        name: "Create Admin",
+        path: "create-admin",
+        element: <CreateAdmin></CreateAdmin>,
+      },
+      {
+        name: "Manage Admin",
+        path: "manage-admin",
+        element: <ShowUser></ShowUser>,
+      },
+    ],
+  },
+  {
     name: "User Management",
     children: [
       {
-        name: "Show User",
-        path: "show-user",
+        name: "Manage User",
+        path: "manage-user",
+        element: <ShowUser></ShowUser>,
+      },
+      {
+        name: "Manage Customer",
+        path: "manage-customer",
+        element: <ShowUser></ShowUser>,
+      },
+    ],
+  },
+  
+  {
+    name: "Order Management",
+    children: [
+      {
+        name: "New Order Item",
+        path: "new-order",
+        element: <ShowUser></ShowUser>,
+      },
+      {
+        name: "Shiping Order",
+        path: "shiping-order",
+        element: <ShowUser></ShowUser>,
+      },
+      {
+        name: "Complected Order",
+        path: "complected-order",
         element: <ShowUser></ShowUser>,
       },
     ],

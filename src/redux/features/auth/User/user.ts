@@ -23,8 +23,15 @@ const user=baseApi.injectEndpoints({
                 params:{email}
                
             })
-        })
+        }),
+        createAdmin:builder.mutation({
+            query:(data)=>({
+                url:'/admin',
+                method:"POST",
+                body:data
+            })
+        }),
     })
 })
 
-export const {useUserSignUpMutation,useUserLoginMutation,useFinduserQuery}=user
+export const {useUserSignUpMutation,useUserLoginMutation,useFinduserQuery,useCreateAdminMutation}=user
