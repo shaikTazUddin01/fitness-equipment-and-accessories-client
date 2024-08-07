@@ -5,9 +5,21 @@ import THForm from "../form/THForm";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import THInput from "../form/THInput";
 import Spring from "../shared/Loading/Spring";
+import { TProduct } from "../../Type";
+import { useCreateOrderMutation } from "../../redux/features/order/orderapi";
 
-const PlaceOrder = () => {
+const PlaceOrder = ({ CheckOutProduct }: { CheckOutProduct: TProduct }) => {
+  const {
+    name: pName,
+    price,
+    category,
+    stockQuentity: quentity,
+  } = CheckOutProduct;
+//get current user info
   const user = useAppSelector((state) => state.userLoginInfo.user);
+
+  //create order product api
+  const [orderProduct]=useCreateOrderMutation()
   // const email=user.e
   // console.log(user!.user);
   const { data: userinfo, isLoading } = useFinduserQuery(user!.user);
@@ -16,23 +28,51 @@ const PlaceOrder = () => {
     return <Spring></Spring>;
   }
 
-  console.log("data", userinfo.data);
   const { name, email, phoneNumber, address } = userinfo.data;
-  console.log(name);
 
-  // const handleSubmit = (e: any) => {
-  //   e.preventDefault();
-  //   toast.success("successFully you place this order");
-  // const dialog=  document.getElementById("place_order_btn") as HTMLDialogElement
-  // dialog.close()
-  // };
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log(data);
-    toast.success("successFully you place this order");
-    // const dialog = document.getElementById(
-    //   "place_order_btn"
-    // ) as HTMLDialogElement;
-    // dialog.close();
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    const toastId=toast.loading("loading...")
+    // required information
+    try {
+      const orderInFo = {
+        customerName: data.name,
+        customerEmail: data.email,
+        customerNumber: data.number,
+        customerAddress: data.address,
+        productName: pName,
+        productCategory: category,
+        productPrice: price,
+        totalItem: quentity,
+        delivaryFee: 2,
+        totalPrice: quentity * price,
+        paymentStatus: "cash on delivery",
+      };
+const res=await orderProduct(orderInFo)
+      console.log(res);
+      if (res.data.data) {
+        
+        toast.success("successFully you place this order",{
+          id:toastId
+        });
+        const dialog = document.getElementById(
+          "place_order_btn"
+        ) as HTMLDialogElement;
+        dialog.close();
+      }else(
+        toast.error("something is wrong please try again",{
+          id:toastId,
+          duration:1500
+        })
+      )
+      //  const totalPayment= ,
+
+      
+    } catch (error) {
+      toast.error("something is wrong please try again",{
+        id:toastId,
+        duration:1500
+      });
+    }
   };
   return (
     <div className="mt-6">

@@ -73,7 +73,7 @@ const CheckOut = () => {
         </div>
 
         <div>
-          <PlaceOrder></PlaceOrder>
+          <PlaceOrder CheckOutProduct={CheckOutProduct as TProduct}></PlaceOrder>
         </div>
       </div>
     </div>
