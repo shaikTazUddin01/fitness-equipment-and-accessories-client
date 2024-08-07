@@ -18,12 +18,13 @@ const user=baseApi.injectEndpoints({
         }),
         finduser:builder.query({
             query:(email)=>({
-                url:'/user',
+                url:'/user/user-info',
                 method:'GET',
-                params:email
+                params:{email}
+               
             })
         })
     })
 })
 
-export const {useUserSignUpMutation,useUserLoginMutation}=user
+export const {useUserSignUpMutation,useUserLoginMutation,useFinduserQuery}=user

@@ -33,10 +33,8 @@ export type TUser = {
     exp: number;
     iat: number;
     role: string;
-    email:string;
-    name?: string;
-    phoneNumber?: string;
-    address?: string;
+    user:string;
+    
   };
 
   export type TUserInitialState = {

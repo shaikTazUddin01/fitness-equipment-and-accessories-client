@@ -2,11 +2,13 @@ import { useParams } from "react-router-dom";
 import { TProduct } from "../../Type";
 import { useAppSelector } from "../../redux/hooks/hooks";
 import PlaceOrder from "../../component/checkOut/PlaceOrder";
-
+// import { useFinduserQuery } from "../../redux/features/auth/User/user";
 
 const CheckOut = () => {
   const { id } = useParams();
   const products = useAppSelector((state) => state.productCard.productCart);
+
+  
 
   const CheckOutProduct = products.find((item: TProduct) => item?._id == id);
 
@@ -16,7 +18,7 @@ const CheckOut = () => {
     price,
     category,
     stockQuentity: quentity,
-  }= CheckOutProduct as TProduct;
+  } = CheckOutProduct as TProduct;
 
   return (
     <div className="min-h-screen py-20 flex gap-10 ">
