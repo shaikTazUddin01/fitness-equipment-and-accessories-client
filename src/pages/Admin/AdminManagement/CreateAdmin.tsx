@@ -5,50 +5,51 @@ import { Col, Row } from "antd";
 import THSelect from "../../../component/form/THSelect";
 import { genderOPtions } from "../../userView/constant";
 import { roleOPtions } from "../../../constant/Options";
-import { useCreateAdminMutation } from "../../../redux/features/auth/User/user";
+import { useCreateAdminMutation } from "../../../redux/features/auth/User/userApi";
 import { toast } from "sonner";
 import { isErrorResponse, isFetchBaseQueryError } from "../../../Type";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import { useNavigate } from "react-router-dom";
 // import { toast } from "sonner";
 
-
 const CreateAdmin = () => {
-    const[createAdmin]=useCreateAdminMutation()
-  const onSubmit: SubmitHandler<FieldValues> = async(data) => {
+  const [createAdmin] = useCreateAdminMutation();
+  const navigate = useNavigate();
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const toastId = toast.loading("Loading...");
-     
-      try {
-      
-        console.log(data);
-        const {role}=data
-    const res =await createAdmin(data)
-    console.log(res);
-        if (res.data) {
-          toast.success(`successfully you create a new ${role}`, {
+
+    try {
+      console.log(data);
+      const { role } = data;
+      const res = await createAdmin(data);
+      console.log(res);
+      if (res.data) {
+        toast.success(`successfully you create a new ${role}`, {
+          id: toastId,
+          duration: 1500,
+        });
+        navigate("/admin/manage-admin");
+      } else if ("error" in res && isFetchBaseQueryError(res.error)) {
+        const errorData = (res.error as FetchBaseQueryError).data;
+        if (isErrorResponse(errorData)) {
+          toast.error(errorData.message, {
             id: toastId,
-            duration: 1500,
+            duration: 2500,
           });
-        }else if ("error" in res && isFetchBaseQueryError(res.error)) {
-            const errorData = (res.error as FetchBaseQueryError).data;
-            if (isErrorResponse(errorData)) {
-              toast.error(errorData.message, {
-                id: toastId,
-                duration: 2500,
-              });
-            }
-          }
-      } catch (error) {
-        // toast.error("something is wrong please try again", {
-        //   id: toastId,
-        //   duration: 1500,
-        // });
+        }
       }
+    } catch (error) {
+      toast.error("something is wrong please try again", {
+        id: toastId,
+        duration: 1500,
+      });
+    }
   };
 
   return (
     <div
       className="flex justify-center items-center min-h-screen "
-    //   style={{ backgroundImage: `URL(${bgImg})` }}
+      //   style={{ backgroundImage: `URL(${bgImg})` }}
     >
       <Col
         xs={{ span: 20 }}
@@ -65,7 +66,7 @@ const CreateAdmin = () => {
           {/* <Divider className=''></Divider> */}
           <THInput name="name" type="text" label="Name"></THInput>
           <THInput name="email" type="email" label="Email"></THInput>
-          <THSelect name='role' label="Role" items={roleOPtions}></THSelect>
+          <THSelect name="role" label="Role" items={roleOPtions}></THSelect>
           <THInput
             name="phoneNumber"
             type="text"
@@ -76,8 +77,12 @@ const CreateAdmin = () => {
               <THInput name="age" type="number" label="Age"></THInput>
             </Col>
 
-            <Col span={12} >
-              <THSelect name='gender' label="Gender" items={genderOPtions}></THSelect>
+            <Col span={12}>
+              <THSelect
+                name="gender"
+                label="Gender"
+                items={genderOPtions}
+              ></THSelect>
             </Col>
           </Row>
 
@@ -86,7 +91,6 @@ const CreateAdmin = () => {
           <button className="btn btn-neutral btn-md w-full mt-4 text-lg">
             Create Admin
           </button>
-          
         </THForm>
       </Col>
       {/* <Toaster></Toaster> */}

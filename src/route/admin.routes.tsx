@@ -1,4 +1,5 @@
 import CreateAdmin from "../pages/Admin/AdminManagement/CreateAdmin";
+import ManageAdmin from "../pages/Admin/AdminManagement/ManageAdmin";
 import CreateCategory from "../pages/Admin/CategoryManagement/CreateCategory";
 import ManageCategory from "../pages/Admin/CategoryManagement/ManageCategory";
 import UpdateCategory from "../pages/Admin/CategoryManagement/UpdataCategory";
@@ -56,7 +57,7 @@ export const adminPaths = [
       {
         name: "Manage Admin",
         path: "manage-admin",
-        element: <ShowUser></ShowUser>,
+        element: <ManageAdmin/>,
       },
     ],
   },

@@ -12,60 +12,59 @@ import { isErrorResponse, isFetchBaseQueryError, TUser } from "../../Type";
 
 import verifyToken from "../../utiles/verifyToken";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useUserLoginMutation } from "../../redux/features/auth/User/user";
+import { useUserLoginMutation } from "../../redux/features/auth/User/userApi";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { userInFo } from "../../redux/features/auth/User/userAuthSlice";
 
 const LoginUser = () => {
-    const [login] = useUserLoginMutation();
-    const dispatch = useAppDispatch();
-    const navigate = useNavigate();
+  const [login] = useUserLoginMutation();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-    const location = useLocation();
+  const location = useLocation();
 
   // console.log(login);
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const toastId = toast.loading("loading..");
     try {
-        const res = await login(data);
+      const res = await login(data);
       console.log(data);
 
       // const res=null;
 
-        if (res?.data) {
-          toast.success("login in success", {
+      if (res?.data) {
+        toast.success("login in success", {
+          id: toastId,
+          duration: 1500,
+        });
+        //decoded token
+        // console.log(res);
+        const token = res?.data?.data?.accessToken;
+        const user = verifyToken(token) as TUser;
+        console.log(res);
+
+        //navigate after login
+        if (location?.state) {
+          navigate(`${location.state}`);
+        } else {
+          navigate("/");
+        }
+
+        dispatch(
+          userInFo({
+            user: user,
+            token: token,
+          })
+        );
+      } else if ("error" in res && isFetchBaseQueryError(res.error)) {
+        const errorData = (res.error as FetchBaseQueryError).data;
+        if (isErrorResponse(errorData)) {
+          toast.error(errorData.message, {
             id: toastId,
             duration: 1500,
           });
-          //decoded token
-          // console.log(res);
-          const token = res?.data?.data?.accessToken;
-          const user = verifyToken(token) as TUser;
-          console.log(res);
-
-          //navigate after login
-          if (location?.state) {
-            
-            navigate(`${location.state}`);
-          }else{
-            navigate('/')
-          }
-
-          dispatch(
-            userInFo({
-              user: user,
-              token: token,
-            })
-          );
-        } else if ("error" in res && isFetchBaseQueryError(res.error)) {
-          const errorData = (res.error as FetchBaseQueryError).data;
-          if (isErrorResponse(errorData)) {
-            toast.error(errorData.message, {
-              id: toastId,
-              duration: 1500,
-            });
-          }
         }
+      }
     } catch (error) {
       //   toast.error("something is wrong please try again",{
       //     id: toastId,

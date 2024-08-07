@@ -1,6 +1,6 @@
 import { toast } from "sonner";
 import { useAppSelector } from "../../redux/hooks/hooks";
-import { useFinduserQuery } from "../../redux/features/auth/User/user";
+import { useFinduserQuery } from "../../redux/features/auth/User/userApi";
 import THForm from "../form/THForm";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import THInput from "../form/THInput";
@@ -15,11 +15,11 @@ const PlaceOrder = ({ CheckOutProduct }: { CheckOutProduct: TProduct }) => {
     category,
     stockQuentity: quentity,
   } = CheckOutProduct;
-//get current user info
+  //get current user info
   const user = useAppSelector((state) => state.userLoginInfo.user);
 
   //create order product api
-  const [orderProduct]=useCreateOrderMutation()
+  const [orderProduct] = useCreateOrderMutation();
   // const email=user.e
   // console.log(user!.user);
   const { data: userinfo, isLoading } = useFinduserQuery(user!.user);
@@ -31,7 +31,7 @@ const PlaceOrder = ({ CheckOutProduct }: { CheckOutProduct: TProduct }) => {
   const { name, email, phoneNumber, address } = userinfo.data;
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    const toastId=toast.loading("loading...")
+    const toastId = toast.loading("loading...");
     // required information
     try {
       const orderInFo = {
@@ -47,30 +47,26 @@ const PlaceOrder = ({ CheckOutProduct }: { CheckOutProduct: TProduct }) => {
         totalPrice: quentity * price,
         paymentStatus: "cash on delivery",
       };
-const res=await orderProduct(orderInFo)
+      const res = await orderProduct(orderInFo);
       console.log(res);
       if (res.data.data) {
-        
-        toast.success("successFully you place this order",{
-          id:toastId
+        toast.success("successFully you place this order", {
+          id: toastId,
         });
         const dialog = document.getElementById(
           "place_order_btn"
         ) as HTMLDialogElement;
         dialog.close();
-      }else(
-        toast.error("something is wrong please try again",{
-          id:toastId,
-          duration:1500
-        })
-      )
+      } else
+        toast.error("something is wrong please try again", {
+          id: toastId,
+          duration: 1500,
+        });
       //  const totalPayment= ,
-
-      
     } catch (error) {
-      toast.error("something is wrong please try again",{
-        id:toastId,
-        duration:1500
+      toast.error("something is wrong please try again", {
+        id: toastId,
+        duration: 1500,
       });
     }
   };

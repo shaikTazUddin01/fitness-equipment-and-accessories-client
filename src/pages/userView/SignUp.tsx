@@ -6,11 +6,10 @@ import { FieldValues, SubmitHandler } from "react-hook-form";
 // import { useLoginAdminMutation } from "../../redux/features/auth/AdminLogin";
 import { toast, Toaster } from "sonner";
 
-
 // import { useDispatch } from "react-redux";
 
-import {  useNavigate } from "react-router-dom";
-import { useUserSignUpMutation } from "../../redux/features/auth/User/user";
+import { useNavigate } from "react-router-dom";
+import { useUserSignUpMutation } from "../../redux/features/auth/User/userApi";
 import THSelect from "../../component/form/THSelect";
 import { genderOPtions } from "./constant";
 import { isErrorResponse, isFetchBaseQueryError } from "../../Type";
@@ -37,7 +36,7 @@ const SignUp = () => {
           duration: 1500,
         });
         navigate("/login");
-      }else if ("error" in res && isFetchBaseQueryError(res.error)) {
+      } else if ("error" in res && isFetchBaseQueryError(res.error)) {
         const errorData = (res.error as FetchBaseQueryError).data;
         if (isErrorResponse(errorData)) {
           toast.error(errorData.message, {
@@ -77,8 +76,12 @@ const SignUp = () => {
               <THInput name="age" type="number" label="Age"></THInput>
             </Col>
 
-            <Col span={12} >
-              <THSelect name='gender' label="Gender" items={genderOPtions}></THSelect>
+            <Col span={12}>
+              <THSelect
+                name="gender"
+                label="Gender"
+                items={genderOPtions}
+              ></THSelect>
             </Col>
           </Row>
           <THInput name="email" type="email" label="Email"></THInput>
@@ -94,7 +97,7 @@ const SignUp = () => {
             SignUp
           </button>
           <p className="text-center">
-           Already i have an account.!
+            Already i have an account.!
             <span className="text-[#0e07e6]">
               <a href="/login"> login</a>
             </span>
