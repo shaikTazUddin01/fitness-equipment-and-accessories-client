@@ -15,6 +15,13 @@ const user=baseApi.injectEndpoints({
                 method:"POST",
                 body:data
             })
+        }),
+        finduser:builder.query({
+            query:(email)=>({
+                url:'/user',
+                method:'GET',
+                params:email
+            })
         })
     })
 })

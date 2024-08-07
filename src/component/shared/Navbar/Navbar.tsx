@@ -2,11 +2,42 @@ import { FaSearch } from "react-icons/fa";
 import logo from "../../../assets/logo.png";
 import { GrCart } from "react-icons/gr";
 import { useLocation } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks/hooks";
+import { userLogout } from "../../../redux/features/auth/User/userAuthSlice";
+import Swal from "sweetalert2";
+import { toast } from "sonner";
 
 const Navbar = () => {
   const location = useLocation();
   const currentPath = location.pathname;
   // console.log("path---->", currentPath);
+  const { user, token } = useAppSelector((state) => state.userLoginInfo);
+const dispatch=useAppDispatch()
+
+  const handleLogOut=()=>{
+    // alert('h1')
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to logout",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, logout it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+         dispatch(userLogout())
+
+        toast.success("logout success",{
+          duration:1000
+        })
+       
+      }
+    });
+  
+  
+  }
+
   const navItem = (
     <>
       <li>
@@ -21,9 +52,15 @@ const Navbar = () => {
       <li>
         <a href={"/about"}>About Us</a>
       </li>
-      <li>
-        <a href={"/login"}>login</a>
-      </li>
+      {user && token ? (
+        <li onClick={()=>handleLogOut()}>
+          <a >logout</a>
+        </li>
+      ) : (
+        <li>
+          <a href={"/login"}>login</a>
+        </li>
+      )}
     </>
   );
   return (

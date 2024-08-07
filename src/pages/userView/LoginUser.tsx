@@ -19,9 +19,9 @@ import { userInFo } from "../../redux/features/auth/User/userAuthSlice";
 const LoginUser = () => {
     const [login] = useUserLoginMutation();
     const dispatch = useAppDispatch();
-  //   const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  //   const location = useLocation();
+    const location = useLocation();
 
   // console.log(login);
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -44,7 +44,12 @@ const LoginUser = () => {
           console.log(res);
 
           //navigate after login
-          // navigate(`${location.state}`);
+          if (location?.state) {
+            
+            navigate(`${location.state}`);
+          }else{
+            navigate('/')
+          }
 
           dispatch(
             userInFo({

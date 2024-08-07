@@ -14,6 +14,7 @@ import Cart from "../pages/userView/Cart";
 import CheckOut from "../pages/userView/CheckOut";
 import LoginUser from "../pages/userView/LoginUser";
 import SignUp from "../pages/userView/SignUp";
+import ProtectedRoute from "../pages/userView/ProtectedRoute";
 
 const Routers = createBrowserRouter([
   {
@@ -49,7 +50,7 @@ const Routers = createBrowserRouter([
       },
       {
         path:'cashout/:id',
-        element:<CheckOut></CheckOut>
+        element:<ProtectedRoute><CheckOut></CheckOut></ProtectedRoute>
       }
     ]
   },

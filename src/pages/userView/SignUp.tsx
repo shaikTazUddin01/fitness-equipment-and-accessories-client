@@ -94,9 +94,9 @@ const SignUp = () => {
             SignUp
           </button>
           <p className="text-center">
-            i have an account.!
+           Already i have an account.!
             <span className="text-[#0e07e6]">
-              <a href="/login"> signUp</a>
+              <a href="/login"> login</a>
             </span>
           </p>
         </THForm>

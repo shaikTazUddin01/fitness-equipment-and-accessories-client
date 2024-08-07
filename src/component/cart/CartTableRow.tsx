@@ -9,7 +9,8 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import Swal from "sweetalert2";
 import { TProduct } from "../../Type";
 
-const CartTableRow = ({ mycart }:{mycart:TProduct}) => {
+
+const CartTableRow = ({ mycart }: { mycart: TProduct }) => {
   const { images, name, price, _id, stockQuentity } = mycart;
 
   const { data } = useGetSingleProductsQuery({ _id });
@@ -86,7 +87,7 @@ const CartTableRow = ({ mycart }:{mycart:TProduct}) => {
           <button onClick={handleIncrease}> + </button>
         </div>
       </td>
-      <td>$ {price *  myProduct!.stockQuentity}</td>
+      <td>$ {price * myProduct!.stockQuentity}</td>
       <td>
         <div className="flex flex-col md:flex-row gap-2 justify-center items-center">
           <button
@@ -95,13 +96,11 @@ const CartTableRow = ({ mycart }:{mycart:TProduct}) => {
           >
             Remove product
           </button>
-          <button className="btn btn-warning  btn-md md:btn-xs">
-          <a href={`/cashout/${_id}`}>
-            
-            Order Now
-            
-          </a>
+       
+            <button className="btn btn-warning  btn-md md:btn-xs">
+              <a href={`/cashout/${_id}`}>Order Now</a>
             </button>
+          
         </div>
       </td>
     </tr>
