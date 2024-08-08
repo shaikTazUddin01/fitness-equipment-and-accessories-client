@@ -2,11 +2,13 @@ import CreateAdmin from "../pages/Admin/AdminManagement/CreateAdmin";
 import ManageAdmin from "../pages/Admin/AdminManagement/ManageAdmin";
 import CreateCategory from "../pages/Admin/CategoryManagement/CreateCategory";
 import ManageCategory from "../pages/Admin/CategoryManagement/ManageCategory";
-import UpdateCategory from "../pages/Admin/CategoryManagement/UpdataCategory";
+
 import Dashboard from "../pages/Admin/Dashboard";
+import ComplectedOrder from "../pages/Admin/OrderManagement/ComplectedOrder";
+import NewOrder from "../pages/Admin/OrderManagement/NewOrder";
+import ShipingOrder from "../pages/Admin/OrderManagement/ShipingOrder";
 import CreateProduct from "../pages/Admin/ProductManagement/CreateProduct";
 import ManageProduct from "../pages/Admin/ProductManagement/ManageProduct";
-import UpdateProduct from "../pages/Admin/ProductManagement/updateProduct/UpdateProduct";
 
 import ShowUser from "../pages/Admin/UserManagement/ShowUser";
 
@@ -83,30 +85,21 @@ export const adminPaths = [
       {
         name: "New Order Item",
         path: "new-order",
-        element: <ShowUser></ShowUser>,
+        element: <NewOrder></NewOrder>,
       },
       {
         name: "Shiping Order",
         path: "shiping-order",
-        element: <ShowUser></ShowUser>,
+        element: <ShipingOrder></ShipingOrder>,
       },
       {
         name: "Complected Order",
         path: "complected-order",
-        element: <ShowUser></ShowUser>,
+        element: <ComplectedOrder></ComplectedOrder>,
       },
     ],
   },
 
-  {
-    name: "",
-    path: "update-product/:id",
-    element: <UpdateProduct></UpdateProduct>,
-  },
-  {
-    name: "",
-    path: "update-category/:id",
-    element: <UpdateCategory />,
-  },
+  
  
 ];

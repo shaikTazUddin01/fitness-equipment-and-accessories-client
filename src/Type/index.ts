@@ -21,3 +21,4 @@ export type TCategory = {
 
 export * from "./path";
 export * from "./user";
+export * from "./order";
