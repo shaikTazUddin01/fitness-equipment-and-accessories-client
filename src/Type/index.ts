@@ -1,5 +1,5 @@
 export type TProduct = {
-  key?:string;
+  key?: string;
   _id: string;
   name: string;
   images: string;
@@ -11,13 +11,13 @@ export type TProduct = {
 };
 
 export type TCategory = {
-    _id?:string;
+  _id?: string;
+  key?: string;
+  no?: number;
+  category?:string;
   name: string;
   image: string;
 };
 
-
-
-
-export * from './path'
-export * from './user'
+export * from "./path";
+export * from "./user";

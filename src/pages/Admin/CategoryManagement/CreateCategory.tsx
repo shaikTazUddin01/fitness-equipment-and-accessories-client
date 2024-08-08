@@ -4,9 +4,11 @@ import { FieldValues, SubmitHandler } from "react-hook-form";
 import { Col } from "antd";
 import { toast } from "sonner";
 import { useCreateCategoryMutation } from "../../../redux/features/category/category.api";
+// import { useNavigate } from "react-router-dom";
 
 const CreateCategory = () => {
-    const [createCategory]=useCreateCategoryMutation()
+    const [createCategory]=useCreateCategoryMutation();
+    // const navigate=useNavigate()
   const onSubmit: SubmitHandler<FieldValues> = async(data) => {
     const toastId = toast.loading("Loading...", {
         duration: 2000,
@@ -21,6 +23,7 @@ const CreateCategory = () => {
             id: toastId,
             duration: 1500,
           });
+
         }
       } catch (error) {
         toast.error("something is wrong please try again", {
