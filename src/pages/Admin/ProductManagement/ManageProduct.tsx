@@ -10,13 +10,14 @@ import Swal from "sweetalert2";
 import { toast } from "sonner";
 import { TProduct } from "../../../Type";
 import DashboardSpring from "../../../component/shared/Loading/DashboardSpring";
+import UpdateProduct from "./updateProduct/UpdateProduct";
 
 interface DataType {
   key: React.Key;
   name: string;
   //   _id: string;
-  image: string;
-  price: string;
+  images: string;
+  price: number;
   category: string;
   stockQuentity: number;
 }
@@ -56,7 +57,7 @@ const ManageProduct = () => {
   const columns: TableColumnsType<DataType> = [
     {
       title: "Image",
-      dataIndex: "image",
+      dataIndex: "images",
       render: (image: string) => (
         <img
           src={image}
@@ -93,8 +94,9 @@ const ManageProduct = () => {
       // width: "30%",
     },
     {
-      title: "Price",
+      title: " Price ",
       dataIndex: "price",
+      render: (price) => <span>${price}</span>,
     },
     {
       title: "Category",
@@ -108,12 +110,15 @@ const ManageProduct = () => {
       title: "Action",
       key: "action",
       render: (item) => {
-        console.log("item", item);
+        // console.log("item", item);
         return (
           <Space>
-            <a href={`/admin/update-product/${item?.key}`}>
+            {/* <a href={`/admin/update-product/${item?.key}`}>
               <Button type="primary" >Edit</Button>
-            </a>
+            </a> */}
+
+            <UpdateProduct items={item}></UpdateProduct>
+
             <Button
               type="primary"
               danger
@@ -131,9 +136,9 @@ const ManageProduct = () => {
   const tableData: DataType[] = products?.map(
     ({ _id, images, name, price, category, stockQuentity }) => ({
       key: _id,
-      image: images,
+      images: images,
       name: name,
-      price: `$ ${price}`,
+      price: price,
       stockQuentity: stockQuentity,
       category: category,
     })

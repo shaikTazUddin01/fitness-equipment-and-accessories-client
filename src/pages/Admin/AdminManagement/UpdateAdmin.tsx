@@ -26,9 +26,9 @@ const UpdateAdmin = ({ item }: { item: Partial<TAdminData> }) => {
     setIsModalOpen(true);
   };
 
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
+  // const handleOk = () => {
+  //   setIsModalOpen(false);
+  // };
 
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -70,7 +70,7 @@ const UpdateAdmin = ({ item }: { item: Partial<TAdminData> }) => {
       <Button type="primary" onClick={showModal}>
         Edit
       </Button>
-      <Modal open={isModalOpen} footer={null}
+      <Modal open={isModalOpen} onCancel={handleCancel} footer={null}
       >
         <div className="">
         <THForm onSubmit={onSubmit}>

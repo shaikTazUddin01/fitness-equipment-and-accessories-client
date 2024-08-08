@@ -33,11 +33,13 @@ export const productsApi = baseApi.injectEndpoints({
       invalidatesTags: ["Products"],
     }),
     updateProduct: builder.mutation({
-      query: ({ id, updateProductInFo }) => ({
+      query: ({ id, data }) => {
+        console.log("pre update-->>",data);
+        return{
         url: `/product/${id}`,
         method: "PATCH",
-        body: updateProductInFo,
-      }),
+        body: data,
+      }},
       invalidatesTags: ["Products"],
     }),
   }),

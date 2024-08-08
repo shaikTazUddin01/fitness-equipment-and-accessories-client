@@ -19,7 +19,7 @@ const THSelect = ({name,label,items,defaultFieldValue}:TSelect) => {
           {...register(name)}
           defaultValue={defaultFieldValue}
         >
-          <option disabled selected>
+          <option disabled >
             ---Select One---
           </option>
           {items?.map((item: any,idx) => {

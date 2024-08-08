@@ -1,14 +1,13 @@
-
 import { useFormContext } from "react-hook-form";
 
-type TInput={
-  label:string;
-  name:string;
-  type:string;
-  defaultFieldValue?:string;
-}
+type TInput = {
+  label: string;
+  name: string;
+  type: string;
+  defaultFieldValue?: string |number;
+};
 
-const THInput = ({label,name,type,defaultFieldValue}:TInput) => {
+const THInput = ({ label, name, type, defaultFieldValue }: TInput) => {
   const { register } = useFormContext();
   return (
     <div className="form-control">

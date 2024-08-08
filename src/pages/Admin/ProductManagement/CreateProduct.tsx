@@ -1,18 +1,21 @@
 import { useCreateProductMutation } from "../../../redux/features/products/products.api";
 import { useGetCategoryQuery } from "../../../redux/features/category/category.api";
-import Spring from "../../../component/shared/Loading/Spring";
+// import Spring from "../../../component/shared/Loading/Spring";
 import { toast } from "sonner";
 import { Col, Row } from "antd";
 import THForm from "../../../component/form/THForm";
 import THInput from "../../../component/form/THInput";
 import THTextArea from "../../../component/form/THTextArea";
 import THSelect from "../../../component/form/THSelect";
+import DashboardSpring from "../../../component/shared/Loading/DashboardSpring";
+import { useNavigate } from "react-router-dom";
 
 const CreateProduct = () => {
   const [createProduct] = useCreateProductMutation();
   const { data, isLoading } = useGetCategoryQuery(undefined);
+  const navigate=useNavigate()
   if (isLoading) {
-    return <Spring></Spring>;
+    return <DashboardSpring></DashboardSpring>;
   }
   const categoris = data?.data;
   //create a new product
@@ -28,6 +31,7 @@ const CreateProduct = () => {
         price: data?.price,
         detail: data?.description,
         category: data?.category,
+        stockQuentity:data?.stockQuentity
       };
       const res = await createProduct(productInFo);
 
@@ -36,6 +40,7 @@ const CreateProduct = () => {
           id: toastId,
           duration: 1500,
         });
+navigate('/admin/manage-product')
       }
     } catch (error) {
       toast.error("something is wrong please try again", {
@@ -71,6 +76,11 @@ const CreateProduct = () => {
               name="category"
               items={categoris}
             ></THSelect>
+             <THInput
+              name={"stockQuentity"}
+              label={"Stock Quentity"}
+              type={"number"}
+            ></THInput>
             <THTextArea
               label="Product description"
               name="description"
