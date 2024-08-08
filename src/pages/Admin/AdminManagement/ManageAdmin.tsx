@@ -20,6 +20,7 @@ import {
 } from "../../../redux/features/auth/User/userApi";
 import { ReactNode } from "react";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import UpdateAdmin from "./UpdateAdmin";
 
 interface DataType {
   key: ReactNode;
@@ -52,9 +53,8 @@ const ManageAdmin = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
-
       if (result.isConfirmed) {
-    const toastId = toast.loading("loading..");
+        const toastId = toast.loading("loading..");
 
         const res = await deleteAdmin(id);
         console.log(res);
@@ -114,6 +114,16 @@ const ManageAdmin = () => {
     {
       title: "Status",
       dataIndex: "status",
+      render: (status) => (
+        <div className="capitalize">
+          <span
+            className={status === "active" ? "text-green-600 font-semibold" : "text-red-600 font-semibold"}
+          >
+
+          {status}
+          </span>
+        </div>
+      ),
     },
     {
       title: "Action",
@@ -122,9 +132,10 @@ const ManageAdmin = () => {
         console.log("item", item);
         return (
           <Space>
-            <a href={`/admin/update-product/${item?.key}`}>
+            {/* <a href={`/admin/update-product/${item?.key}`}>
               <Button type="primary">Edit</Button>
-            </a>
+            </a> */}
+            <UpdateAdmin item={item}></UpdateAdmin>
             <Button
               type="primary"
               danger

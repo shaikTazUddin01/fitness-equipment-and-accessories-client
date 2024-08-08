@@ -44,6 +44,7 @@ export type TUser = {
 
   export type TAdminData = {
     _id:string;
+    key?:string;
     name: string;
     email: string;
     phoneNumber: string;

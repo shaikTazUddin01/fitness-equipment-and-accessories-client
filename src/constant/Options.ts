@@ -8,3 +8,13 @@ export const roleOPtions = [
     
   ];
   
+export const statusOPtions = [
+    {
+      name: "active",
+    },
+    {
+      name: "block",
+    },
+    
+  ];
+  

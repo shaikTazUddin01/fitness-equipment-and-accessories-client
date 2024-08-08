@@ -4,8 +4,9 @@ type TSelect={
     label:string;
     name:string;
     items:{name:string}[];
+    defaultFieldValue?:string
   }
-const THSelect = ({name,label,items}:TSelect) => {
+const THSelect = ({name,label,items,defaultFieldValue}:TSelect) => {
     const {register}=useFormContext()
     return (
         <div className="form-control">
@@ -14,8 +15,9 @@ const THSelect = ({name,label,items}:TSelect) => {
         </label>
 
         <select
-          className="select input input-bordered w-full "
+          className="select input input-bordered w-full capitalize"
           {...register(name)}
+          defaultValue={defaultFieldValue}
         >
           <option disabled selected>
             ---Select One---
