@@ -23,6 +23,13 @@ const user = baseApi.injectEndpoints({
         params: { email },
       }),
     }),
+    getUser: builder.query({
+      query: () => ({
+        url: "/user",
+        method: "GET",
+        
+      }),
+    }),
     createAdmin: builder.mutation({
       query: (data) => ({
         url: "/admin",
@@ -67,6 +74,7 @@ export const {
   useUserSignUpMutation,
   useUserLoginMutation,
   useFinduserQuery,
+  useGetUserQuery,
   useCreateAdminMutation,
   useGetAdminQuery,
   useGetSingleAdminQuery,

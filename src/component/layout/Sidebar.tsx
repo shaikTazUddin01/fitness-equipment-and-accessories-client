@@ -19,7 +19,16 @@ const Sidebar = () => {
     <Sider
       breakpoint="lg"
       collapsedWidth="0"
-      style={{ height: "100vh", position: "fixed", top: 0, zIndex: 1000 }}
+      className="scrollbar"
+      style={{
+        height: "100vh", 
+        position: "fixed",
+        top: 0,
+        left: 0,
+        zIndex: 1000,
+        // overflowY: "auto", 
+        
+      }}
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onBreakpoint={(broken) => {
         // console.log(broken);
@@ -38,7 +47,11 @@ const Sidebar = () => {
         mode="inline"
         defaultSelectedKeys={["4"]}
         items={items}
-        className="h-[100%] sticky top-0"
+        // className="min-h-[100%] sticky top-0 overflow-y-auto"
+        style={{
+          minHeight: "100%",
+          // overflowY: "auto", // Ensure the menu itself can scroll
+        }}
       />
     </Sider>
   );

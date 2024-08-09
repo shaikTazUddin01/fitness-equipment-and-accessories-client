@@ -9,6 +9,8 @@ import NewOrder from "../pages/Admin/OrderManagement/NewOrder";
 import ShipingOrder from "../pages/Admin/OrderManagement/ShipingOrder";
 import CreateProduct from "../pages/Admin/ProductManagement/CreateProduct";
 import ManageProduct from "../pages/Admin/ProductManagement/ManageProduct";
+import ManageCustomer from "../pages/Admin/UserManagement/ManageCustomer";
+import ManageUser from "../pages/Admin/UserManagement/ManageUser";
 
 import ShowUser from "../pages/Admin/UserManagement/ShowUser";
 
@@ -69,12 +71,12 @@ export const adminPaths = [
       {
         name: "Manage User",
         path: "manage-user",
-        element: <ShowUser></ShowUser>,
+        element: <ManageUser></ManageUser>,
       },
       {
         name: "Manage Customer",
         path: "manage-customer",
-        element: <ShowUser></ShowUser>,
+        element: <ManageCustomer></ManageCustomer>,
       },
     ],
   },

@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 const CreateProduct = () => {
   const [createProduct] = useCreateProductMutation();
   const { data, isLoading } = useGetCategoryQuery(undefined);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   if (isLoading) {
     return <DashboardSpring></DashboardSpring>;
   }
@@ -31,7 +31,7 @@ const CreateProduct = () => {
         price: data?.price,
         detail: data?.description,
         category: data?.category,
-        stockQuentity:data?.stockQuentity
+        stockQuentity: data?.stockQuentity,
       };
       const res = await createProduct(productInFo);
 
@@ -40,7 +40,7 @@ const CreateProduct = () => {
           id: toastId,
           duration: 1500,
         });
-navigate('/admin/manage-product')
+        navigate("/admin/manage-product");
       }
     } catch (error) {
       toast.error("something is wrong please try again", {
@@ -52,8 +52,10 @@ navigate('/admin/manage-product')
   return (
     <Row justify={"center"} align={"middle"}>
       <Col span={11}>
+          
         <div className="card bg-base-100 w-full shadow-2xl mb-5">
           {/* <form className="card-body" onSubmit={handleSubmit(onSubmit)}> */}
+          {/* <h1 className="text-3xl font-semibold text-center mt-4">Create New Product</h1> */}
           <THForm onSubmit={onSubmit}>
             <THInput
               name={"name"}
@@ -76,7 +78,7 @@ navigate('/admin/manage-product')
               name="category"
               items={categoris}
             ></THSelect>
-             <THInput
+            <THInput
               name={"stockQuentity"}
               label={"Stock Quentity"}
               type={"number"}

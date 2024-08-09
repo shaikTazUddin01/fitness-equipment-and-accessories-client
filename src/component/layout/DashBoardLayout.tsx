@@ -24,7 +24,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <Layout className="h-[100%]">
+    <Layout className="min-h-[100%]">
       <Sidebar></Sidebar>
       <Layout>
         <Header style={{ padding: 0 }}>
