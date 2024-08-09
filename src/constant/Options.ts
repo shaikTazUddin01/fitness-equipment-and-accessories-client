@@ -17,4 +17,17 @@ export const statusOPtions = [
     },
     
   ];
+  // 'delivered' | 'onProcess' | 'cancel' | 'pending' | 'shipped' | 'returned'
+export const OrderStatusOptions = [
+    {
+      name: "onProcess",
+    },
+    {
+      name: "shipped",
+    },
+    {
+      name: "delivered",
+    },
+    
+  ];
   

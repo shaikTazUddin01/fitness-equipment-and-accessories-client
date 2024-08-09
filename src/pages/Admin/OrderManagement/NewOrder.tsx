@@ -1,29 +1,62 @@
 // import Swal from "sweetalert2";
 import DashboardSpring from "../../../component/shared/Loading/DashboardSpring";
 
-import {  TOrder } from "../../../Type";
+import { isErrorResponse, isFetchBaseQueryError, TOrder } from "../../../Type";
 // import { toast } from "sonner";
 
-import {  Col,  Table, TableColumnsType, TableProps } from "antd";
-import { useGetOrderQuery } from "../../../redux/features/order/orderapi";
+import { Col, Select, Table, TableColumnsType, TableProps } from "antd";
+import {
+  useGetOrderQuery,
+  useUpdateOrderStatusMutation,
+} from "../../../redux/features/order/orderapi";
 
-// interface DataType {
-//   key: string | undefined;
-//   no: number;
-//   image: string;
-//   category: string;
-// }
+import { OrderStatusOptions } from "../../../constant/Options";
+import { status } from "../../../constant/Status.constant";
+import { toast } from "sonner";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 
 const NewOrder = () => {
-  const { data, isLoading } = useGetOrderQuery(undefined);
+  const { data, isLoading } = useGetOrderQuery(status.onProcess);
+  // update order status
+  const [updateOrder] = useUpdateOrderStatusMutation();
 
   if (isLoading) {
     return <DashboardSpring></DashboardSpring>;
   }
 
-  const newOrder :TOrder[] = data?.data;
+  const newOrder: TOrder[] = data?.data;
 
-  console.log(newOrder);
+  // console.log(newOrder);
+
+  const handleChange = async (data: string,id:string|undefined) => {
+    console.log("data-->", data,id);
+    const toastId = toast.loading("Loading...");
+    try {
+      const res = await updateOrder({ id,status:data });
+
+      console.log("res--->", res);
+
+      if (res.data) {
+        toast.success("update successfully", {
+          id: toastId,
+          duration: 1500,
+        });
+      } else if ("error" in res && isFetchBaseQueryError(res.error)) {
+        const errorData = (res.error as FetchBaseQueryError).data;
+        if (isErrorResponse(errorData)) {
+          toast.error(errorData.message, {
+            id: toastId,
+            duration: 1500,
+          });
+        }
+      }
+    } catch (error) {
+      toast.error("something is wrong please try again", {
+        id: toastId,
+        duration: 1500,
+      });
+    }
+  };
 
   const columns: TableColumnsType<TOrder> = [
     {
@@ -86,6 +119,25 @@ const NewOrder = () => {
     {
       title: "Status",
       dataIndex: "status",
+      render: (item,record) => (
+        // <THForm onSubmit={onSubmit}>
+        <Select
+          defaultValue={item}
+          style={{ width: 120 }}
+          onChange={(value)=>handleChange(value,record.key)}
+          className="capitalize"
+          // {...register('status')}
+        >
+          {OrderStatusOptions?.map((item: any, idx) => {
+            return (
+              <option key={idx} value={item?.name} className="capitalize">
+                {item?.name}
+              </option>
+            );
+          })}
+        </Select>
+        // </THForm>
+      ),
     },
   ];
 

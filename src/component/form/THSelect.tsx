@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
 
 type TSelect={
-    label:string;
+    label?:string;
     name:string;
     items:{name:string}[];
     defaultFieldValue?:string
