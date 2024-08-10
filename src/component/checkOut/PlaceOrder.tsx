@@ -1,3 +1,4 @@
+/* eslint-disable no-unsafe-optional-chaining */
 import { toast } from "sonner";
 import { useAppSelector } from "../../redux/hooks/hooks";
 import { useFinduserQuery } from "../../redux/features/auth/User/userApi";
@@ -24,17 +25,23 @@ const PlaceOrder = ({ CheckOutProduct }: { CheckOutProduct: TProduct }) => {
   // console.log(user!.user);
   const { data: userinfo, isLoading } = useFinduserQuery(user!.user);
 
+  console.log(userinfo);
+
+  // const userData=useAppSelector((state)=>state.userLoginInfo)
+  // console.log(userId.user.id);
+
   if (isLoading) {
     return <Spring></Spring>;
   }
 
-  const { name, email, phoneNumber, address } = userinfo.data;
+  const { _id,name, email, phoneNumber, address } = userinfo?.data;
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const toastId = toast.loading("loading...");
     // required information
     try {
       const orderInFo = {
+        userId:_id,
         customerName: data.name,
         customerEmail: data.email,
         customerNumber: data.number,

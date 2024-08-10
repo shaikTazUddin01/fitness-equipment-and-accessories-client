@@ -34,6 +34,7 @@ export type TAdminInitialState = {
 export type TUser = {
   exp: number;
   iat: number;
+  id:string;
   role: string;
   user: string;
 };
@@ -61,13 +62,14 @@ export type TAdminData = {
 export type TUserData = {
   
   _id:string;
-  address: string;
-  age: number;
-  email: string;
-  gender: "Male" | "Female" | "Other";
-  name: string;
+  customerId:Record<string,any>
+  // address: string;
+  // age: number;
+  // email: string;
+  // gender: "Male" | "Female" | "Other";
+  // name: string;
 
-  phoneNumber: string;
-  role?: "user";
-  isDeleted: boolean;
+  // phoneNumber: string;
+  // role?: "user";
+  // isDeleted: boolean;
 };

@@ -67,6 +67,13 @@ const user = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["admin"],
     }),
+    getCustomer: builder.query({
+      query: () => ({
+        url: "/customer",
+        method: "GET",
+      }),
+      
+    }),
   }),
 });
 
@@ -80,4 +87,5 @@ export const {
   useGetSingleAdminQuery,
   useDeleteAdminMutation,
   useUpdateAdminMutation,
+  useGetCustomerQuery
 } = user;

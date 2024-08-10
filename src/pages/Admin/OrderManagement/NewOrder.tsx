@@ -26,7 +26,7 @@ const NewOrder = () => {
 
   const newOrder: TOrder[] = data?.data;
 
-  // console.log(newOrder);
+  console.log(newOrder);
 
   const handleChange = async (data: string,id:string|undefined) => {
     console.log("data-->", data,id);

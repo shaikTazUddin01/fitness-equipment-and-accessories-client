@@ -12,12 +12,13 @@ import ManageProduct from "../pages/Admin/ProductManagement/ManageProduct";
 import ManageCustomer from "../pages/Admin/UserManagement/ManageCustomer";
 import ManageUser from "../pages/Admin/UserManagement/ManageUser";
 
-import ShowUser from "../pages/Admin/UserManagement/ShowUser";
+// import ShowUser from "../pages/Admin/UserManagement/ShowUser";
 
 export const adminPaths = [
   {
     name: "Dashboard",
-    path: "/admin",
+    // index: true,
+    path: "dashboard",
     element: <Dashboard></Dashboard>,
   },
   {
@@ -61,7 +62,7 @@ export const adminPaths = [
       {
         name: "Manage Admin",
         path: "manage-admin",
-        element: <ManageAdmin/>,
+        element: <ManageAdmin />,
       },
     ],
   },
@@ -80,7 +81,7 @@ export const adminPaths = [
       },
     ],
   },
-  
+
   {
     name: "Order Management",
     children: [
@@ -101,7 +102,4 @@ export const adminPaths = [
       },
     ],
   },
-
-  
- 
 ];

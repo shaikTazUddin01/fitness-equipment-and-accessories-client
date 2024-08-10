@@ -3,6 +3,13 @@ import { TPath, TRoute } from "../Type";
 const routerGenerator = (item: TPath[]) => {
   // console.log("object",item);
   const router = item.reduce((acc: TRoute[], item) => {
+    if (item?.path == "dashboard" && item?.element) {
+      acc.push({
+        path: "",
+        // index: item?.index,
+        element: item.element,
+      });
+    }
     if (item?.path && item?.element) {
       acc.push({
         path: item?.path,
@@ -20,7 +27,7 @@ const routerGenerator = (item: TPath[]) => {
     return acc;
   }, []);
   // console.log(router);
-return router
+  return router;
 };
 
 export default routerGenerator;

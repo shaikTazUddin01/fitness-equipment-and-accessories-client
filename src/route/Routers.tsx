@@ -20,60 +20,64 @@ const Routers = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    children:[
+    children: [
       {
-        index:true,
-        element:<Home></Home>
+        index: true,
+        element: <Home></Home>,
       },
       {
-        path:'about',
-        element:<AboutUs></AboutUs>
+        path: "about",
+        element: <AboutUs></AboutUs>,
       },
       {
-        path:'products',
-        element:<Products></Products>
+        path: "products",
+        element: <Products></Products>,
+      },
 
-      },
-     
       // {
       //   path:'productManagement',
       //   element:<ProductManagement></ProductManagement>
 
       // },
       {
-        path:'productDetails/:id',
-        element:<ProductDetails></ProductDetails>
+        path: "productDetails/:id",
+        element: <ProductDetails></ProductDetails>,
       },
       {
-        path:'cart',
-        element:<Cart></Cart>
+        path: "cart",
+        element: <Cart></Cart>,
       },
       {
-        path:'cashout/:id',
-        element:<ProtectedRoute><CheckOut></CheckOut></ProtectedRoute>
-      }
-    ]
+        path: "cashout/:id",
+        element: (
+          <ProtectedRoute>
+            <CheckOut></CheckOut>
+          </ProtectedRoute>
+        ),
+      },
+    ],
   },
   {
-    path:'/login',
-    element:<LoginUser></LoginUser>
-
+    path: "/login",
+    element: <LoginUser></LoginUser>,
   },
   {
-    path:'/signup',
-    element:<SignUp></SignUp>
-
+    path: "/signup",
+    element: <SignUp></SignUp>,
   },
   {
-    path:'/admin',
-    element:<AdminProtectedRoute><DashboardLayout></DashboardLayout></AdminProtectedRoute>,
-    children:routerGenerator(adminPaths)
-
+    path: "/admin",
+    element: (
+      <AdminProtectedRoute>
+        <DashboardLayout></DashboardLayout>
+      </AdminProtectedRoute>
+    ),
+    children: routerGenerator(adminPaths),
   },
   {
-    path:"/admin-login",
-    element:<Login></Login>
-  }
+    path: "/admin-login",
+    element: <Login></Login>,
+  },
 ]);
 
 export default Routers;
