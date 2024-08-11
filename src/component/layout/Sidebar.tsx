@@ -31,7 +31,7 @@ const Sidebar = () => {
       }}
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onBreakpoint={(broken) => {
-        // console.log(broken);
+        console.log(broken);
       }}
       onCollapse={(collapsed, type) => {
         console.log(collapsed, type);

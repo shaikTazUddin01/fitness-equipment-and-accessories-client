@@ -9,10 +9,9 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import Swal from "sweetalert2";
 import { TProduct } from "../../Type";
 
-
 const CartTableRow = ({ mycart }: { mycart: TProduct }) => {
   const { images, name, price, _id, stockQuentity } = mycart;
-
+  // console.log(mycart);
   const { data } = useGetSingleProductsQuery({ _id });
 
   const productCard = useAppSelector((state) => state.productCard.productCart);
@@ -38,7 +37,7 @@ const CartTableRow = ({ mycart }: { mycart: TProduct }) => {
     if (productStock > myProduct!.stockQuentity) {
       return dispatch(productCart(mycart));
     } else {
-      toast.warning("this product is stock out");
+      toast.warning(`only ${productStock} item left in the stock`);
     }
 
     console.log("incresh");
@@ -96,11 +95,16 @@ const CartTableRow = ({ mycart }: { mycart: TProduct }) => {
           >
             Remove product
           </button>
-       
+
+          {productStock >= myProduct!.stockQuentity ? (
             <button className="btn btn-warning  btn-md md:btn-xs">
               <a href={`/cashout/${_id}`}>Order Now</a>
             </button>
-          
+          ) : (
+            <button className="btn   btn-md md:btn-xs disabled">
+              Stock Out
+            </button>
+          )}
         </div>
       </td>
     </tr>

@@ -4,7 +4,8 @@ import { RootState } from "../store";
 import { adminInFo, adminLogout } from "../features/auth/AdminAuthSlice";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:3000/api",
+  baseUrl: 
+  "http://localhost:3000/api",
   // "https://fitness-equipment-server-silk.vercel.app/api",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
@@ -27,7 +28,10 @@ const baseQueryWithRefreshToken :BaseQueryFn<FetchArgs,BaseQueryApi,DefinitionTy
   //   toast.error("not found");
   // }
   if (result?.error?.status === 401) {
-    const res = await fetch("http://localhost:3000/api/auth/refresh-token", {
+    const res = await fetch(
+      "http://localhost:3000/api/auth/refresh-token"
+    // "  https://fitness-equipment-server-silk.vercel.app/api/auth/refresh-token"
+      , {
       method: "post",
       credentials: "include",
     });

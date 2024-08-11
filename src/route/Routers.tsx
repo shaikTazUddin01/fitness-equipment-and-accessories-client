@@ -15,11 +15,13 @@ import CheckOut from "../pages/userView/CheckOut";
 import LoginUser from "../pages/userView/LoginUser";
 import SignUp from "../pages/userView/SignUp";
 import ProtectedRoute from "../pages/userView/ProtectedRoute";
+import ErrorPage from "../pages/ErrorPage";
 
 const Routers = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement:<ErrorPage/>,
     children: [
       {
         index: true,
@@ -72,6 +74,7 @@ const Routers = createBrowserRouter([
         <DashboardLayout></DashboardLayout>
       </AdminProtectedRoute>
     ),
+    // errorElement:<ErrorPage/>,
     children: routerGenerator(adminPaths),
   },
   {

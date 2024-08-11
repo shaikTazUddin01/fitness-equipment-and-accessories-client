@@ -1,5 +1,8 @@
+import ChangePassword from "../pages/Admin/AccountManagement/ChangePassword";
+import UpdateInformation from "../pages/Admin/AccountManagement/UpdateInformation";
 import CreateAdmin from "../pages/Admin/AdminManagement/CreateAdmin";
 import ManageAdmin from "../pages/Admin/AdminManagement/ManageAdmin";
+
 import CreateCategory from "../pages/Admin/CategoryManagement/CreateCategory";
 import ManageCategory from "../pages/Admin/CategoryManagement/ManageCategory";
 
@@ -100,6 +103,22 @@ export const adminPaths = [
         path: "complected-order",
         element: <ComplectedOrder></ComplectedOrder>,
       },
+    ],
+  },
+  {
+    name: "Accound Management",
+    children: [
+      {
+        name: "Update Information",
+        path: "update-account",
+        element: <UpdateInformation></UpdateInformation>,
+      },
+      {
+        name: "Change Password",
+        path: "change-passord",
+        element: <ChangePassword></ChangePassword>,
+      },
+    
     ],
   },
 ];

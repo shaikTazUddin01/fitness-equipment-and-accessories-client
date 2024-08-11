@@ -27,7 +27,7 @@ const ManageUser = () => {
   //   const [deleteAdmin] = useDeleteAdminMutation();
 
   const user: TUserData[] = data?.data;
-  console.log(user);
+  // console.log(user);
 
   if (isLoading) {
     return <DashboardSpring></DashboardSpring>;

@@ -63,13 +63,13 @@ export type TUserData = {
   
   _id:string;
   customerId:Record<string,any>
-  // address: string;
-  // age: number;
-  // email: string;
-  // gender: "Male" | "Female" | "Other";
-  // name: string;
+  address: string;
+  age: number;
+  email: string;
+  gender: "Male" | "Female" | "Other";
+  name: string;
 
-  // phoneNumber: string;
-  // role?: "user";
-  // isDeleted: boolean;
+  phoneNumber: string;
+  role?: "user";
+  isDeleted: boolean;
 };
