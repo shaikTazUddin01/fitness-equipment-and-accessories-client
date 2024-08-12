@@ -27,7 +27,6 @@ const user = baseApi.injectEndpoints({
       query: () => ({
         url: "/user",
         method: "GET",
-        
       }),
     }),
     createAdmin: builder.mutation({
@@ -42,7 +41,7 @@ const user = baseApi.injectEndpoints({
       query: (email) => ({
         url: "/admin",
         method: "GET",
-        params:{email}
+        params: { email },
       }),
       providesTags: ["admin"],
     }),
@@ -69,12 +68,23 @@ const user = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["admin"],
     }),
+    updateAdminPassword: builder.mutation({
+      query: ({ email, data }) => {
+        console.log(email,data);
+        return{
+          url: "/admin/updatePassword",
+          method: "PUT",
+          body: data,
+          params: { email },
+        }
+      },
+      invalidatesTags: ["admin"],
+    }),
     getCustomer: builder.query({
       query: () => ({
         url: "/customer",
         method: "GET",
       }),
-      
     }),
   }),
 });
@@ -89,5 +99,6 @@ export const {
   // useGetSingleAdminQuery,
   useDeleteAdminMutation,
   useUpdateAdminMutation,
-  useGetCustomerQuery
+  useGetCustomerQuery,
+  useUpdateAdminPasswordMutation,
 } = user;

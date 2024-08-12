@@ -1,3 +1,4 @@
+/* eslint-disable no-unsafe-optional-chaining */
 import THForm from "../../../component/form/THForm";
 import THInput from "../../../component/form/THInput";
 import { FieldValues, SubmitHandler } from "react-hook-form";
@@ -27,7 +28,7 @@ const UpdateInformation = () => {
   }
   // console.log(currentLoggedInAdmin.data);
   const { _id, name, age, email, gender, phoneNumber, address } =
-    currentLoggedInAdmin.data[0];
+    currentLoggedInAdmin?.data[0];
   // console.log(name);
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     console.log(data);
@@ -44,7 +45,7 @@ const UpdateInformation = () => {
           id: toastId,
           duration: 1500,
         });
-        // navigate("/admin/manage-admin");
+        navigate("/admin/manage-admin");
       } else if ("error" in res && isFetchBaseQueryError(res.error)) {
         const errorData = (res.error as FetchBaseQueryError).data;
         if (isErrorResponse(errorData)) {
