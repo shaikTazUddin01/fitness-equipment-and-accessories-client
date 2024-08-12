@@ -16,12 +16,14 @@ import LoginUser from "../pages/userView/LoginUser";
 import SignUp from "../pages/userView/SignUp";
 import ProtectedRoute from "../pages/userView/ProtectedRoute";
 import ErrorPage from "../pages/ErrorPage";
+import SubAdminProtectedRoute from "../component/layout/SubAdminProtectedRoute";
+import { subadminPaths } from "./subAdminRoutes";
 
 const Routers = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement:<ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -76,6 +78,16 @@ const Routers = createBrowserRouter([
     ),
     // errorElement:<ErrorPage/>,
     children: routerGenerator(adminPaths),
+  },
+  {
+    path: "/subadmin",
+    element: (
+      <SubAdminProtectedRoute>
+        <DashboardLayout></DashboardLayout>
+      </SubAdminProtectedRoute>
+    ),
+    // errorElement:<ErrorPage/>,
+    children: routerGenerator(subadminPaths),
   },
   {
     path: "/admin-login",

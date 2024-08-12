@@ -1,7 +1,7 @@
 import { Button, Modal } from "antd";
 import { useState } from "react";
 import THForm from "../../../component/form/THForm";
-import THInput from "../../../component/form/THInput";
+// import THInput from "../../../component/form/THInput";
 import THSelect from "../../../component/form/THSelect";
 
 import { roleOPtions, statusOPtions } from "../../../constant/Options";
@@ -48,6 +48,7 @@ const UpdateAdmin = ({ item }: { item: Partial<TAdminData> }) => {
           duration: 1500,
         });
         setIsModalOpen(false)
+
       } else if ("error" in res && isFetchBaseQueryError(res.error)) {
         const errorData = (res.error as FetchBaseQueryError).data;
         if (isErrorResponse(errorData)) {
@@ -57,6 +58,8 @@ const UpdateAdmin = ({ item }: { item: Partial<TAdminData> }) => {
           });
         }
       }
+
+      
     } catch (error) {
       toast.error("something is wrong please try again", {
         id: toastId,
@@ -78,30 +81,30 @@ const UpdateAdmin = ({ item }: { item: Partial<TAdminData> }) => {
             update Admin
           </h1>
           {/* <Divider className=''></Divider> */}
-          <THInput
+          {/* <THInput
             name="name"
             type="text"
             label="Name"
             defaultFieldValue={item?.name}
-          ></THInput>
-          <THInput
+          ></THInput> */}
+          {/* <THInput
             name="email"
             type="email"
             label="Email"
             defaultFieldValue={item?.email}
-          ></THInput>
+          ></THInput> */}
           <THSelect
             name="role"
             label="Role"
             defaultFieldValue={item?.role}
             items={roleOPtions}
           ></THSelect>
-          <THInput
+          {/* <THInput
             name="phoneNumber"
             type="text"
             label="Phone Number"
             defaultFieldValue={item?.phoneNumber}
-          ></THInput>
+          ></THInput> */}
 
           <THSelect
             name="status"

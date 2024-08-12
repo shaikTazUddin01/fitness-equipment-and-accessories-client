@@ -1,7 +1,6 @@
 import ChangePassword from "../pages/Admin/AccountManagement/ChangePassword";
 import UpdateInformation from "../pages/Admin/AccountManagement/UpdateInformation";
-import CreateAdmin from "../pages/Admin/AdminManagement/CreateAdmin";
-import ManageAdmin from "../pages/Admin/AdminManagement/ManageAdmin";
+
 
 import CreateCategory from "../pages/Admin/CategoryManagement/CreateCategory";
 import ManageCategory from "../pages/Admin/CategoryManagement/ManageCategory";
@@ -20,7 +19,7 @@ import ManageUser from "../pages/Admin/UserManagement/ManageUser";
 
 
 
-export const adminPaths = [
+export const subadminPaths = [
   {
     name: "Dashboard",
     // index: true,
@@ -57,21 +56,7 @@ export const adminPaths = [
       },
     ],
   },
-  {
-    name: "Admin Management",
-    children: [
-      {
-        name: "Create Admin",
-        path: "create-admin",
-        element: <CreateAdmin></CreateAdmin>,
-      },
-      {
-        name: "Manage Admin",
-        path: "manage-admin",
-        element: <ManageAdmin />,
-      },
-    ],
-  },
+
   {
     name: "User Management",
     children: [

@@ -9,12 +9,25 @@ import { Layout, Menu } from "antd";
 import logo from "../../assets/logo.png";
 // import { NavLink } from "react-router-dom";
 import SidebarGenarator from "../../utiles/sidebarGenarator";
+
+import { useAppSelector } from "../../redux/hooks/hooks";
+import { subadminPaths } from "../../route/subAdminRoutes";
 import { adminPaths } from "../../route/admin.routes";
 const { Sider } = Layout;
 
-const items = SidebarGenarator(adminPaths, "admin");
 
 const Sidebar = () => {
+
+const role =useAppSelector((state)=>state.adminLoginInfo.user?.role)
+
+let items;
+if (role === "Admin") {
+  
+  items = SidebarGenarator(adminPaths, "admin");
+}else{
+  items = SidebarGenarator(subadminPaths, "subAdmin");
+
+}
   return (
     <Sider
       breakpoint="lg"
