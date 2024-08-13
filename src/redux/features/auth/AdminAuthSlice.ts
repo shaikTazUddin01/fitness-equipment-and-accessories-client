@@ -14,7 +14,7 @@ export const counterSlice = createSlice({
   initialState,
   reducers: {
     adminInFo: (state, action: PayloadAction<TAdminInitialState>) => {
-      console.log("action-->", action.payload);
+      // console.log("action-->", action.payload);
       const { user, token } = action.payload;
       (state.user = user), (state.token = token);
     },

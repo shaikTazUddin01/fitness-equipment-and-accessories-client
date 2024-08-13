@@ -80,7 +80,7 @@ const Routers = createBrowserRouter([
     children: routerGenerator(adminPaths),
   },
   {
-    path: "/subadmin",
+    path: "/admin",
     element: (
       <SubAdminProtectedRoute>
         <DashboardLayout></DashboardLayout>

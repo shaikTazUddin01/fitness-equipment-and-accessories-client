@@ -25,14 +25,14 @@ if (role === "Admin") {
   
   items = SidebarGenarator(adminPaths, "admin");
 }else{
-  items = SidebarGenarator(subadminPaths, "subAdmin");
+  items = SidebarGenarator(subadminPaths, "admin");
 
 }
   return (
     <Sider
       breakpoint="lg"
       collapsedWidth="0"
-      className="scrollbar"
+      // className="scrollbar"
       style={{
         height: "100vh", 
         position: "fixed",

@@ -75,3 +75,21 @@ span.ant-layout-sider-zero-width-trigger.ant-layout-sider-zero-width-trigger-lef
   overflow-y: scroll;
   scrollbar-color: rgb(243, 243, 242) rgb(57, 57, 56);
 }
+
+/* //handle collapse containar */
+
+.collapse-container {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  max-height: 0; 
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.collapse-container.open {
+  max-height: 300px; 
+  /* width: 150px; */
+  height: auto;
+  opacity: 1;
+  transform: translateY(0);
+}

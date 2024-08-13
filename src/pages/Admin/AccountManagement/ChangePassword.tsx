@@ -9,7 +9,7 @@ import {
   useUpdateAdminPasswordMutation,
 } from "../../../redux/features/auth/User/userApi";
 import { toast } from "sonner";
-import { isErrorResponse, isFetchBaseQueryError } from "../../../Type";
+import { isErrorResponse } from "../../../Type";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 // import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks/hooks";
@@ -40,7 +40,7 @@ const ChangePassword = () => {
         });
         // navigate("/admin/manage-admin");
         dispatch(adminLogout())
-      } else if ("error" in res && isFetchBaseQueryError(res.error)) {
+      } else{
         const errorData = (res.error as FetchBaseQueryError).data;
         if (isErrorResponse(errorData)) {
           toast.error(errorData.message, {
