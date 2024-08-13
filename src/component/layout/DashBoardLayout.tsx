@@ -45,7 +45,7 @@ const App: React.FC = () => {
             <div
               className={`collapse-container ${
                 openCollapse ? "open " : ""
-              } bg-[#001529] border-2 border-secondaryColor absolute top-14 rounded end-0 text-center flex flex-col text-white px-5`}
+              } bg-[#001529] border-2 border-secondaryColor absolute top-14 rounded end-0 text-center flex flex-col text-white px-5 z-20`}
             >
               
                 <span className="text-[16px]"> {user?.user?.user}</span>
