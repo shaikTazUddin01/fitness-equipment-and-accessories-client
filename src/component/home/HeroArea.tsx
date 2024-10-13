@@ -34,8 +34,10 @@ const HeroArea = () => {
             }}
             className="bg-cover bg-center h-[500px] md:h-[630px] text-center md:text-left"
           >
-            <div className="flex lg:pl-8 items-center h-full bg-[#0000005f] pt-[20px]">
-              <div className=" text-white px-10  space-y-5 text-center lg:text-left w-[100%] lg:w-[70%]">
+            <div className="bg-[#0000005f]  h-[500px] md:h-[630px]">
+
+            <div className="flex items-center h-full  pt-[20px] max-w-7xl mx-auto">
+              <div className=" text-white md:px-10  space-y-5 text-center lg:text-left w-[100%] lg:w-[70%]">
                 <h1 className="text-3xl md:text-6xl font-extrabold ">
                   Try To Change
                 </h1>
@@ -54,6 +56,7 @@ const HeroArea = () => {
               </div>
               
             </div>
+            </div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -63,8 +66,9 @@ const HeroArea = () => {
             }}
             className="bg-cover bg-center h-[500px] md:h-[630px] text-center md:text-left"
           >
-            <div className="flex lg:pl-8 items-center h-full bg-[#00000072] pt-[20px]">
-              <div className=" text-white px-10  space-y-5 text-center lg:text-left w-[100%] lg:w-[70%]">
+           <div className="bg-[#00000072]  h-[500px] md:h-[630px]">
+           <div className="flex items-center h-full pt-[20px] max-w-7xl mx-auto">
+              <div className=" text-white md:px-10  space-y-5 text-center lg:text-left w-[100%] lg:w-[70%]">
                 <h1 className="text-3xl md:text-6xl font-extrabold ">
                 Breaking Your Limits
                 </h1>
@@ -83,6 +87,7 @@ const HeroArea = () => {
               </div>
               
             </div>
+           </div>
           </div>
         </SwiperSlide>
       </Swiper>

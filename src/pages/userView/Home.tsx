@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div>
       <HeroArea></HeroArea>
-      <div className="px-5 xl:px-0">
+      <div className="px-5 xl:px-0 max-w-7xl mx-auto" >
       <CategorySection></CategorySection>
       <FeaturedProducts></FeaturedProducts>
       <BenefitsSection></BenefitsSection>

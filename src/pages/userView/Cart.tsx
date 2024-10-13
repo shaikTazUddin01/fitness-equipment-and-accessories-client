@@ -11,7 +11,7 @@ const Cart = () => {
  
   console.log(cartProduct.length);
   return (
-    <div className="min-h-screen px-3 xl:px-0 pb-20">
+    <div className="min-h-screen px-3 xl:px-0 pb-20 max-w-7xl mx-auto" >
       {cartProduct?.length > 0 ? (
         <div className="overflow-x-auto mt-16">
           <table className="table text-white  text-center">

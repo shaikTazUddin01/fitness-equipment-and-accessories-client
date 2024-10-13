@@ -7,7 +7,7 @@ import Testimonials from "../../component/AboutUs/Testimonials";
 // import SectionTitle from '../component/shared/sectionTitle/SectionTitle';
 const AboutUs = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen max-w-7xl mx-auto">
       {/* conpany over view */}
       <CompanyOverView></CompanyOverView>
       {/* introduce team */}

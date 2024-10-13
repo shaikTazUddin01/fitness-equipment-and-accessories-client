@@ -25,7 +25,7 @@ const PlaceOrder = ({ CheckOutProduct }: { CheckOutProduct: TProduct }) => {
   // console.log(user!.user);
   const { data: userinfo, isLoading } = useFinduserQuery(user!.user);
 
-  console.log(userinfo);
+  // console.log(userinfo);
 
   // const userData=useAppSelector((state)=>state.userLoginInfo)
   // console.log(userId.user.id);
@@ -54,6 +54,7 @@ const PlaceOrder = ({ CheckOutProduct }: { CheckOutProduct: TProduct }) => {
         totalPrice: quentity * price,
         paymentStatus: "cash on delivery",
       };
+      // console.log(orderInFo);
       const res = await orderProduct(orderInFo);
       console.log(res);
       if (res.data.data) {

@@ -21,7 +21,7 @@ const CheckOut = () => {
   } = CheckOutProduct as TProduct;
 
   return (
-    <div className="min-h-screen py-20 flex gap-10 ">
+    <div className="min-h-screen py-20 flex gap-10 max-w-7xl mx-auto">
       {/* order details section */}
       <div className="flex bg-slate-50 items-center w-[70%] h-[350px] px-10 gap-8 rounded-xl">
         <div>

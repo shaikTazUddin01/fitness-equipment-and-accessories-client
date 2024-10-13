@@ -65,43 +65,14 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="">
-      <div
-        className={`navbar text-white bg-[#161616b7] ${
+    <div className={`text-white bg-[#161616b7]  ${
           currentPath == "/" ? "absolute" : "relative"
-        }  z-20 shadow-xl max-w-7xl px-10 py-4`}
+        }  z-20 shadow-xl  w-full `}>
+      <div
+        className={`navbar max-w-7xl mx-auto`}
       >
         <div className="navbar-start">
-          {/* <div className="dropdown">
-            <div
-              tabIndex={0}
-              role="buthrefn"
-              className="btn btn-ghost lg:hidden"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
-            </div>
-          
-          <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-black text-white rounded-box z-[1] mt-3 w-52 p-2 shadow "
-            >
-              {navItem}
-            </ul>
-          
-          </div> */}
+         
           {/* drawer */}
           <div className="drawer lg:hidden">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -181,7 +152,7 @@ const Navbar = () => {
               <div
                 className={`collapse-container ${
                   openCollapse ? "open " : ""
-                } bg-[#0b0e10da] border-2 border-secondaryColor absolute top-[75px] rounded end-0 text-center flex flex-col text-white px-5 z-20 min-h-52 min-w-36`}
+                } bg-[#0b0e10da] border-2 border-secondaryColor absolute top-[75px] rounded end-2 text-center flex flex-col text-white p-5 z-20  min-w-36`}
               >
                 <button
                   className="btn btn-warning btn-sm mt-2"

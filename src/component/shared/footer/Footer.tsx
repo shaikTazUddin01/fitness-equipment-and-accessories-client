@@ -5,7 +5,8 @@ import logo from "../../../assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="footer p-10 bg-[#1616169a] text-white flex justify-around items-center">
+    <div className="bg-[#1616169a] ">
+      <footer className="footer p-10 max-w-7xl mx-auto  text-white flex justify-around items-center">
       <aside className="flex flex-col justify-center items-center">
         <div className="flex flex-col justify-center items-center">
           <img src={logo} alt="" className="h-16" />
@@ -52,6 +53,7 @@ const Footer = () => {
         </div>
       </nav>
     </footer>
+    </div>
   );
 };
 
