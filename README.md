@@ -1,6 +1,10 @@
  ## Project Name : Fitness Equipment and Accessories.
- **website Live Link : [https://thunder-fitnesscare.netlify.app](https://thunder-fitnesscare.netlify.app/)** </br>
- **Server Live Link : [https://fitness-equipment-server-silk.vercel.app](https://fitness-equipment-server-silk.vercel.app/)** 
+ **Website Live Link : [https://thunder-fitnesscare.netlify.app](https://thunder-fitnesscare.netlify.app/)** </br>
+ **Website Admin Dashboard : [https://thunder-fitnesscare.netlify.app/admin](https://thunder-fitnesscare.netlify.app/admin)** </br>
+ **Server Live Link : [https://fitness-equipment-server-silk.vercel.app](https://fitness-equipment-server-silk.vercel.app/)**  </br> </br>
+**Admin Email : taz@gmail.com** </br>
+**Admin Password : 1234567** </br>
+ 
 
 ## Features
 
