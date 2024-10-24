@@ -22,15 +22,12 @@
 
 ## Technology Used
 
-1. **Node.js**
-2. **Express.js**
-3. **Mongoose**
-4. **TypeScript**
-5. **React**
-6. **Redux**
-7. **Tailwind CSS**
-8. **Swiper Js**
-8. **React Hook Form**
+1. **TypeScript**
+2. **React**
+3. **Redux**
+4. **Tailwind CSS**
+5. **Swiper Js**
+6. **React Hook Form**
 
 
 ## Instructions on how to run the application locally
