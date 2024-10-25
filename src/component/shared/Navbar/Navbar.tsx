@@ -65,7 +65,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className={`text-white bg-[#161616fd] fixed z-20 shadow-xl  w-full h-[20]`}>
+    <div className={`text-white bg-primaryColor fixed z-20 shadow-xl  w-full h-[20]`}>
       <div
         className={`navbar max-w-7xl mx-auto`}
       >
@@ -118,13 +118,13 @@ const Navbar = () => {
           {/* drawer */}
           <div className="hidden lg:flex">
             <a href="/">
-              <img src={logo} alt="" className="h-full " />
+              <img src={logo} alt="" className="h-10 " />
             </a>
           </div>
         </div>
         {/* when screen is lg then work this part*/}
         <div className="navbar-center hidden lg:flex ">
-          <ul className="menu menu-horizontal px-1 text-[18px] font-semibold">
+          <ul className="menu menu-horizontal px-1 text-[16px]">
             {navItem}
           </ul>
         </div>

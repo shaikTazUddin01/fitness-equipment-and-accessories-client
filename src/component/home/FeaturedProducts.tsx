@@ -9,8 +9,8 @@ import SectionTitle from "../shared/sectionTitle/SectionTitle";
 import { useGetProductsQuery } from "../../redux/features/products/products.api";
 import ProductCard from "../Products/ProductCard";
 import { TProduct } from "../../Type";
-import { IoIosArrowDown } from "react-icons/io";
 import Spring from "../shared/Loading/Spring";
+import { FaArrowRight } from "react-icons/fa6";
 
 const FeaturedProducts = () => {
   const { data, isLoading } = useGetProductsQuery({ feature: "True" });
@@ -21,10 +21,10 @@ const FeaturedProducts = () => {
   }
   return (
     <div className="mt-16">
-      <div className="text-4xl mb-5 text-center font-bold text-secondaryColor">
+      <div className=" text-center ">
         <SectionTitle
-          heading={"new Arrivals"}
-          subHeading={"Feature Products"}
+          heading={"Featured Products"}
+          subHeading={"Check & Get Your Desired Product!"}
         ></SectionTitle>
       </div>
       <div>
@@ -39,15 +39,15 @@ const FeaturedProducts = () => {
           breakpoints={{
             576: {
               slidesPerView: 2,
-              spaceBetween: 20,
+              spaceBetween: 10,
             },
             768: {
               slidesPerView: 3,
-              spaceBetween: 40,
+              spaceBetween: 10,
             },
             1024: {
               slidesPerView: 4,
-              spaceBetween: 50,
+              spaceBetween: 10,
             },
           }}
           modules={[Autoplay]}
@@ -57,21 +57,21 @@ const FeaturedProducts = () => {
             <SwiperSlide key={product?._id}>
               <div>
                 <ProductCard key={product?._id} product={product}></ProductCard>
-                ;
+                
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
-      <div className="flex justify-center mt-10">
+      <div className="flex justify-end mt-5">
         <a href="/products">
-          <button className="btn btn-warning">
+          <p className="text-white flex items-center gap-2">
             Explore more
-            <IoIosArrowDown />
-          </button>
+            <FaArrowRight />
+          </p>
         </a>
       </div>
-      //{" "}
+     
     </div>
   );
 };

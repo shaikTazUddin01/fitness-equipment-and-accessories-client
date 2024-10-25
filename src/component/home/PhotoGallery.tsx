@@ -5,11 +5,11 @@ import photos from "./photos";
 const PhotoGallery = () => {
   return (
     <div className="py-14">
-      <div className="text-center text-secondaryColor">
-        <SectionTitle heading="Healthy" subHeading="User Mosaic"></SectionTitle>
+      <div className="text-center">
+        <SectionTitle heading="Inspiring Customer Moments" subHeading="Memorable moments captured with our products."></SectionTitle>
       </div>
-      <div className=" w-full mt-5">
-        <PhotoAlbum layout="rows" photos={photos} />;
+      <div className=" w-full">
+        <PhotoAlbum layout="rows" photos={photos} />
       </div>
     </div>
   );

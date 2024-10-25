@@ -4,7 +4,7 @@ import { TProduct } from "../../Type";
 const ProductCard = ({ product }: { product: TProduct }) => {
   const { _id, name, price, images, category } = product;
   return (
-    <div className="card bg-base-100  shadow-xl ">
+    <div className="card bg-base-100  shadow-xl rounded-md">
       <figure className="px-10 pt-10 h-[150px]">
         <img src={images} alt={name} className="rounded-xl w-[95%]" />
       </figure>

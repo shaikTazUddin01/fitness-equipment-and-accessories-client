@@ -5,10 +5,12 @@ import SidebarFilter from "../../component/Products/SidebarFilter";
 import FIlterProduct from "../../component/Products/FIlterProduct";
 import ProductCard from "../../component/Products/ProductCard";
 import { TProduct } from "../../Type";
+import { useLocation } from "react-router-dom";
 
 
 const Products = () => {
-  
+  const location=useLocation()
+  console.log(location?.state);
   // get sort value
   const sortProductByPrice = useAppSelector((state) => state?.sortProduct?.sort);
   // get search value
@@ -20,7 +22,7 @@ const Products = () => {
     (state) => state.categoryFilter?.categoris
   );
 
-  console.log(selectedCategory);
+  // console.log(selectedCategory);
 
   const { data, isLoading } = useGetProductsQuery({
     sortProductByPrice,

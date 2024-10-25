@@ -31,7 +31,7 @@ const isAlreadtwelcomeLoading=localStorage.getItem("welcomeLoading")
     );
   }
   return (
-    <div className="bg-primaryColor ">
+    <div className="bg-bgColor">
       <div className="mx-auto">
       <MainLayout></MainLayout>
       <Toaster />

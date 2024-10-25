@@ -15,6 +15,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useUserLoginMutation } from "../../redux/features/auth/User/userApi";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { userInFo } from "../../redux/features/auth/User/userAuthSlice";
+import { FaArrowLeft } from "react-icons/fa";
 
 const LoginUser = () => {
   const [login] = useUserLoginMutation();
@@ -77,6 +78,15 @@ const LoginUser = () => {
       className="flex justify-center items-center min-h-screen bg-cover"
       style={{ backgroundImage: `URL(${bgImg})` }}
     >
+      <a href="/">
+        <span className="text-white font-medium absolute top-5 left-5 flex justify-center items-center gap-2">
+          <span>
+            <FaArrowLeft />
+          </span>
+          <span>Back To Home</span>
+        </span>
+      </a>
+
       <Col
         xs={{ span: 20 }}
         sm={{ span: 16 }}
