@@ -14,6 +14,8 @@ import THSelect from "../../../../component/form/THSelect";
 import DashboardSpring from "../../../../component/shared/Loading/DashboardSpring";
 import { TProduct } from "../../../../Type";
 
+const featureOption = [{ name: "True" }, { name: "False" }];
+
 const UpdateProduct = ({ items }: { items: Partial<TProduct> }) => {
   const { data, isLoading } = useGetCategoryQuery(undefined);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,6 +29,7 @@ const UpdateProduct = ({ items }: { items: Partial<TProduct> }) => {
 
   const categoris = data?.data;
   //handle model open and close
+  // console.log(categoris);
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -34,14 +37,15 @@ const UpdateProduct = ({ items }: { items: Partial<TProduct> }) => {
     setIsModalOpen(false);
   };
 
-  const { key, name, price, images, category,stockQuentity } = items;
+  const { key, name, price, images, category, stockQuentity, isFeature } =
+    items;
 
   // handle update
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     console.log("data-->", data);
     const toastId = toast.loading("Loading...");
     try {
-      const res = await updateProduct({ id: key, data:data });
+      const res = await updateProduct({ id: key, data: data });
 
       console.log("res--->", res);
 
@@ -90,6 +94,12 @@ const UpdateProduct = ({ items }: { items: Partial<TProduct> }) => {
             type={"number"}
             defaultFieldValue={stockQuentity}
           ></THInput>
+          <THSelect
+            label="Feature"
+            name="isFeature"
+            items={featureOption}
+            defaultFieldValue={isFeature}
+          ></THSelect>
           <THSelect
             label="Product Category"
             name="category"

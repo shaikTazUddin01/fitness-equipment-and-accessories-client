@@ -1,25 +1,20 @@
-// Import Swiper React components
-
 // Import Swiper styles
+import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import "./css/HoverText.css";
-// import required modules
+import { Autoplay } from "swiper/modules";
 
 import SectionTitle from "../shared/sectionTitle/SectionTitle";
-//import images
 
 import { useGetProductsQuery } from "../../redux/features/products/products.api";
 import ProductCard from "../Products/ProductCard";
 import { TProduct } from "../../Type";
 import { IoIosArrowDown } from "react-icons/io";
 import Spring from "../shared/Loading/Spring";
-// import ReactRating from "../shared/rating/ReactRating";
 
 const FeaturedProducts = () => {
-  const { data, isLoading } = useGetProductsQuery({});
+  const { data, isLoading } = useGetProductsQuery({ feature: "True" });
   const products = data?.data;
-  // console.log(products);
 
   if (isLoading) {
     return <Spring></Spring>;
@@ -32,10 +27,41 @@ const FeaturedProducts = () => {
           subHeading={"Feature Products"}
         ></SectionTitle>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
-        {products?.slice(0, 8).map((product: TProduct) => {
-          return <ProductCard key={product?._id} product={product}></ProductCard>;
-        })}
+      <div>
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={1}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+          breakpoints={{
+            576: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 50,
+            },
+          }}
+          modules={[Autoplay]}
+          className="mySwiper"
+        >
+          {products?.map((product: TProduct) => (
+            <SwiperSlide key={product?._id}>
+              <div>
+                <ProductCard key={product?._id} product={product}></ProductCard>
+                ;
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
       <div className="flex justify-center mt-10">
         <a href="/products">
@@ -45,6 +71,7 @@ const FeaturedProducts = () => {
           </button>
         </a>
       </div>
+      //{" "}
     </div>
   );
 };

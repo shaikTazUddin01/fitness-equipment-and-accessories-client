@@ -9,17 +9,21 @@ import Loading from "./component/shared/Loading/Loading";
 function App() {
   const [welcomeLoading, setWelcomeLoading] = useState(true);
   const location = useLocation();
-  // console.log(location.pathname);
+  
+
   useEffect(() => {
     const time = setTimeout(() => {
       setWelcomeLoading(false);
+      localStorage.setItem("welcomeLoading","true")
     }, 1500);
 
     return () => clearTimeout(time);
   }, [welcomeLoading]);
 
+const isAlreadtwelcomeLoading=localStorage.getItem("welcomeLoading")
+
   // console.log(welcomeLoading);
-  if (welcomeLoading && location?.pathname == "/") {
+  if (isAlreadtwelcomeLoading !="true" && welcomeLoading && location?.pathname == "/") {
     return (
     <div className="min-h-screen flex justify-center items-center bg-primaryColor">
        <Loading></Loading>

@@ -1,4 +1,3 @@
-import { useLocation } from "react-router-dom";
 import { useAppSelector } from "../../redux/hooks/hooks";
 import { useGetProductsQuery } from "../../redux/features/products/products.api";
 import Spring from "../../component/shared/Loading/Spring";
@@ -9,9 +8,7 @@ import { TProduct } from "../../Type";
 
 
 const Products = () => {
-  const location = useLocation();
-  const categoryFromState = location?.state?.category;
-  // console.log(categoryFromState);
+  
   // get sort value
   const sortProductByPrice = useAppSelector((state) => state?.sortProduct?.sort);
   // get search value
@@ -23,10 +20,12 @@ const Products = () => {
     (state) => state.categoryFilter?.categoris
   );
 
+  console.log(selectedCategory);
+
   const { data, isLoading } = useGetProductsQuery({
     sortProductByPrice,
     searchProduct,
-    selectedCategory :selectedCategory?.length ? selectedCategory : [categoryFromState]
+    selectedCategory :selectedCategory?.length ? selectedCategory:"" 
   });
   const products = data?.data;
   // console.log(products);
@@ -41,7 +40,7 @@ const Products = () => {
     <div className="min-h-screen pb-20 pt-10 flex flex-col-reverse md:flex-row gap-5 px-5 xl:px-0 max-w-7xl mx-auto">
       {/* filter category left side bar */}
       <div className="md:w-[25%] rounded-lg">
-        <SidebarFilter autoselected={categoryFromState}></SidebarFilter>
+        <SidebarFilter ></SidebarFilter>
       </div>
       {/* product and search side bar */}
       <div className="md:w-[75%]">

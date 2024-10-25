@@ -52,7 +52,9 @@ if (role === "Admin") {
     >
       <div className="demo-logo-vertical ">
         <div className="flex justify-center items-center mt-4">
+          <a href="/">
           <img src={logo} alt="" className="w-[80%]" />
+          </a>
         </div>
       </div>
       <Menu

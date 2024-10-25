@@ -6,6 +6,7 @@ export type TProduct = {
   price: number;
   detail: string;
   rating: number;
+  isFeature:"True"|"False";
   category: string;
   stockQuentity: number;
 };

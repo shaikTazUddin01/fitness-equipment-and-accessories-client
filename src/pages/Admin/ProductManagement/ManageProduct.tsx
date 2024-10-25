@@ -15,11 +15,11 @@ import UpdateProduct from "./updateProduct/UpdateProduct";
 interface DataType {
   key: React.Key;
   name: string;
-  //   _id: string;
   images: string;
   price: number;
   category: string;
   stockQuentity: number;
+  isFeature: string;
 }
 
 const ManageProduct = () => {
@@ -27,6 +27,7 @@ const ManageProduct = () => {
   const [deleteProductItem] = useDeleteProductMutation();
 
   const products: TProduct[] = Pdata?.data;
+  // console.log(products);
 
   if (isLoading) {
     return <DashboardSpring></DashboardSpring>;
@@ -74,24 +75,6 @@ const ManageProduct = () => {
     {
       title: "Name",
       dataIndex: "name",
-      // filters: [
-      //   {
-      //     text: "Joe",
-      //     value: "Joe",
-      //   },
-      //   {
-      //     text: "Category 1",
-      //     value: "Category 1",
-      //   },
-      //   {
-      //     text: "Category 2",
-      //     value: "Category 2",
-      //   },
-      // ],
-      // filterMode: "tree",
-      // filterSearch: true,
-      // onFilter: (value, record) => record.name.includes(value as string),
-      // width: "30%",
     },
     {
       title: " Price ",
@@ -101,6 +84,10 @@ const ManageProduct = () => {
     {
       title: "Category",
       dataIndex: "category",
+    },
+    {
+      title: "IsFeature",
+      dataIndex: "isFeature",
     },
     {
       title: "Stock Quentity",
@@ -134,11 +121,12 @@ const ManageProduct = () => {
   ];
 
   const tableData: DataType[] = products?.map(
-    ({ _id, images, name, price, category, stockQuentity }) => ({
+    ({ _id, images, name, price, category, stockQuentity, isFeature }) => ({
       key: _id,
       images: images,
       name: name,
       price: price,
+      isFeature: isFeature,
       stockQuentity: stockQuentity,
       category: category,
     })

@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useGetCategoryQuery } from "../../redux/features/category/category.api";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
+import { useAppDispatch } from "../../redux/hooks/hooks";
 import { categoryFilter } from "../../redux/features/products/categoryFilter.slice";
 import { sortProduct } from "../../redux/features/products/productSort.slice";
 import { searchProduct } from "../../redux/features/products/searchProduct.slice";
@@ -10,29 +10,29 @@ import { toast } from "sonner";
 import Spring from "../shared/Loading/Spring";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const SidebarFilter = ({autoselected}:{autoselected:string}) => {
-  console.log("object-->",autoselected);
+const SidebarFilter = () => {
+  
   const { data, isLoading } = useGetCategoryQuery(undefined);
   const { register, handleSubmit, setValue, getValues, reset } = useForm();
   const dispatch = useAppDispatch();
   //get selected category
-  const selectedCategory = useAppSelector(
-    (state) => state.categoryFilter.categoris
-  );
+  
 
   if (isLoading) {
     return <Spring />;
   }
 
   const filterByCategory = (data: any) => {
-    dispatch(categoryFilter({ categoris: data }));
+
+  dispatch(categoryFilter({ categoris: data }));
   };
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
     setValue(name, checked);
-    console.log(name,checked);
+    // console.log(name,checked);
     const currentValues = getValues();
+    // console.log(currentValues);
     filterByCategory(currentValues);
     // console.log(currentValues)
   };
@@ -78,7 +78,7 @@ const SidebarFilter = ({autoselected}:{autoselected:string}) => {
                     type="checkbox"
                     className="checkbox"
                     {...register(`${category?.name}`)}
-                    checked={selectedCategory!.includes(category?.name)}
+                    // checked={selectedCategory!.includes(category?.name)}
                     onChange={handleCheckboxChange}
                   />
                   <label className="ml-2">{category?.name}</label>

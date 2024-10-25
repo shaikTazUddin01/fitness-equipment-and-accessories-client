@@ -17,7 +17,7 @@ import "./css/HeroArea.css";
 
 const HeroArea = () => {
   return (
-    <div className="pt-16 md:pt-20">
+    <div className="">
       <Swiper
         // navigation={true}
         pagination={true}
