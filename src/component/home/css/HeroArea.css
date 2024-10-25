@@ -2,3 +2,8 @@
 .swiper-button-next {
   color: #deff12;
 }
+
+span.swiper-pagination-bullet {
+ 
+  background: white;
+}

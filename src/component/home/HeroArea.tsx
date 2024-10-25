@@ -1,95 +1,71 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 //images
-import hero1 from "../../assets/hero-4.webp";
-// import hero2 from "../../assets/hero-2.webp";
-import hero2 from "../../assets/hero-3.webp";
+import b1 from "../../assets/b1.png"
+import b2 from "../../assets/b2.png"
+import b3 from "../../assets/b3.png"
+import b4 from "../../assets/b4.png"
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 
 // import required modules
-import { Navigation, Autoplay } from "swiper/modules";
+import { Navigation, Autoplay,Pagination } from "swiper/modules";
 
 import "./css/HeroArea.css";
 
 const HeroArea = () => {
   return (
-    <div>
+    <div className="pt-16 md:pt-20">
       <Swiper
-        navigation={true}
+        // navigation={true}
+        pagination={true}
         loop={true}
         autoplay={{
           delay: 3500,
           disableOnInteraction: false,
         }}
-        modules={[Navigation, Autoplay]}
+        modules={[Navigation, Autoplay,Pagination]}
         className="mySwiper"
       >
         <SwiperSlide>
           <div
             style={{
-              backgroundImage: `url(${hero2})`,
+              backgroundImage: `url(${b1})`,
             }}
-            className="bg-cover bg-center h-[500px] md:h-[630px] text-center md:text-left"
+            className="bg-cover object-cover bg-center h-[350px] md:h-[400px] w-full text-center md:text-left"
           >
-            <div className="bg-[#0000005f]  h-[500px] md:h-[630px]">
-
-            <div className="flex items-center h-full  pt-[20px] max-w-7xl mx-auto">
-              <div className=" text-white md:px-10  space-y-5 text-center lg:text-left w-[100%] lg:w-[70%]">
-                <h1 className="text-3xl md:text-6xl font-extrabold ">
-                  Try To Change
-                </h1>
-                <p className="text-2xl">
-                Premium Equipment & Accessories for Every Athlete
-                </p>
-                
-                <div className="flex gap-2 justify-center lg:justify-start">
-                  <a href="/products">
-                    <button className="md:px-7 md:text-[15px] btn btn-warning">Shop Now</button>
-                  </a>
-                  <a href="/about">
-                    <button className="md:px-7 md:text-[15px] btn btn-neutral">Learn More</button>
-                  </a>
-                </div>
-              </div>
-              
-            </div>
-            </div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div
             style={{
-              backgroundImage: `url(${hero1})`,
+              backgroundImage: `url(${b2})`,
             }}
-            className="bg-cover bg-center h-[500px] md:h-[630px] text-center md:text-left"
+            className="bg-cover object-cover bg-center h-[350px] md:h-[400px] text-center md:text-left"
           >
-           <div className="bg-[#00000072]  h-[500px] md:h-[630px]">
-           <div className="flex items-center h-full pt-[20px] max-w-7xl mx-auto">
-              <div className=" text-white md:px-10  space-y-5 text-center lg:text-left w-[100%] lg:w-[70%]">
-                <h1 className="text-3xl md:text-6xl font-extrabold ">
-                Breaking Your Limits
-                </h1>
-                <p className="text-2xl">
-                Get Your All Fitness Equipment Needed From One Place
-                </p>
-                
-                <div className="flex gap-2 justify-center lg:justify-start">
-                  <a href="/products">
-                    <button className="md:px-7 md:text-[15px] btn btn-warning">Shop Now</button>
-                  </a>
-                  <a href="/about">
-                    <button className="md:px-7 md:text-[15px] btn btn-neutral">Learn More</button>
-                  </a>
-                </div>
-              </div>
-              
-            </div>
-           </div>
           </div>
         </SwiperSlide>
+        <SwiperSlide>
+          <div
+            style={{
+              backgroundImage: `url(${b3})`,
+            }}
+            className="bg-cover object-cover bg-center h-[350px] md:h-[400px] text-center md:text-left"
+          >
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div
+            style={{
+              backgroundImage: `url(${b4})`,
+            }}
+            className="bg-cover object-cover bg-center h-[350px] md:h-[400px] text-center md:text-left"
+          >
+          </div>
+        </SwiperSlide>
+        
       </Swiper>
     </div>
   );

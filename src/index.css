@@ -70,11 +70,7 @@ span.ant-layout-sider-zero-width-trigger.ant-layout-sider-zero-width-trigger-lef
   /* left: 10px; */
   /* border-radius: 10px; */
 }
-.scrollbar{
- 
-  overflow-y: scroll;
-  scrollbar-color: rgb(243, 243, 242) rgb(57, 57, 56);
-}
+
 
 /* //handle collapse containar */
 

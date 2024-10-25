@@ -1,7 +1,7 @@
 import { FaSearch } from "react-icons/fa";
 import logo from "../../../assets/logo.png";
 import { GrCart } from "react-icons/gr";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks/hooks";
 import { userLogout } from "../../../redux/features/auth/User/userAuthSlice";
 import Swal from "sweetalert2";
@@ -12,10 +12,10 @@ import { AiOutlineMenuFold } from "react-icons/ai";
 import { MdClose } from "react-icons/md";
 
 const Navbar = () => {
-  const location = useLocation();
+  // const location = useLocation();
   const [openCollapse, SetOpenCollapse] = useState(false);
 
-  const currentPath = location.pathname;
+  // const currentPath = location.pathname;
   //handle redux store
   const { user, token } = useAppSelector((state) => state.userLoginInfo);
   const dispatch = useAppDispatch();
@@ -65,9 +65,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className={`text-white bg-[#161616b7]  ${
-          currentPath == "/" ? "absolute" : "relative"
-        }  z-20 shadow-xl  w-full `}>
+    <div className={`text-white bg-[#161616fd] fixed z-20 shadow-xl  w-full h-[20]`}>
       <div
         className={`navbar max-w-7xl mx-auto`}
       >
