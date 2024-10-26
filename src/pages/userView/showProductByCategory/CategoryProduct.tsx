@@ -13,10 +13,14 @@ const CategoryProduct = () => {
   const category = decodeURIComponent(pathname.split("/").pop() as string);
   const priceRange=useAppSelector((state)=>state.priceRange)
   const filterPrice=priceRange?.priceRange
-
+// get search value
+const searchProduct = useAppSelector(
+  (state) => state?.searchProduct?.searchItem
+);
   const { data: catProducts } = useGetProductsQuery({
     selectedCategory: category,
-    priceRange:filterPrice
+    priceRange:filterPrice,
+    searchProduct
   });
 
   const products = catProducts?.data;

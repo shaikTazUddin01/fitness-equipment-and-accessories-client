@@ -152,6 +152,13 @@ const Navbar = () => {
                   openCollapse ? "open " : ""
                 } bg-[#0b0e10da] border-2 border-secondaryColor absolute top-[75px] rounded end-2 text-center flex flex-col text-white p-5 z-20  min-w-36`}
               >
+                <div className="text-[15px]">
+                  <ul>
+                    <a href="/user/dashboard">
+                    <li className="hover:bg-slate-600 rounded-md">Dashboard</li>
+                    </a>
+                  </ul>
+                </div>
                 <button
                   className="btn btn-warning btn-sm mt-2"
                   onClick={() => handleLogOut()}

@@ -18,7 +18,7 @@ import { Autoplay } from "swiper/modules";
 const TeamInTo = () => {
   return (
     <div className="-mt-5 text-center px-5 xl:px-0">
-      <div className="text-secondaryColor">
+      <div className="">
         <SectionTitle heading="Introduce" subHeading="Our Team"></SectionTitle>
       </div>
       <div className="mt-5">

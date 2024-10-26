@@ -5,6 +5,7 @@ import { useGetSingleProductsQuery } from "../../redux/features/products/product
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import Spring from "../../component/shared/Loading/Spring";
 import { productCart } from "../../redux/features/myCart/myCart.slice";
+import { Rate } from "antd";
 
 
 const ProductDetails = () => {
@@ -51,27 +52,35 @@ const ProductDetails = () => {
   };
   return (
     <div>
-      <div className=" hero bg-base-200 min-h-screen ">
-        <div className="flex  flex-col gap-10 lg:flex-row px-5 md:px-20 my-16 xl:my-0 items-center ">
+      <div className=" max-w-7xl mx-auto min-h-screen py-10">
+        <div className="flex  flex-col gap-10 lg:flex-row px-5 md:px-20 my-16 xl:my-0 items-center bg-white  py-10">
           <div className="w-full lg:w-[40%] md:bg-white lg:bg-none md:shadow-2xl flex justify-center rounded-xl">
             <img src={product?.images} className="max-w-sm rounded-lg w-full" />
           </div>
           <div className=" lg:w-[60%]">
-            <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold">
+            <h1 className="text-2xl md:text-3xl lg:text-3xl font-bold">
               {product?.name}
             </h1>
-            <h1 className="text-lg ">category : {product?.category}</h1>
+            <h1 className="text-lg text-[#474747]">{product?.category}</h1>
             <p className="py-6 text-justify">{product?.detail}</p>
-            <p className=" text-xl">
+            <p className=" ">
+              {" "}
+              <span className="font-bold">Brand :</span> No Brand
+            </p>
+            <p className=" ">
               {" "}
               <span className="font-bold">Price :</span> ${product?.price}
             </p>
-            <p className="pb-2 text-xl">
+            <span className="flex items-center gap-2">
+          <Rate disabled allowHalf defaultValue={4} className="custom-rate" />
+          <p className="text-sm">(65)</p>
+        </span>
+            <p className="pb-2 ">
               <span className="font-bold">StockQuentity :</span>{" "}
               {product?.stockQuentity} piece
             </p>
             <button
-              className="btn btn-neutral"
+              className="btn bg-textSecondary text-white btn-sm"
               onClick={() => handleAddToCart()}
             >
               Add To Cart

@@ -4,7 +4,7 @@ import SectionTitle from "../shared/sectionTitle/SectionTitle";
 const CompanyOverView = () => {
     return (
         <>
-        <div className='text-secondaryColor text-center  md:mt-10'>
+        <div className=' text-center  md:mt-10'>
         <SectionTitle heading='OverView' subHeading='Our Compaby'></SectionTitle>
       </div>
       <div>
@@ -13,7 +13,7 @@ const CompanyOverView = () => {
                 <img src="https://i.ibb.co/pfzH357/Strength-Training-Equipment.webp" alt="img" className='rounded-xl '/>
             </div>
             <div className="text-justify">
-                <div className='space-y-5 mt-5 md:mt-0 text-white'>
+                <div className='space-y-5 mt-5 md:mt-0 '>
                     <h1 className='text-2xl font-medium'> Fitness Equipment and Accessories Empowering Your Fitness Journey .</h1>
                     <ul className='space-y-5'>
                         <li>

@@ -21,11 +21,11 @@ const CheckOut = () => {
   } = CheckOutProduct as TProduct;
 
   return (
-    <div className="min-h-screen py-20 flex gap-10 max-w-7xl mx-auto">
+    <div className="min-h-[80vh] flex gap-10 max-w-7xl mx-auto justify-center items-center ">
       {/* order details section */}
-      <div className="flex bg-slate-50 items-center w-[70%] h-[350px] px-10 gap-8 rounded-xl">
+      <div className="flex bg-white items-center w-[70%] h-[350px] px-10 gap-8 ">
         <div>
-          <img src={images} alt="" className="w-[350px] shadow-lg" />
+          <img src={images} alt="" className="w-[350px]" />
         </div>
         <div className="w-full pr-10 ">
           <h1 className="text-2xl">Product Name : {name}</h1>
@@ -47,7 +47,7 @@ const CheckOut = () => {
       </div>
 
       {/* order summery section */}
-      <div className="bg-slate-50 w-[30%] rounded-xl p-10 h-[350px] ">
+      <div className="bg-white w-[30%] rounded-xl p-10 h-[350px] ">
         <h1 className="text-xl font-semibold pb-2">Order Summary</h1>
         <div className="bg-primaryColor w-full h-[2px]"></div>
         <div className="flex justify-between pt-2 text-[16px]">

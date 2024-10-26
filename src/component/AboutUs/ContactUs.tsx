@@ -3,13 +3,13 @@ import SectionTitle from "../shared/sectionTitle/SectionTitle";
 const ContactUs = () => {
   return (
     <div className="mt-16 mb-20 px-5 xl:px-0">
-      <div className="text-secondaryColor text-center mb-5">
+      <div className=" text-center mb-5">
         <SectionTitle
           heading="Contact"
           subHeading=" Out Anytime"
         ></SectionTitle>
       </div>
-      <div className="flex flex-col md:flex-row md:gap-10  items-center text-white">
+      <div className="flex flex-col md:flex-row md:gap-10  items-center ">
         <div className="w-full md:w-2/4 text-center">
           <p className="text-xl md:text-2xl font-semibold mb-3">
             Office Address :<br />

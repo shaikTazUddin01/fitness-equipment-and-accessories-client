@@ -11,12 +11,12 @@ const Cart = () => {
  
   console.log(cartProduct.length);
   return (
-    <div className="min-h-screen px-3 xl:px-0 pb-20 max-w-7xl mx-auto" >
+    <div className="min-h-screen px-3 xl:px-0 pb-20 max-w-7xl mx-auto flex justify-center items-center" >
       {cartProduct?.length > 0 ? (
-        <div className="overflow-x-auto mt-16">
-          <table className="table text-white  text-center">
+        <div className="overflow-x-auto bg-white rounded-xl w-full p-10">
+          <table className="table   text-center">
             {/* head */}
-            <thead className="text-white">
+            <thead className="">
               <tr className="font-bold text-[16px]">
                 <th>Image</th>
                 <th>Name</th>

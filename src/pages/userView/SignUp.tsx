@@ -24,6 +24,7 @@ const SignUp = () => {
 
   // console.log(login);
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    console.log(data);
     const toastId = toast.loading("loading..");
     try {
       const res = await userSignUp(data);

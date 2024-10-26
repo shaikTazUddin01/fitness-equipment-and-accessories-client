@@ -81,7 +81,7 @@ const PlaceOrder = ({ CheckOutProduct }: { CheckOutProduct: TProduct }) => {
   return (
     <div className="mt-6">
       <button
-        className="btn btn-success w-full"
+        className="btn bg-textSecondary text-white w-full btn-sm hover:bg-[#e76903]"
         onClick={() =>
           (
             document.getElementById("place_order_btn") as HTMLDialogElement
@@ -125,7 +125,7 @@ const PlaceOrder = ({ CheckOutProduct }: { CheckOutProduct: TProduct }) => {
               defaultFieldValue={address}
             ></THInput>
             <div className="flex mt-4">
-              <button className="btn btn-success w-full">Order Now</button>
+              <button className="btn btn-sm text-white bg-textSecondary hover:bg-[#e76903] w-full ">Order Now</button>
             </div>
             {/* </form> */}
           </THForm>

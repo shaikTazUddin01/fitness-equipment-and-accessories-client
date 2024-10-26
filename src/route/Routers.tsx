@@ -19,6 +19,8 @@ import ErrorPage from "../pages/ErrorPage";
 import SubAdminProtectedRoute from "../component/layout/SubAdminProtectedRoute";
 import { subadminPaths } from "./subAdminRoutes";
 import CategoryProduct from "../pages/userView/showProductByCategory/CategoryProduct";
+import UserDashboard from "../component/layout/UserDashBoardLayout";
+import { UserPath } from "./userRoutes";
 
 const Routers = createBrowserRouter([
   {
@@ -37,9 +39,10 @@ const Routers = createBrowserRouter([
       {
         path: "products",
         element: <Products></Products>,
-      },{
-        path:"products/:category",
-        element:<CategoryProduct/>
+      },
+      {
+        path: "products/:category",
+        element: <CategoryProduct />,
       },
 
       // {
@@ -92,6 +95,12 @@ const Routers = createBrowserRouter([
     ),
     // errorElement:<ErrorPage/>,
     children: routerGenerator(subadminPaths),
+  },
+  {
+    path: "/user",
+    element: <UserDashboard />,
+    // errorElement:<ErrorPage/>,
+    children: routerGenerator(UserPath),
   },
   {
     path: "/admin-login",

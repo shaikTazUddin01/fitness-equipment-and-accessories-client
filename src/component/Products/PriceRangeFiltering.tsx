@@ -1,23 +1,32 @@
 import { Slider } from "antd";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { priceRange } from "../../redux/features/products/priceRange.slice";
+import { useGetProductsQuery } from "../../redux/features/products/products.api";
 // import { useGetProductsQuery } from "../../redux/features/products/products.api";
 
 const PriceRangeFiltering = () => {
-    const [sliderValue, setSliderValue] = useState([0, 5000]);
-    const dispatch=useAppDispatch()
-    // const { data: productData ,isLoading} = useGetProductsQuery({});
 
-  //get max and min product value
-//   const pv = ;
-//   const maxPrice = productData?.data?.reduce((max, product) => {
-//     return product.price > max ? product.price : max;
-//   }, 0);
-//   console.log(pv);
+const dispatch=useAppDispatch()
+const { data: productData ,isLoading} = useGetProductsQuery({});
+const [maxPrice, setMaxPrice] = useState(5000);
+    const [sliderValue, setSliderValue] = useState([0,maxPrice]);
 
-// console.log(maxPrice);
+    useEffect(() => {
+      if (productData) {
+        const calculatedMaxPrice = productData?.data?.reduce((max:number, product:any) => {
+          // console.log(max);
+          return product.price > max ? product.price : max;
+        }, 0);
+        setMaxPrice(calculatedMaxPrice);
+        setSliderValue([0, calculatedMaxPrice]); // Update slider range based on maxPrice
+      }
+    }, [productData]);
 
+
+    if (isLoading) {
+      return <p>loading...</p>
+    }
 
   const onSliderChange = (value: any) => {
     setSliderValue(value);
@@ -49,7 +58,7 @@ const PriceRangeFiltering = () => {
             step={10}
             value={sliderValue}
             min={0}
-            max={5000}
+            max={maxPrice}
             onChange={onSliderChange}
           />
           <div className="flex justify-around">
@@ -60,7 +69,7 @@ const PriceRangeFiltering = () => {
             />
             <input
               className="border border-textSecondary w-20 text-center rounded h-8"
-              value={sliderValue[1]}
+              value={maxPrice}
               onChange={(e) => handleEndValue(e.target.value)}
             />
           </div>

@@ -57,11 +57,7 @@ const CartTableRow = ({ mycart }: { mycart: TProduct }) => {
       if (result.isConfirmed) {
         dispatch(removedItem(mycart));
 
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success",
-        });
+       toast.warning("item removed success",{duration:1000})
       }
     });
   };
@@ -75,7 +71,7 @@ const CartTableRow = ({ mycart }: { mycart: TProduct }) => {
         </div>
       </td>
       <td>
-        <div className="font-bold">{name}</div>
+        <div className="">{name}</div>
       </td>
       <td>$ {price}</td>
       {/* <td>{category}</td> */}
@@ -90,18 +86,18 @@ const CartTableRow = ({ mycart }: { mycart: TProduct }) => {
       <td>
         <div className="flex flex-col md:flex-row gap-2 justify-center items-center">
           <button
-            className="btn btn-error btn-md md:btn-xs"
+            className="btn btn-error btn-md md:btn-xs text-white"
             onClick={handleRemoveProduct}
           >
             Remove product
           </button>
 
           {productStock >= myProduct!.stockQuentity ? (
-            <button className="btn btn-warning  btn-md md:btn-xs">
+            <button className="btn bg-textSecondary hover:bg-[#e76903] text-white  btn-md md:btn-xs">
               <a href={`/cashout/${_id}`}>Order Now</a>
             </button>
           ) : (
-            <button className="btn   btn-md md:btn-xs disabled">
+            <button className="btn  btn-md md:btn-xs disabled cursor-not-allowed">
               Stock Out
             </button>
           )}
