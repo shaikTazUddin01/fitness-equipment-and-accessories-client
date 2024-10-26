@@ -67,10 +67,10 @@ const CheckOut = () => {
           <h1>Total Price </h1>
           <h1>${price * quentity + 2}</h1>
         </div>
-        <div className="flex justify-between pt-2 text-[16px] text-[#e76903]">
+        {/* <div className="flex justify-between pt-2 text-[16px] text-[#e76903]">
           <h1>Payment</h1>
           <h1>Cash On Delivary</h1>
-        </div>
+        </div> */}
 
         <div>
           <PlaceOrder CheckOutProduct={CheckOutProduct as TProduct}></PlaceOrder>

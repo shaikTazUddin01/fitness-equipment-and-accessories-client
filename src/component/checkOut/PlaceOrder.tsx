@@ -11,9 +11,9 @@ import { useCreateOrderMutation } from "../../redux/features/order/orderapi";
 
 const PlaceOrder = ({ CheckOutProduct }: { CheckOutProduct: TProduct }) => {
   const {
-    name: pName,
+    // name: pName,
     price,
-    category,
+    // category,
     stockQuentity: quentity,
   } = CheckOutProduct;
   //get current user info
@@ -34,20 +34,19 @@ const PlaceOrder = ({ CheckOutProduct }: { CheckOutProduct: TProduct }) => {
     return <Spring></Spring>;
   }
 
-  const { _id,name, email, phoneNumber, address } = userinfo?.data;
+  const { _id, name, email, phoneNumber, address } = userinfo?.data;
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const toastId = toast.loading("loading...");
     // required information
     try {
       const orderInFo = {
-        userId:_id,
+        userId: _id,
         customerName: data.name,
         customerEmail: data.email,
         customerNumber: data.number,
         customerAddress: data.address,
-        productName: pName,
-        productCategory: category,
+        productId: CheckOutProduct?._id,
         productPrice: price,
         totalItem: quentity,
         delivaryFee: 2,
@@ -56,20 +55,22 @@ const PlaceOrder = ({ CheckOutProduct }: { CheckOutProduct: TProduct }) => {
       };
       // console.log(orderInFo);
       const res = await orderProduct(orderInFo);
+      // console.log(res?.data?.data?.payment_url);
+      window.location.replace(res?.data?.data?.payment_url);
       console.log(res);
-      if (res.data.data) {
-        toast.success("successFully you place this order", {
-          id: toastId,
-        });
-        const dialog = document.getElementById(
-          "place_order_btn"
-        ) as HTMLDialogElement;
-        dialog.close();
-      } else
-        toast.error("something is wrong please try again", {
-          id: toastId,
-          duration: 1500,
-        });
+      // if (res.data.data) {
+      //   toast.success("successFully you place this order", {
+      //     id: toastId,
+      //   });
+      //   const dialog = document.getElementById(
+      //     "place_order_btn"
+      //   ) as HTMLDialogElement;
+      //   dialog.close();
+      // } else
+      //   toast.error("something is wrong please try again", {
+      //     id: toastId,
+      //     duration: 1500,
+      //   });
       //  const totalPayment= ,
     } catch (error) {
       toast.error("something is wrong please try again", {
@@ -125,7 +126,9 @@ const PlaceOrder = ({ CheckOutProduct }: { CheckOutProduct: TProduct }) => {
               defaultFieldValue={address}
             ></THInput>
             <div className="flex mt-4">
-              <button className="btn btn-sm text-white bg-textSecondary hover:bg-[#e76903] w-full ">Order Now</button>
+              <button className="btn btn-sm text-white bg-textSecondary hover:bg-[#e76903] w-full ">
+                Order Now
+              </button>
             </div>
             {/* </form> */}
           </THForm>
