@@ -73,12 +73,14 @@ const [maxPrice, setMaxPrice] = useState(5000);
               onChange={(e) => handleEndValue(e.target.value)}
             />
           </div>
+          <div className="pt-2">
           <button
-            className="w-full bg-textSecondary hover:bg-[#e17516] text-white font-medium rounded p-1"
+            className="w-full bg-textSecondary hover:bg-[#e17516]  font-medium rounded p-1"
             onClick={handleReset}
           >
             Reset
           </button>
+          </div>
         </div>
       </div>
     </div>

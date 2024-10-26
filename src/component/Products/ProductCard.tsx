@@ -57,7 +57,7 @@ const ProductCard = ({ product }: { product: TProduct }) => {
           <h2 className="hover:text-textSecondary hover:underline">{name}</h2>
           {/* <h2 className="-mt-3 ">{category}</h2> */}
           <p className="text-textSecondary font-semibold">
-            ৳{price}{" "}
+            ${price}{" "}
             <span className="text-gray-400 line-through font-normal">
               ${price + 15}
             </span>
@@ -68,7 +68,7 @@ const ProductCard = ({ product }: { product: TProduct }) => {
           <p className="text-sm">(65)</p>
         </span>
         <Button
-          className="bg-textSecondary text-white"
+          className="bg-textSecondary "
           onClick={() => handleAddToCart()}
         >
           {" "}
