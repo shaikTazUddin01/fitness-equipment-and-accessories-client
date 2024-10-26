@@ -18,6 +18,7 @@ import ProtectedRoute from "../pages/userView/ProtectedRoute";
 import ErrorPage from "../pages/ErrorPage";
 import SubAdminProtectedRoute from "../component/layout/SubAdminProtectedRoute";
 import { subadminPaths } from "./subAdminRoutes";
+import CategoryProduct from "../pages/userView/showProductByCategory/CategoryProduct";
 
 const Routers = createBrowserRouter([
   {
@@ -36,6 +37,9 @@ const Routers = createBrowserRouter([
       {
         path: "products",
         element: <Products></Products>,
+      },{
+        path:"products/:category",
+        element:<CategoryProduct/>
       },
 
       // {

@@ -6,7 +6,8 @@ export default {
       colors: {
         primaryColor: '#081621',
         secondaryColor: "#282727",
-        bgColor:"#F4F4F4"
+        bgColor:"#F4F4F4",
+        textSecondary:"#e57f2c"
       },
     },
   },

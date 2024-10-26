@@ -32,7 +32,7 @@ const ProductsSection = () => {
           subHeading={"Endless choices await you in our collection."}
         ></SectionTitle>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 ">
         {products?.slice(0, 8).map((product: TProduct) => {
           return <ProductCard key={product?._id} product={product}></ProductCard>;
         })}

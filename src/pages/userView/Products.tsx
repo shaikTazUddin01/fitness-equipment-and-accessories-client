@@ -5,29 +5,34 @@ import SidebarFilter from "../../component/Products/SidebarFilter";
 import FIlterProduct from "../../component/Products/FIlterProduct";
 import ProductCard from "../../component/Products/ProductCard";
 import { TProduct } from "../../Type";
-import { useLocation } from "react-router-dom";
+import PriceRangeFiltering from "../../component/Products/PriceRangeFiltering";
+// import { useLocation } from "react-router-dom";
 
 
 const Products = () => {
-  const location=useLocation()
-  console.log(location?.state);
+  // const location=useLocation()
+  // console.log(location?.state);
   // get sort value
   const sortProductByPrice = useAppSelector((state) => state?.sortProduct?.sort);
+  const priceRange=useAppSelector((state)=>state.priceRange)
+  const filterPrice=priceRange?.priceRange
+  
   // get search value
   const searchProduct = useAppSelector(
     (state) => state?.searchProduct?.searchItem
   );
   //get selected category
-  const selectedCategory = useAppSelector(
-    (state) => state.categoryFilter?.categoris
-  );
+  // const selectedCategory = useAppSelector(
+  //   (state) => state.categoryFilter?.categoris
+  // );
 
   // console.log(selectedCategory);
 
   const { data, isLoading } = useGetProductsQuery({
     sortProductByPrice,
     searchProduct,
-    selectedCategory :selectedCategory?.length ? selectedCategory:"" 
+    priceRange:filterPrice
+    // selectedCategory :selectedCategory?.length ? selectedCategory:"" 
   });
   const products = data?.data;
   // console.log(products);
@@ -42,6 +47,7 @@ const Products = () => {
     <div className="min-h-screen pb-20 pt-10 flex flex-col-reverse md:flex-row gap-5 px-5 xl:px-0 max-w-7xl mx-auto">
       {/* filter category left side bar */}
       <div className="md:w-[25%] rounded-lg">
+        <PriceRangeFiltering/>
         <SidebarFilter ></SidebarFilter>
       </div>
       {/* product and search side bar */}

@@ -1,12 +1,12 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 type TinitaialState = {
-  categoris?: string[] | null;
+  categoris: string | null | undefined;
  
 };
 
 export const initialState :TinitaialState = {
-categoris:[],
+categoris:"",
 
 };
 
@@ -14,12 +14,10 @@ export const categotyfilterSlice = createSlice({
   name: "categoryFilter",
   initialState,
   reducers: {
-    categoryFilter: (state, action:PayloadAction<{ categoris:  Record<string, any> }>) => {
+    categoryFilter: (state, action) => {
       // const isTrue=action.payload.categoryFilter.find((item)=>)
-      const category=action.payload.categoris;
-      const isTrue=Object.keys(category).filter(key=>category[key])
-      // console.log(isTrue);
-      state.categoris=(isTrue)
+      state.categoris=action.payload;
+     
    
     },
   },

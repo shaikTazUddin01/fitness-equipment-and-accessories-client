@@ -27,11 +27,12 @@ const CategorySection = () => {
         ></SectionTitle>
       </div>
       <div className="">
-        <div className="grid grid-cols-8">
+        <div className="grid grid-cols-2 md:gird-cols-5 lg:grid-cols-7 gap-3">
          
-            {categories?.map((category: TCategory) => (
+            {categories?.slice(0,7)?.map((category: TCategory) => (
+              <a href={`/products/${category?.name}`}>
             
-                <div className="border-r-[1px] shadow border-[#d8d8d8] hover:border-[#b0b0b0] hover:cursor-pointer bg-white text-black transform hover:shadow-lg transition-all duration-200 ease-in-out" onClick={()=>handleNavigate(category?.name)}>
+                <div className=" shadow border-[#d8d8d8] hover:border-[#b0b0b0] hover:cursor-pointer bg-white text-black transform hover:shadow-xl transition-all duration-200 ease-in-out rounded-md p-2" onClick={()=>handleNavigate(category?.name)}>
                   <img
                     src={category?.image}
                     alt=""
@@ -39,7 +40,7 @@ const CategorySection = () => {
                   />
                   <h1 className=" py-3 text-sm px-2">{category?.name}</h1>
                 </div>
-              
+                </a>
             ))}
          
         </div>

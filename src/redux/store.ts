@@ -7,6 +7,7 @@ import categoryfilterReducer from "./features/products/categoryFilter.slice";
 import productCardReducer from "./features/myCart/myCart.slice";
 import resetSliceReducer from "./features/products/resetFilter.slice"
 import adminInfoReducer from "./features/auth/AdminAuthSlice"
+import priceRangeReducer from "./features/products/priceRange.slice"
 import userInFoReducer from "./features/auth/User/userAuthSlice"
 import {
   persistStore,
@@ -44,6 +45,7 @@ export const store = configureStore({
     productCard: persistedmyCart,
     searchProduct: searchProductReducer,
     sortProduct: productSortReducer,
+    priceRange:priceRangeReducer,
     categoryFilter: categoryfilterReducer,
     resetFilter: resetSliceReducer,
     adminLoginInfo:persistedmyadmin,

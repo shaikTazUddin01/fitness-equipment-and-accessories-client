@@ -1,8 +1,4 @@
-// Import Swiper styles
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Autoplay } from "swiper/modules";
+
 
 import SectionTitle from "../shared/sectionTitle/SectionTitle";
 
@@ -28,44 +24,22 @@ const FeaturedProducts = () => {
         ></SectionTitle>
       </div>
       <div>
-        <Swiper
-          slidesPerView={1}
-          spaceBetween={1}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          loop={true}
-          breakpoints={{
-            576: {
-              slidesPerView: 2,
-              spaceBetween: 10,
-            },
-            768: {
-              slidesPerView: 3,
-              spaceBetween: 10,
-            },
-            1024: {
-              slidesPerView: 4,
-              spaceBetween: 10,
-            },
-          }}
-          modules={[Autoplay]}
-          className="mySwiper"
-        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 ">
+
           {products?.map((product: TProduct) => (
-            <SwiperSlide key={product?._id}>
-              <div>
+            
+            <div>
                 <ProductCard key={product?._id} product={product}></ProductCard>
                 
               </div>
-            </SwiperSlide>
+            
           ))}
-        </Swiper>
+          </div>
+        
       </div>
       <div className="flex justify-end mt-5">
         <a href="/products">
-          <p className="text-white flex items-center gap-2">
+          <p className="flex items-center gap-2">
             Explore more
             <FaArrowRight />
           </p>

@@ -10,7 +10,7 @@ const SectionTitle = ({
   return (
     <div className="py-5 ">
       {heading ? (
-        <h3 className="text-2xl font-semibold">{heading}</h3>
+        <h3 className="text-3xl font-semibold">{heading}</h3>
       ) : (
         ""
       )}
