@@ -16,8 +16,8 @@ import LoginUser from "../pages/userView/LoginUser";
 import SignUp from "../pages/userView/SignUp";
 import ProtectedRoute from "../pages/userView/ProtectedRoute";
 import ErrorPage from "../pages/ErrorPage";
-import SubAdminProtectedRoute from "../component/layout/SubAdminProtectedRoute";
-import { subadminPaths } from "./subAdminRoutes";
+// import SubAdminProtectedRoute from "../component/layout/SubAdminProtectedRoute";
+// import { subadminPaths } from "./subAdminRoutes";
 import CategoryProduct from "../pages/userView/showProductByCategory/CategoryProduct";
 import UserDashboard from "../component/layout/UserDashBoardLayout";
 import { UserPath } from "./userRoutes";
@@ -86,16 +86,16 @@ const Routers = createBrowserRouter([
     // errorElement:<ErrorPage/>,
     children: routerGenerator(adminPaths),
   },
-  {
-    path: "/admin",
-    element: (
-      <SubAdminProtectedRoute>
-        <DashboardLayout></DashboardLayout>
-      </SubAdminProtectedRoute>
-    ),
-    // errorElement:<ErrorPage/>,
-    children: routerGenerator(subadminPaths),
-  },
+  // {
+  //   path: "/subadmin",
+  //   element: (
+  //     <SubAdminProtectedRoute>
+  //       <DashboardLayout></DashboardLayout>
+  //     </SubAdminProtectedRoute>
+  //   ),
+  //   // errorElement:<ErrorPage/>,
+  //   children: routerGenerator(subadminPaths),
+  // },
   {
     path: "/user",
     element: <UserDashboard />,

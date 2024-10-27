@@ -26,7 +26,7 @@ const LoginUser = () => {
 
   const DemoUserInFo = () => {
     setDefaultUserInfo({
-      email: "galib@gmail.com",
+      email: "tihan@gmail.com",
       password: "123456",
     });
   };
@@ -101,17 +101,20 @@ const LoginUser = () => {
         md={{ span: 12 }}
         lg={{ span: 7 }}
         xxl={{ span: 5 }}
-        className="bg-[#ffffff88] rounded-md font-semibold border-primaryColor border-2 "
+        className="bg-[#ffffff88] rounded-md font-semibold "
       >
         <div className="flex justify-center">
-          <Button color="default" size="small" onClick={() => DemoUserInFo()}>
-            Test User
-          </Button>
+         
         </div>
         <THForm onSubmit={onSubmit} defaultValues={defaultUserInfo}>
           <h1 className="text-2xl text-center uppercase font-semibold">
             Login
           </h1>
+          <div className="text-center">
+          <Button color="default" size="small" onClick={() => DemoUserInFo()}>
+           Login with Demo User
+          </Button>
+          </div>
           {/* <Divider className=''></Divider> */}
           <THInput name="email" type="email" label="Email"></THInput>
           <THInput name="password" type="text" label="Password"></THInput>

@@ -2,45 +2,45 @@ import { FaSearch } from "react-icons/fa";
 import logo from "../../../assets/logo.png";
 import { GrCart } from "react-icons/gr";
 // import { useLocation } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../redux/hooks/hooks";
-import { userLogout } from "../../../redux/features/auth/User/userAuthSlice";
-import Swal from "sweetalert2";
-import { toast } from "sonner";
-import { useState } from "react";
+import { useAppSelector } from "../../../redux/hooks/hooks";
+// import { userLogout } from "../../../redux/features/auth/User/userAuthSlice";
+// import Swal from "sweetalert2";
+// import { toast } from "sonner";
+// import { useState } from "react";
 import userImage from "../../../assets/Userimage.png";
 import { AiOutlineMenuFold } from "react-icons/ai";
 import { MdClose } from "react-icons/md";
 
 const Navbar = () => {
   // const location = useLocation();
-  const [openCollapse, SetOpenCollapse] = useState(false);
+  // const [openCollapse, SetOpenCollapse] = useState(false);
 
   // const currentPath = location.pathname;
   //handle redux store
   const { user, token } = useAppSelector((state) => state.userLoginInfo);
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
   //handle logout
-  const handleLogOut = () => {
-    // alert('h1')
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You want to logout",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, logout it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        dispatch(userLogout());
+  // const handleLogOut = () => {
+  //   // alert('h1')
+  //   Swal.fire({
+  //     title: "Are you sure?",
+  //     text: "You want to logout",
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#3085d6",
+  //     cancelButtonColor: "#d33",
+  //     confirmButtonText: "Yes, logout it!",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       dispatch(userLogout());
 
-        toast.success("logout success", {
-          duration: 1000,
-        });
-      }
-    });
-  };
+  //       toast.success("logout success", {
+  //         duration: 1000,
+  //       });
+  //     }
+  //   });
+  // };
 
   //navigation items
   const navItem = (
@@ -141,31 +141,14 @@ const Navbar = () => {
           {/* toogle user */}
           {user && token && (
             <div>
+              <a href="/user/dashboard">
               <img
                 src={userImage}
                 alt=""
                 className="h-10 cursor-pointer"
-                onClick={() => SetOpenCollapse(!openCollapse)}
               />
-              <div
-                className={`collapse-container ${
-                  openCollapse ? "open " : ""
-                } bg-[#0b0e10da] border-2 border-secondaryColor absolute top-[75px] rounded end-2 text-center flex flex-col text-white p-5 z-20  min-w-36`}
-              >
-                <div className="text-[15px]">
-                  <ul>
-                    <a href="/user/dashboard">
-                    <li className="hover:bg-slate-600 rounded-md">Dashboard</li>
-                    </a>
-                  </ul>
-                </div>
-                <button
-                  className="btn btn-warning btn-sm mt-2"
-                  onClick={() => handleLogOut()}
-                >
-                  <a>logout</a>
-                </button>
-              </div>
+              </a>
+              
             </div>
           )}
           {/* ---end--- */}

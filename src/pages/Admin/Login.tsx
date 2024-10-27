@@ -31,6 +31,12 @@ const Login = () => {
       password: "1234567",
     })
   }
+  // const DemoSubAdminInFo=()=>{
+  //   setDefaultAdminInfo({
+  //     email: "rakib@gmail.com",
+  //     password: "123456",
+  //   })
+  // }
 
 
   // console.log(defaultAdminInfo);
@@ -102,8 +108,9 @@ const Login = () => {
           <h1 className="text-2xl text-center uppercase font-semibold">
             Admin Login
           </h1>
-          <div className="flex justify-center" >
-          <Button color="default" size="small" onClick={()=>DemoAdminInFo()}>Test Admin</Button>
+          <div className="flex justify-center gap-2" >
+          <Button color="default" size="small" onClick={()=>DemoAdminInFo()}>Login with Demo Admin</Button>
+          {/* <Button color="default" size="small" onClick={()=>DemoSubAdminInFo()}>Demo SubAdmin</Button> */}
           </div>
           {/* <Divider className=''></Divider> */}
           <THInput name="email" type="email" label="Email"></THInput>

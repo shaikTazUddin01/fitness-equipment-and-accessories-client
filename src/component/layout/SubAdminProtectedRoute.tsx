@@ -8,6 +8,8 @@ const SubAdminProtectedRoute = ({ children }: { children: ReactNode }) => {
   const token = useAppSelector((state) => state.adminLoginInfo.token);
   const location = useLocation();
 
+  // console.log(role);
+
   if (!user && !token && role !== "SubAdmin") {
     return <Navigate to={"/admin-login"} state={location?.pathname}></Navigate>;
   }
