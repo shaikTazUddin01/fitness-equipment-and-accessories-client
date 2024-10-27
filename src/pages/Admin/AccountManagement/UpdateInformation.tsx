@@ -5,7 +5,7 @@ import { FieldValues, SubmitHandler } from "react-hook-form";
 import { Col, Row } from "antd";
 import THSelect from "../../../component/form/THSelect";
 import { genderOPtions } from "../../userView/constant";
-import image from "../../../assets/hero-5.jpg";
+import banner from "../../../assets/hero-5.jpg";
 // import { roleOPtions } from "../../../constant/Options";
 import {
   useGetAdminQuery,
@@ -30,8 +30,8 @@ const AdminProfile = () => {
     return <DashboardSpring></DashboardSpring>;
   }
   // console.log(currentLoggedInAdmin.data);
-  const { _id, name, age, email, gender, phoneNumber, address } =
-    currentLoggedInAdmin?.data[0];
+  const { _id, name, age, email, gender, phoneNumber, address ,image} =
+    currentLoggedInAdmin?.data[0] ||[];
   // console.log(name);
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     console.log(data);
@@ -68,11 +68,15 @@ const AdminProfile = () => {
 
   return (
     <div className="min-h-screen">
-      <img src={image} alt="" className="w-full h-[250px] object-cover" />
+      <img src={banner} alt="" className="w-full h-[250px] object-cover" />
       <div className="flex gap-8 -mt-20 px-10">
         <div className="w-[25%] bg-white p-5 rounded-xl shadow">
           <div className="flex flex-col justify-center items-center">
-            <img src={image} className="size-28 rounded-full" />
+            {
+              image && image !=""?
+              <img src={image} className="size-28 rounded-full" />
+              :<img src={banner} className="size-28 rounded-full" />
+            }
             <h1 className="text-xl">{name}</h1>
             <p>{email}</p>
           </div>
@@ -82,10 +86,6 @@ const AdminProfile = () => {
           <div className="space-y-2">
             <span className="flex items-center gap-1 text-[16px]"><span><HiOutlinePhone/></span>+880{phoneNumber}</span >
             <span className="flex items-center gap-1 text-[16px]"><span><IoLocationOutline/></span>{address}</span>
-           
-           
-
-            
           </div>
         </div>
         {/* right side */}
@@ -94,7 +94,7 @@ const AdminProfile = () => {
           {/*  */}
           <div
             className=" "
-            //   style={{ backgroundImage: `URL(${bgImg})` }}
+            //   style={{ backgroundbanner: `URL(${bgImg})` }}
           >
             <Col className="bg-[#ffffff88] rounded-md  border-primaryColor w-full">
               <THForm onSubmit={onSubmit}>
@@ -113,6 +113,12 @@ const AdminProfile = () => {
                   type="email"
                   label="Email"
                   defaultFieldValue={email}
+                ></THInput>
+                <THInput
+                  name="image"
+                  type="text"
+                  label="image Url"
+                  defaultFieldValue={image?image:""}
                 ></THInput>
 
                 <THInput
