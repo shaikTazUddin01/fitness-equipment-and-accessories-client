@@ -33,7 +33,7 @@ if (role === "Admin") {
     <Sider
       breakpoint="lg"
       collapsedWidth="0"
-      className="hover:overflow-y-auto"
+      className=" overflow-y-auto"
       style={{
         height: "100vh", 
         position: "fixed",

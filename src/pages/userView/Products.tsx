@@ -47,7 +47,10 @@ const Products = () => {
     <div className="min-h-screen pb-20 pt-10 flex flex-col-reverse md:flex-row gap-5 px-5 xl:px-0 max-w-7xl mx-auto">
       {/* filter category left side bar */}
       <div className="md:w-[25%] rounded-lg">
+        <div>
+
         <PriceRangeFiltering/>
+        </div>
         <SidebarFilter ></SidebarFilter>
       </div>
       {/* product and search side bar */}

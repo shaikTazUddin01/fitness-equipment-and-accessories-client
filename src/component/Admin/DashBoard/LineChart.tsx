@@ -52,7 +52,7 @@ const SellLineChart = () => {
   ];
 
   return (
-    <div className="mt-10 bg-white p-5 rounded-md">
+    <div className="mt-5 bg-white p-5 rounded-md">
       <div style={{ width: "100%" }}>
         <p className="text-xl mb-5">Month View Sells</p>
         <div className="flex gap-5">

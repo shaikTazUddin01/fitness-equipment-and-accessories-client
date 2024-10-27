@@ -27,7 +27,7 @@ const CategorySection = () => {
         ></SectionTitle>
       </div>
       <div className="">
-        <div className="grid grid-cols-2 md:gird-cols-5 lg:grid-cols-7 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-7 gap-3">
          
             {categories?.slice(0,7)?.map((category: TCategory) => (
               <a href={`/products/${category?.name}`}>

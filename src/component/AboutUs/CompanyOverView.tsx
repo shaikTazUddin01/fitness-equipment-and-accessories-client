@@ -5,7 +5,7 @@ const CompanyOverView = () => {
     return (
         <>
         <div className=' text-center  md:mt-10'>
-        <SectionTitle heading='OverView' subHeading='Our Compaby'></SectionTitle>
+        <SectionTitle heading='OverView' subHeading='About us'></SectionTitle>
       </div>
       <div>
       <div className='px-5 md:px-10  grid grid-cols-1 lg:px-0 lg:grid-cols-2 gap-5 items-center mt-5 mb-20'>

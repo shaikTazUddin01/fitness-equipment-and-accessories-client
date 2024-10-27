@@ -1,5 +1,5 @@
 import ChangePassword from "../pages/Admin/AccountManagement/ChangePassword";
-import UpdateInformation from "../pages/Admin/AccountManagement/UpdateInformation";
+import AdminProfile from "../pages/Admin/AccountManagement/UpdateInformation";
 import CreateAdmin from "../pages/Admin/AdminManagement/CreateAdmin";
 import ManageAdmin from "../pages/Admin/AdminManagement/ManageAdmin";
 
@@ -15,17 +15,27 @@ import ManageProduct from "../pages/Admin/ProductManagement/ManageProduct";
 import ManageCustomer from "../pages/Admin/UserManagement/ManageCustomer";
 import ManageUser from "../pages/Admin/UserManagement/ManageUser";
 
-
-
-
-
-
 export const adminPaths = [
   {
     name: "Dashboard",
     // index: true,
     path: "dashboard",
     element: <Dashboard></Dashboard>,
+  },
+  {
+    name: "Accound Management",
+    children: [
+      {
+        name: "Admin Profile",
+        path: "admin-profile",
+        element: <AdminProfile/>,
+      },
+      {
+        name: "Change Password",
+        path: "change-passord",
+        element: <ChangePassword></ChangePassword>,
+      },
+    ],
   },
   {
     name: "Product Management",
@@ -108,20 +118,5 @@ export const adminPaths = [
       },
     ],
   },
-  {
-    name: "Accound Management",
-    children: [
-      {
-        name: "Update Information",
-        path: "update-account",
-        element: <UpdateInformation></UpdateInformation>,
-      },
-      {
-        name: "Change Password",
-        path: "change-passord",
-        element: <ChangePassword></ChangePassword>,
-      },
-    
-    ],
-  },
+  
 ];

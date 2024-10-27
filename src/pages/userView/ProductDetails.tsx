@@ -80,7 +80,7 @@ const ProductDetails = () => {
               {product?.stockQuentity} piece
             </p>
             <button
-              className="btn bg-textSecondary text-white btn-sm"
+              className="rounded-md bg-textSecondary hover:bg-[#d66d17] text-white btn-sm"
               onClick={() => handleAddToCart()}
             >
               Add To Cart

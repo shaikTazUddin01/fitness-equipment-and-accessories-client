@@ -16,10 +16,7 @@ const UserDashboard: React.FC = () => {
       duration: 1500,
     });
     dispatch(
-      userLogout({
-        user: null,
-        token: null,
-      })
+      userLogout()
     );
   };
 
