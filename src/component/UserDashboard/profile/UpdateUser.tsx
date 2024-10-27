@@ -6,12 +6,21 @@ import THInput from "../../form/THInput";
 import THSelect from "../../form/THSelect";
 import { genderOPtions } from "../../../pages/userView/constant";
 import { useUpdateUserMutation } from "../../../redux/features/auth/User/userApi";
+import { toast } from "sonner";
 
 const UpdateUserProfile = ({ userInfo }: { userInfo: any }) => {
     const [updateUser]=useUpdateUserMutation()
   const handleSubmit: SubmitHandler<FieldValues> = async(data) => {
+    const toastId= toast.loading("loading...")
     const res=await updateUser({id:userInfo?._id,userData:data})
-    console.log(res);
+    // console.log(res);
+    if (res?.data?.data?.modifiedCount>0) {
+      toast.success("update success",{id:toastId,duration:1000})
+      const modal = document.getElementById(`${userInfo?._id}`) as HTMLDialogElement;
+      if (modal) modal.close();
+    }else{
+      toast.error("update fail",{id:toastId,duration:1500})
+    }
   };
 
   return (
@@ -65,12 +74,19 @@ const UpdateUserProfile = ({ userInfo }: { userInfo: any }) => {
                 defaultFieldValue={userInfo?.address}
                 type="text"
               />
+               <THInput
+                name="image"
+                label="Image Url"
+                defaultFieldValue={userInfo?.image?userInfo?.image : ""}
+                type="text"
+              />
               <THInput
                 name="phoneNumber"
                 label="Number"
                 defaultFieldValue={userInfo?.phoneNumber}
                 type="text"
               />
+             
               <button
         className="bg-textSecondary w-full mt-2 text-[16px] py-[5px] rounded-lg font-semibold"
         type="submit"

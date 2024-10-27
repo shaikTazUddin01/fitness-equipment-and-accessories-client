@@ -1,46 +1,25 @@
 import { FaSearch } from "react-icons/fa";
 import logo from "../../../assets/logo.png";
 import { GrCart } from "react-icons/gr";
-// import { useLocation } from "react-router-dom";
 import { useAppSelector } from "../../../redux/hooks/hooks";
-// import { userLogout } from "../../../redux/features/auth/User/userAuthSlice";
-// import Swal from "sweetalert2";
-// import { toast } from "sonner";
-// import { useState } from "react";
 import userImage from "../../../assets/Userimage.png";
 import { AiOutlineMenuFold } from "react-icons/ai";
 import { MdClose } from "react-icons/md";
+import { useFinduserQuery } from "../../../redux/features/auth/User/userApi";
 
 const Navbar = () => {
-  // const location = useLocation();
-  // const [openCollapse, SetOpenCollapse] = useState(false);
-
-  // const currentPath = location.pathname;
   //handle redux store
   const { user, token } = useAppSelector((state) => state.userLoginInfo);
-  // const dispatch = useAppDispatch();
 
-  //handle logout
-  // const handleLogOut = () => {
-  //   // alert('h1')
-  //   Swal.fire({
-  //     title: "Are you sure?",
-  //     text: "You want to logout",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Yes, logout it!",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       dispatch(userLogout());
+  
+  const userEmail = user?.user;
+  // console.log(user);
+  const { data:currentuser } = useFinduserQuery(userEmail);
 
-  //       toast.success("logout success", {
-  //         duration: 1000,
-  //       });
-  //     }
-  //   });
-  // };
+  const currentUserInFo=currentuser?.data
+
+  console.log(currentUserInFo);
+
 
   //navigation items
   const navItem = (
@@ -65,12 +44,11 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className={`text-white bg-primaryColor fixed z-20 shadow-xl  w-full h-[20]`}>
-      <div
-        className={`navbar max-w-7xl mx-auto`}
-      >
+    <div
+      className={`text-white bg-primaryColor fixed z-20 shadow-xl  w-full h-[20]`}
+    >
+      <div className={`navbar max-w-7xl mx-auto`}>
         <div className="navbar-start">
-         
           {/* drawer */}
           <div className="drawer lg:hidden">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -124,9 +102,7 @@ const Navbar = () => {
         </div>
         {/* when screen is lg then work this part*/}
         <div className="navbar-center hidden lg:flex ">
-          <ul className="menu menu-horizontal px-1 text-[16px]">
-            {navItem}
-          </ul>
+          <ul className="menu menu-horizontal px-1 text-[16px]">{navItem}</ul>
         </div>
         {/*  */}
         <div className="navbar-end flex gap-4 items-center text-[20px] cursor-pointer">
@@ -142,13 +118,12 @@ const Navbar = () => {
           {user && token && (
             <div>
               <a href="/user/dashboard">
-              <img
-                src={userImage}
-                alt=""
-                className="h-10 cursor-pointer"
-              />
+              {
+                currentuser && currentUserInFo?.image !="" &&currentUserInFo?.image ?
+                <img src={currentUserInFo?.image} alt="" className="size-10 cursor-pointer rounded-full" />
+                :<img src={userImage} alt="" className="size-10 rounded-full cursor-pointer" />
+              }
               </a>
-              
             </div>
           )}
           {/* ---end--- */}

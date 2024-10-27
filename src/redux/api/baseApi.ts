@@ -5,8 +5,8 @@ import { adminInFo, adminLogout } from "../features/auth/AdminAuthSlice";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: 
-  "https://fitness-equipment-server-silk.vercel.app/api",
-  // "http://localhost:3000/api",
+  // "https://fitness-equipment-server-silk.vercel.app/api",
+  "http://localhost:3000/api",
   
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
@@ -30,8 +30,8 @@ const baseQueryWithRefreshToken :BaseQueryFn<FetchArgs,BaseQueryApi,DefinitionTy
   // }
   if (result?.error?.status === 401) {
     const res = await fetch(
-      "https://fitness-equipment-server-silk.vercel.app/api/auth/refresh-token"
-  // "http://localhost:3000/api"
+      // "https://fitness-equipment-server-silk.vercel.app/api/auth/refresh-token"
+  "http://localhost:3000/api"
   ,
    
        {

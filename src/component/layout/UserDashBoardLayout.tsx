@@ -1,6 +1,6 @@
 import { Button, Col, Layout } from "antd";
 
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { toast, Toaster } from "sonner";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { userLogout } from "../../redux/features/auth/User/userAuthSlice";
@@ -9,15 +9,15 @@ import Sidebar from "../UserDashboard/Sidebar";
 const { Header, Content } = Layout;
 
 const UserDashboard: React.FC = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const handleLogout = () => {
     toast.warning("our are logged out", {
       duration: 1500,
     });
-    dispatch(
-      userLogout()
-    );
+    dispatch(userLogout());
+    navigate("/");
   };
 
   return (

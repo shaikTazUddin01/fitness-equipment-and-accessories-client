@@ -1,3 +1,4 @@
+import { IoCameraOutline } from "react-icons/io5";
 import image from "../../assets/hero-5.jpg";
 import UpdateUserProfile from "../../component/UserDashboard/profile/UpdateUser";
 import { useFinduserQuery } from "../../redux/features/auth/User/userApi";
@@ -20,14 +21,17 @@ const Profile = () => {
 
   // console.log(totalOrder);
 
-  const totalPayment=totalOrder?.reduce((acc:number,cur:any)=>{return(acc+cur?.totalPayment)},0)
+  const totalPayment = totalOrder?.reduce((acc: number, cur: any) => {
+    return acc + cur?.totalPayment;
+  }, 0);
   // console.log(totalPayment);
 
   const userInfo = data?.data;
 
-  // console.log(userInfo);
+  console.log(userInfo);
   return (
     <div className="min-h-screen">
+      
       <img
         src={image}
         alt=""
@@ -36,7 +40,16 @@ const Profile = () => {
       <div className="flex flex-col md:flex-row md:gap-4 lg:gap-8 md:-mt-20 md:px-4 lg:px-10">
         <div className="w-full md:w-[30%] lg:w-[25%] bg-white p-5 rounded-xl shadow">
           <div className="flex flex-col justify-center items-center">
-            <img src={image} className="size-28 rounded-full" />
+            <div className="relative">
+            {
+        userInfo?.image && userInfo?.image !=="" ?
+        <img src={userInfo?.image} className="size-28 rounded-full border-2 border-black" />
+        :
+        <img src={image} className="size-28 rounded-full border-2 border-black" />
+
+      }
+             
+            </div>
             <h1 className="text-xl">{userInfo?.name}</h1>
             <p>{userInfo?.email}</p>
           </div>
@@ -141,7 +154,7 @@ const Profile = () => {
             </div>
           </div>
           {/* update profile */}
-          <UpdateUserProfile userInfo={userInfo}/>
+          <UpdateUserProfile userInfo={userInfo} />
         </div>
       </div>
     </div>

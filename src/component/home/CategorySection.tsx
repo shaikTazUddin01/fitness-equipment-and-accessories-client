@@ -30,9 +30,9 @@ const CategorySection = () => {
         <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-7 gap-3">
          
             {categories?.slice(0,7)?.map((category: TCategory) => (
-              <a href={`/products/${category?.name}`}>
+              <a href={`/products/${category?.name}`} >
             
-                <div className=" shadow border-[#d8d8d8] hover:border-[#b0b0b0] hover:cursor-pointer bg-white text-black transform hover:shadow-xl transition-all duration-200 ease-in-out rounded-md p-2" onClick={()=>handleNavigate(category?.name)}>
+                <div className=" shadow border-[#d8d8d8] hover:border-[#b0b0b0] hover:cursor-pointer bg-white text-black transform hover:shadow-xl transition-all duration-200 ease-in-out rounded-md p-2 min-h-[207px]" onClick={()=>handleNavigate(category?.name)}>
                   <img
                     src={category?.image}
                     alt=""
