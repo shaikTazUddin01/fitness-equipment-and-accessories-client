@@ -1,4 +1,4 @@
-import { Button, Rate } from "antd";
+import {  Rate } from "antd";
 import { TProduct } from "../../Type";
 
 import "./rate.css";
@@ -67,13 +67,13 @@ const ProductCard = ({ product }: { product: TProduct }) => {
           <Rate disabled allowHalf defaultValue={4} className="custom-rate" />
           <p className="text-sm">(65)</p>
         </span>
-        <Button
-          className="bg-textSecondary "
+        <button
+          className="bg-textSecondary hover:bg-[#f97618] rounded-md py-1 text-black "
           onClick={() => handleAddToCart()}
         >
           {" "}
           Add To Cart
-        </Button>
+        </button>
       </div>
     </div>
   );

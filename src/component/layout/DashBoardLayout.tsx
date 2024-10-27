@@ -71,7 +71,7 @@ const App: React.FC = () => {
                 Role : {role}
               </span>
               <Button
-                className="items-center btn btn-warning btn-sm -mt-2 mb-5"
+                className="items-center btn-sm -mt-2 mb-5"
                 onClick={handleLogout}
               >
                 Logout

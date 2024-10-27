@@ -1,4 +1,4 @@
-import { IoCameraOutline } from "react-icons/io5";
+// import { IoCameraOutline } from "react-icons/io5";
 import image from "../../assets/hero-5.jpg";
 import UpdateUserProfile from "../../component/UserDashboard/profile/UpdateUser";
 import { useFinduserQuery } from "../../redux/features/auth/User/userApi";

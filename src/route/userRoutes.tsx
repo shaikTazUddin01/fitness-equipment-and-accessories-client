@@ -30,8 +30,8 @@ export const UserPath = [
     element: <PaymentHistory/>,
   },
   {
-    name: "Manage Order",
-    path: "manageOrder",
+    name: "Tracking Order",
+    path: "trackingOrder",
     element: <ManageOrder/>,
   },
   {

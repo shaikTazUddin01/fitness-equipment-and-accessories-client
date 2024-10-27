@@ -27,7 +27,7 @@ const UserDashboard: React.FC = () => {
         <Header style={{ padding: 0 }}>
           <div className="flex justify-end pt-6 pr-5 items-center">
             <Button
-              className="items-center btn btn-warning btn-sm -mt-2 mb-5"
+              className="items-center btn-sm -mt-2 mb-5"
               onClick={handleLogout}
             >
               Logout
