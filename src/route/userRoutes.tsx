@@ -1,4 +1,5 @@
 
+import ManageOrder from "../pages/UserDashboard/ManageOrder";
 import MyReviews from "../pages/UserDashboard/MyReviews";
 import PaymentHistory from "../pages/UserDashboard/PaymentHistory";
 import Profile from "../pages/UserDashboard/Profile";
@@ -16,6 +17,12 @@ export const UserPath = [
     path: "dashboard",
     element: <Profile/>,
   },
+  
+  {
+    name: "Shopping Cart",
+    path: "shoppingCart",
+    element: <ShoppingCart/>,
+  },
   {
     name: "Payment History",
     // index: true,
@@ -23,9 +30,9 @@ export const UserPath = [
     element: <PaymentHistory/>,
   },
   {
-    name: "Shopping Cart",
-    path: "shoppingCart",
-    element: <ShoppingCart/>,
+    name: "Manage Order",
+    path: "manageOrder",
+    element: <ManageOrder/>,
   },
   {
     name: "My Reviews",

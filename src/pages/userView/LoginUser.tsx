@@ -1,6 +1,6 @@
 import THForm from "../../component/form/THForm";
 import THInput from "../../component/form/THInput";
-import { Col } from "antd";
+import { Button, Col } from "antd";
 import bgImg from "../../assets/hero-5.jpg";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 
@@ -16,12 +16,20 @@ import { useUserLoginMutation } from "../../redux/features/auth/User/userApi";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { userInFo } from "../../redux/features/auth/User/userAuthSlice";
 import { FaArrowLeft } from "react-icons/fa";
+import { useState } from "react";
 
 const LoginUser = () => {
   const [login] = useUserLoginMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [defaultUserInfo, setDefaultUserInfo] = useState({});
 
+  const DemoUserInFo = () => {
+    setDefaultUserInfo({
+      email: "galib@gmail.com",
+      password: "123456",
+    });
+  };
   const location = useLocation();
 
   // console.log(login);
@@ -95,7 +103,12 @@ const LoginUser = () => {
         xxl={{ span: 5 }}
         className="bg-[#ffffff88] rounded-md font-semibold border-primaryColor border-2 "
       >
-        <THForm onSubmit={onSubmit}>
+        <div className="flex justify-center">
+          <Button color="default" size="small" onClick={() => DemoUserInFo()}>
+            Test User
+          </Button>
+        </div>
+        <THForm onSubmit={onSubmit} defaultValues={defaultUserInfo}>
           <h1 className="text-2xl text-center uppercase font-semibold">
             Login
           </h1>

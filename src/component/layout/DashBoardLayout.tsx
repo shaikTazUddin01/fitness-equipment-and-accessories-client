@@ -39,9 +39,6 @@ const App: React.FC = () => {
               className="h-10 cursor-pointer"
               onClick={() => SetOpenCollapse(!openCollapse)}
             />
-            {/* {openCollapse == true && (
-              <div className="bg-red-500 min-h-24 min-w-40 absolute top-14 rounded end-0 collapse-container"></div>
-            )} */}
             <div
               className={`collapse-container ${
                 openCollapse ? "open " : ""
@@ -69,7 +66,9 @@ const App: React.FC = () => {
                 position: "relative",
               }}
             >
+              <div className="min-h-[78vh]">
               <Outlet></Outlet>
+              </div>
               <Toaster></Toaster>
             </div>
           </Content>
