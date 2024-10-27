@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { TProduct } from "../../../Type";
 import DashboardSpring from "../../../component/shared/Loading/DashboardSpring";
 import UpdateProduct from "./updateProduct/UpdateProduct";
+import { MdDeleteOutline } from "react-icons/md";
 
 interface DataType {
   key: React.Key;
@@ -107,11 +108,12 @@ const ManageProduct = () => {
             <UpdateProduct items={item}></UpdateProduct>
 
             <Button
+            className="text-xl"
               type="primary"
               danger
               onClick={() => handleDelete(item?.key)}
             >
-              Delete
+              <MdDeleteOutline/>
             </Button>
           </Space>
         );
@@ -143,6 +145,7 @@ const ManageProduct = () => {
 
   return (
     <Col>
+    <h1 className="text-2xl font-medium text-center mb-2">Manage Product</h1>
       <Table
         columns={columns}
         scroll={{ x: 400 }}

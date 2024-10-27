@@ -119,6 +119,8 @@ const ManageCategory = () => {
 
   return (
     <Col>
+      <p className="text-2xl text-center font-medium mb-2">Manage Product Category</p>
+
       <Table
         columns={columns}
         scroll={{ x: 400 }}

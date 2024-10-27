@@ -80,6 +80,7 @@ const ManageCustomer = () => {
 
   return (
     <Col className="shadow-xl">
+       <p className="text-2xl text-center font-medium mb-2">All Active Customer</p>
       <Table
         columns={columns}
         scroll={{ x: 500 }}

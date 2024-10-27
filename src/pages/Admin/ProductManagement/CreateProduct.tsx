@@ -51,12 +51,21 @@ const CreateProduct = () => {
   };
   return (
     <Row justify={"center"} align={"middle"}>
-      <Col span={11}>
-          
+      <Col 
+      
+      xs={{ span: 24 }}
+      sm={{ span: 24 }}
+      md={{ span: 20 }}
+      lg={{ span: 20 }}
+      xxl={{ span: 18 }}
+      >
+          <h1 className="text-2xl font-semibold text-center mb-2">Add New Product</h1>
         <div className="card bg-base-100 w-full shadow-2xl mb-5">
           {/* <form className="card-body" onSubmit={handleSubmit(onSubmit)}> */}
           {/* <h1 className="text-3xl font-semibold text-center mt-4">Create New Product</h1> */}
           <THForm onSubmit={onSubmit}>
+            <div className="grid grid-cols-1 md:grid-cols-2 items-center w-full gap-2">
+
             <THInput
               name={"name"}
               label={"Product Name"}
@@ -64,9 +73,11 @@ const CreateProduct = () => {
             ></THInput>
             <THInput
               name={"image"}
-              label={"Product Image"}
+              label={"Image Url"}
               type={"text"}
             ></THInput>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 items-center w-full gap-2">
             <THInput
               name={"price"}
               label={"Product Price"}
@@ -78,6 +89,7 @@ const CreateProduct = () => {
               name="category"
               items={categoris}
             ></THSelect>
+            </div>
             <THInput
               name={"stockQuentity"}
               label={"Stock Quentity"}

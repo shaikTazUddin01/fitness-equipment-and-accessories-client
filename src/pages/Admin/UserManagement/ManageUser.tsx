@@ -4,13 +4,10 @@ import {  Col, Table, TableColumnsType, TableProps } from "antd";
 import {  TUserData } from "../../../Type";
 import DashboardSpring from "../../../component/shared/Loading/DashboardSpring";
 import {
-  //   useDeleteAdminMutation,
-  //   useGetAdminQuery,
   useGetUserQuery,
 } from "../../../redux/features/auth/User/userApi";
 import { ReactNode } from "react";
-// import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
-// import UpdateAdmin from "./UpdateAdmin";
+
 
 interface DataType {
   key: ReactNode;
@@ -119,6 +116,7 @@ const ManageUser = () => {
 
   return (
     <Col className="shadow-xl">
+       <p className="text-2xl text-center font-medium mb-2">All Active User</p>
       <Table
         columns={columns}
         scroll={{ x: 500 }}

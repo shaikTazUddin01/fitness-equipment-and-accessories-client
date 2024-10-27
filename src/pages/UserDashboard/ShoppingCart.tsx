@@ -3,11 +3,11 @@ import { useAppSelector } from "../../redux/hooks/hooks";
 
 
 const ShoppingCart = () => {
-    const cartProduct = useAppSelector((state) => state.productCard?.productCart);
+    const cartProduct = useAppSelector((state) => state.productCard?.productCart)||[];
 
 
  
-    console.log(cartProduct.length);
+    // console.log(cartProduct.length);
     return (
       <div className="min-h-[80vh] max-w-7xl flex flex-col" >
         {cartProduct?.length > 0 ? (
@@ -37,7 +37,7 @@ const ShoppingCart = () => {
           </div>
         ) : (
           <div>
-            <h1 className="text-center text-3xl text-white mt-10">
+            <h1 className="text-center text-3xl mt-10">
               No Item Added To The Cart..!
             </h1>
           </div>

@@ -64,7 +64,7 @@ const Products = () => {
           </div>
         ) : (
           <div>
-            <h1 className="text-white text-2xl text-center mt-10">
+            <h1 className="text-2xl text-center mt-10">
               No Product Found.!
             </h1>
           </div>

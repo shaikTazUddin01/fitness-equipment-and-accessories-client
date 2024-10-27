@@ -32,7 +32,7 @@ const ChangePassword = () => {
     
  
       const res = await updateAdminPass({ email: adminEmail, data });
-      console.log(res);
+      // console.log(res);
       if (res.data) {
         toast.success(`Password is updated`, {
           id: toastId,
@@ -62,6 +62,7 @@ const ChangePassword = () => {
       className="min-h-screen "
       //   style={{ backgroundImage: `URL(${bgImg})` }}
     >
+        <h1 className="text-2xl text-center font-medium">Change Your Password</h1>
       <div className="flex justify-center">
       <Col
         xs={{ span: 20 }}
@@ -69,7 +70,7 @@ const ChangePassword = () => {
         md={{ span: 15 }}
         lg={{ span: 13 }}
         xxl={{ span: 9 }}
-        className="bg-[#ffffff88] rounded-md  border-primaryColor shadow-2xl my-10  "
+        className="bg-[#ffffff88] rounded-md  border-primaryColor shadow-2xl my-2  "
       >
         <THForm onSubmit={onSubmit}>
           <THInput

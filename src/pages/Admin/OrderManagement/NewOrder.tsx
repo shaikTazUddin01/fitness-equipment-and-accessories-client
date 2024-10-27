@@ -141,7 +141,7 @@ const NewOrder = () => {
     },
   ];
 
-  const tableData: TOrder[] = newOrder?.map(
+  const tableData: any = newOrder?.map(
     (
       {
         _id,
@@ -149,8 +149,7 @@ const NewOrder = () => {
         customerEmail,
         customerNumber,
         customerAddress,
-        productName,
-        productCategory,
+        productId,
         productPrice,
         totalItem,
         totalPrice,
@@ -165,8 +164,8 @@ const NewOrder = () => {
       customerEmail,
       customerNumber,
       customerAddress,
-      productName,
-      productCategory,
+    productName: productId?.name,
+     productCategory: productId?.category,
       productPrice,
       totalItem,
       totalPrice,
@@ -186,6 +185,7 @@ const NewOrder = () => {
 
   return (
     <Col>
+     <p className="text-2xl text-center font-medium mb-2">All New Orders</p>
       <Table
         columns={columns}
         scroll={{ x: 1500 }}

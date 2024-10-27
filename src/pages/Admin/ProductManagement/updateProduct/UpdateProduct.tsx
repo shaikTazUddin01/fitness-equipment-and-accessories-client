@@ -13,6 +13,8 @@ import THSelect from "../../../../component/form/THSelect";
 
 import DashboardSpring from "../../../../component/shared/Loading/DashboardSpring";
 import { TProduct } from "../../../../Type";
+// import { CiEdit } from "react-icons/ci";
+import { RiEdit2Line } from "react-icons/ri";
 
 const featureOption = [{ name: "True" }, { name: "False" }];
 
@@ -47,7 +49,7 @@ const UpdateProduct = ({ items }: { items: Partial<TProduct> }) => {
     try {
       const res = await updateProduct({ id: key, data: data });
 
-      console.log("res--->", res);
+      // console.log("res--->", res);
 
       if (res.data) {
         toast.success("update successfully", {
@@ -65,8 +67,8 @@ const UpdateProduct = ({ items }: { items: Partial<TProduct> }) => {
   };
   return (
     <div>
-      <Button type="primary" onClick={showModal}>
-        Edit
+      <Button type="primary" onClick={showModal} className="text-xl">
+        <RiEdit2Line/>
       </Button>
       <Modal open={isModalOpen} onCancel={handleCancel} footer={null}>
         <THForm onSubmit={onSubmit}>

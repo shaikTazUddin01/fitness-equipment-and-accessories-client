@@ -141,7 +141,7 @@ const ComplectedOrder = () => {
     },
   ];
 
-  const tableData: TOrder[] = deliveredOrder?.map(
+  const tableData: any = deliveredOrder?.map(
     (
       {
         _id,
@@ -149,8 +149,7 @@ const ComplectedOrder = () => {
         customerEmail,
         customerNumber,
         customerAddress,
-        productName,
-        productCategory,
+        productId,
         productPrice,
         totalItem,
         totalPrice,
@@ -165,8 +164,8 @@ const ComplectedOrder = () => {
       customerEmail,
       customerNumber,
       customerAddress,
-      productName,
-      productCategory,
+    productName: productId?.name,
+     productCategory: productId?.category,
       productPrice,
       totalItem,
       totalPrice,
@@ -174,7 +173,6 @@ const ComplectedOrder = () => {
       status,
     })
   );
-
   const onChange: TableProps<TOrder>["onChange"] = (
     pagination,
     filters,
@@ -186,6 +184,7 @@ const ComplectedOrder = () => {
 
   return (
     <Col>
+     <p className="text-2xl text-center font-medium mb-2">The Delivary Complected Order</p>
       <Table
         columns={columns}
         scroll={{ x: 1500 }}

@@ -107,8 +107,8 @@ export const adminPaths = [
         element: <NewOrder></NewOrder>,
       },
       {
-        name: "Shiping Order",
-        path: "shiping-order",
+        name: "Shipping Order",
+        path: "shipping-order",
         element: <ShipingOrder></ShipingOrder>,
       },
       {

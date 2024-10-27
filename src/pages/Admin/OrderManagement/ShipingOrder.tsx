@@ -141,7 +141,7 @@ const ShipingOrder = () => {
     },
   ];
 
-  const tableData: TOrder[] = shipingproduct?.map(
+  const tableData: any = shipingproduct?.map(
     (
       {
         _id,
@@ -149,8 +149,7 @@ const ShipingOrder = () => {
         customerEmail,
         customerNumber,
         customerAddress,
-        productName,
-        productCategory,
+        productId,
         productPrice,
         totalItem,
         totalPrice,
@@ -165,8 +164,8 @@ const ShipingOrder = () => {
       customerEmail,
       customerNumber,
       customerAddress,
-      productName,
-      productCategory,
+    productName: productId?.name,
+     productCategory: productId?.category,
       productPrice,
       totalItem,
       totalPrice,
@@ -174,6 +173,7 @@ const ShipingOrder = () => {
       status,
     })
   );
+
 
   const onChange: TableProps<TOrder>["onChange"] = (
     pagination,
@@ -186,6 +186,7 @@ const ShipingOrder = () => {
 
   return (
     <Col>
+    <p className="text-2xl text-center font-medium mb-2">All Shipping Order</p>
       <Table
         columns={columns}
         scroll={{ x: 1500 }}

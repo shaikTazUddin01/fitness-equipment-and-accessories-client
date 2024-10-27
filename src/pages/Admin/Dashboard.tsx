@@ -66,7 +66,7 @@ const Dashboard = () => {
         </div>
         <SellLineChart />
         <div className="my-10 bg-white p-5 rounded-lg">
-          <h1 className="text-xl">Admin Management</h1>
+          {/* <h1 className="text-xl">Admin Management</h1> */}
           <ManageAdmin />
         </div>
       </div>

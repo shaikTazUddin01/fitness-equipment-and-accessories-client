@@ -36,10 +36,11 @@ const CreateCategory = () => {
   return (
     <div className="flex justify-center items-center ">
       <Col span={24} lg={{ span: 12 }}>
+      <p className="text-2xl text-center font-medium mb-2">Create Category</p>
         <div className="card bg-base-100 w-full shadow-2xl mb-5">
           <THForm onSubmit={onSubmit}>
             <THInput type="text" name="name" label="Category Name"></THInput>
-            <THInput type="text" name="image" label="Category Image"></THInput>
+            <THInput type="text" name="image" label="Category Image Url"></THInput>
 
             <div className="form-control mt-6">
               <button className="btn btn-neutral" type="submit">

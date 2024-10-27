@@ -26,9 +26,9 @@ const ProductManagement = () => {
       </div>
 
       <div className="overflow-x-auto ">
-        <table className="table text-white border text-center">
+        <table className="table  border text-center">
           {/* head */}
-          <thead className="text-white">
+          <thead className="">
             <tr className="font-bold text-[16px]">
               <th>Image</th>
               <th>Name</th>

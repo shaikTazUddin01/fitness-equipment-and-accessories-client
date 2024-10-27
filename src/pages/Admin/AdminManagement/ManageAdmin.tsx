@@ -80,24 +80,6 @@ const ManageAdmin = () => {
     {
       title: "Name",
       dataIndex: "name",
-      // filters: [
-      //   {
-      //     text: "Joe",
-      //     value: "Joe",
-      //   },
-      //   {
-      //     text: "Category 1",
-      //     value: "Category 1",
-      //   },
-      //   {
-      //     text: "Category 2",
-      //     value: "Category 2",
-      //   },
-      // ],
-      // filterMode: "tree",
-      // filterSearch: true,
-      // onFilter: (value, record) => record.name.includes(value as string),
-      // width: "30%",
     },
     {
       title: "Email",
@@ -132,9 +114,6 @@ const ManageAdmin = () => {
         console.log("item", item);
         return (
           <Space>
-            {/* <a href={`/admin/update-product/${item?.key}`}>
-              <Button type="primary">Edit</Button>
-            </a> */}
             <UpdateAdmin item={item}></UpdateAdmin>
             <Button
               type="primary"
@@ -172,6 +151,7 @@ const ManageAdmin = () => {
 
   return (
     <Col className="shadow-xl">
+       <p className="text-2xl text-center font-medium mb-2">Admin Management</p>
       <Table
         columns={columns}
         scroll={{ x: 400 }}
