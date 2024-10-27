@@ -16,9 +16,9 @@ const Profile = () => {
   console.log(userInfo);
   return (
     <div className="min-h-screen">
-      <img src={image} alt="" className="w-full h-[250px] object-cover" />
-      <div className="flex gap-8 -mt-20 px-10">
-        <div className="w-[25%] bg-white p-5 rounded-xl shadow">
+      <img src={image} alt="" className="hidden md:flex w-full h-[250px] object-cover" />
+      <div className="flex flex-col md:flex-row md:gap-4 lg:gap-8 md:-mt-20 md:px-4 lg:px-10">
+        <div className="w-full md:w-[30%] lg:w-[25%] bg-white p-5 rounded-xl shadow">
           <div className="flex flex-col justify-center items-center">
             <img src={image} className="size-28 rounded-full" />
             <h1 className="text-xl">{userInfo?.name}</h1>
@@ -41,9 +41,9 @@ const Profile = () => {
           </div>
         </div>
         {/* right side */}
-        <div className="w-[75%] bg-white rounded-xl p-5 shadow">
+        <div className="md:w-[75%] bg-white rounded-xl p-5 shadow">
           <h1 className="text-2xl font-semibold mb-5">Intro</h1>
-          <div className="flex flex-col md:flex-row justify-between gap-5">
+          <div className="flex flex-col md:flex-row justify-between gap-2 md:gap-5">
             <div className="flex flex-col flex-1">
               <label htmlFor="" className="text-lg">
                 Name
@@ -66,7 +66,7 @@ const Profile = () => {
             </div>
           </div>
           {/* ---- */}
-          <div className="flex flex-col md:flex-row justify-between gap-5 mt-2">
+          <div className="flex flex-col md:flex-row justify-between gap-2 md:gap-5 mt-2">
             <div className="flex flex-col flex-1">
               <label htmlFor="" className="text-lg">
                 Phone Number
