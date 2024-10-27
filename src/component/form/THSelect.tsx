@@ -9,7 +9,7 @@ type TSelect={
 const THSelect = ({name,label,items,defaultFieldValue}:TSelect) => {
     const {register}=useFormContext()
     return (
-        <div className="form-control">
+        <div className="form-control ">
         <label className="label">
           <span className="label-text">{label}</span>
         </label>

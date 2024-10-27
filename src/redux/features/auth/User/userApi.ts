@@ -8,6 +8,7 @@ const user = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags:['user']
     }),
     userLogin: builder.mutation({
       query: (data) => ({
@@ -15,6 +16,8 @@ const user = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags:['user']
+
     }),
     finduser: builder.query({
       query: (email) => ({
@@ -22,12 +25,23 @@ const user = baseApi.injectEndpoints({
         method: "GET",
         params: { email },
       }),
+      providesTags:["user"]
     }),
     getUser: builder.query({
       query: () => ({
         url: "/user",
         method: "GET",
       }),
+      providesTags:['user']
+    }),
+    updateUser: builder.mutation({
+      query: ({id,userData}) => ({
+        url: `/user/${id}`,
+        method: "PATCH",
+        body:{userData}
+      }),
+      invalidatesTags:['user']
+
     }),
     createAdmin: builder.mutation({
       query: (data) => ({
@@ -101,4 +115,5 @@ export const {
   useUpdateAdminMutation,
   useGetCustomerQuery,
   useUpdateAdminPasswordMutation,
+  useUpdateUserMutation
 } = user;

@@ -1,22 +1,38 @@
 import image from "../../assets/hero-5.jpg";
+import UpdateUserProfile from "../../component/UserDashboard/profile/UpdateUser";
 import { useFinduserQuery } from "../../redux/features/auth/User/userApi";
+import { useGetOrderbySpUserQuery } from "../../redux/features/order/orderapi";
 import { useAppSelector } from "../../redux/hooks/hooks";
 
 const Profile = () => {
   const user = useAppSelector((state) => state?.userLoginInfo?.user);
   const userEmail = user?.user;
+  // console.log(user);
   const { data, isLoading } = useFinduserQuery(userEmail);
 
-  if (isLoading) {
+  const { data: order, isLoading: isOrderLoading } = useGetOrderbySpUserQuery(
+    user?.id
+  );
+  if (isLoading && isOrderLoading) {
     return <p>loading...</p>;
   }
+  const totalOrder = order?.data;
+
+  // console.log(totalOrder);
+
+  const totalPayment=totalOrder?.reduce((acc:number,cur:any)=>{return(acc+cur?.totalPayment)},0)
+  // console.log(totalPayment);
 
   const userInfo = data?.data;
 
-  console.log(userInfo);
+  // console.log(userInfo);
   return (
     <div className="min-h-screen">
-      <img src={image} alt="" className="hidden md:flex w-full h-[250px] object-cover" />
+      <img
+        src={image}
+        alt=""
+        className="hidden md:flex w-full h-[250px] object-cover"
+      />
       <div className="flex flex-col md:flex-row md:gap-4 lg:gap-8 md:-mt-20 md:px-4 lg:px-10">
         <div className="w-full md:w-[30%] lg:w-[25%] bg-white p-5 rounded-xl shadow">
           <div className="flex flex-col justify-center items-center">
@@ -27,13 +43,13 @@ const Profile = () => {
           <div className="bg-textSecondary h-[1px] w-full my-2"></div>
           <div className="space-y-1">
             <h1 className="text-lg flex justify-between">
-              Total Order: <span>50</span>
+              Total Order : <span>{totalOrder?.length}</span>
+            </h1>
+            <h1 className="text-lg flex justify-between text-red-500">
+              Order Cancel : <span>00</span>
             </h1>
             <h1 className="text-lg flex justify-between">
-              Order Cencle: <span>00</span>
-            </h1>
-            <h1 className="text-lg flex justify-between">
-              Total Payment: <span>$ 5000</span>
+              Total Payment : <span>$ {totalPayment}</span>
             </h1>
             <button className="w-full bg-textSecondary py-2 rounded-lg  font-semibold mt-2">
               Get Order
@@ -124,7 +140,8 @@ const Profile = () => {
               />
             </div>
           </div>
-          <button className="bg-textSecondary w-full mt-2 text-[16px] py-1 rounded-lg font-semibold">Edit Info</button>
+          {/* update profile */}
+          <UpdateUserProfile userInfo={userInfo}/>
         </div>
       </div>
     </div>
