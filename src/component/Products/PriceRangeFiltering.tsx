@@ -75,7 +75,7 @@ const [maxPrice, setMaxPrice] = useState(5000);
           </div>
           <div className="pt-2">
           <button
-            className="w-full bg-textSecondary hover:bg-[#f97618] font-medium rounded p-1"
+            className="w-full bg-textSecondary hover:bg-hoverSecondart font-medium rounded p-1 text-white"
             onClick={handleReset}
           >
             Reset

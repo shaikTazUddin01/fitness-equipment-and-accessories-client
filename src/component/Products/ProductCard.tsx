@@ -5,16 +5,34 @@ import "./rate.css";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { toast } from "sonner";
 import { productCart } from "../../redux/features/myCart/myCart.slice";
+import { useGetReviewQuery } from "../../redux/features/review/reviewApi";
+import { TReview } from "../../Type/review";
+import Spring from "../shared/Loading/Spring";
 const ProductCard = ({ product }: { product: TProduct }) => {
   const { _id, name, price, images } = product;
 
-  // ---
+// get review section
+const { data: review ,isLoading :pLoading} = useGetReviewQuery(_id);
 
-  const dispatch = useAppDispatch();
-  // get my cart
-  const mycartProduct = useAppSelector(
-    (state) => state.productCard?.productCart
-  );
+ // ---
+
+ const dispatch = useAppDispatch();
+ // get my cart
+ const mycartProduct = useAppSelector(
+   (state) => state.productCard?.productCart
+ );
+
+if (pLoading) {
+  return <Spring></Spring>
+}
+
+   // calculate review
+   const reviews=review?.data?.review
+   const sumOfTotalReview=reviews?.reduce((acc:number,curr:TReview)=>acc+Number(curr?.rating),0)
+   const aveRating=Number(sumOfTotalReview/reviews?.length);
+ 
+
+ 
 
   // add product to cart
   const handleAddToCart = () => {
@@ -64,11 +82,11 @@ const ProductCard = ({ product }: { product: TProduct }) => {
           </p>
         </a>
         <span className="flex items-center gap-2">
-          <Rate disabled allowHalf defaultValue={4} className="custom-rate" />
-          <p className="text-sm">(65)</p>
+          <Rate disabled allowHalf defaultValue={Number(aveRating)} className="custom-rate" />
+          <p className="text-sm">({reviews?.length ?reviews?.length: "0"})</p>
         </span>
         <button
-          className="bg-textSecondary hover:bg-[#f97618] rounded-md py-1 text-black "
+          className="bg-textSecondary hover:bg-hoverSecondart rounded-md py-1 text-white "
           onClick={() => handleAddToCart()}
         >
           {" "}

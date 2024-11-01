@@ -44,7 +44,7 @@ const SearchProduct = () => {
       </div>
       <button
         type="submit"
-        className="bg-textSecondary px-4 hover:bg-[#f97618] rounded-lg "
+        className="bg-textSecondary px-4 hover:bg-hoverSecondart rounded-lg text-white "
       >
         Search
       </button>

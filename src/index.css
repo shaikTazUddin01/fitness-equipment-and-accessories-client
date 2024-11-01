@@ -91,3 +91,8 @@ span.ant-layout-sider-zero-width-trigger.ant-layout-sider-zero-width-trigger-lef
   display: flex;
   transform: translateY(0);
 }
+
+.custom-rate .ant-rate-star-first,
+.custom-rate .ant-rate-star-second {
+  color: #cdcbcb; 
+}

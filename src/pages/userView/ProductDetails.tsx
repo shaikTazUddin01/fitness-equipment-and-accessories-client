@@ -6,14 +6,19 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import Spring from "../../component/shared/Loading/Spring";
 import { productCart } from "../../redux/features/myCart/myCart.slice";
 import { Rate } from "antd";
-
+import ManageRating from "../../component/ManageRatingArea/ManageRating";
+import ProductReview from "../../component/ManageRatingArea/ProductReview";
+import { useGetReviewQuery } from "../../redux/features/review/reviewApi";
+import { TReview } from "../../Type/review";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const { data, isLoading } = useGetSingleProductsQuery({ _id: id });
 
   const product = data?.data;
-
+// get review section
+  const { data: review ,isLoading :pLoading} = useGetReviewQuery(id);
+  
   const dispatch = useAppDispatch();
   // get my cart
   const mycartProduct = useAppSelector(
@@ -23,6 +28,14 @@ const ProductDetails = () => {
   if (isLoading) {
     return <Spring></Spring>;
   }
+  if (pLoading) {
+    return <Spring></Spring>;
+  }
+  // calculate review
+  const reviews=review?.data?.review
+  const sumOfTotalReview=reviews?.reduce((acc:number,curr:TReview)=>acc+Number(curr?.rating),0)
+  const aveRating=Number(sumOfTotalReview/reviews?.length);
+
   // add product to cart
   const handleAddToCart = () => {
     //check product is exists or not
@@ -72,9 +85,14 @@ const ProductDetails = () => {
               <span className="font-bold">Price :</span> ${product?.price}
             </p>
             <span className="flex items-center gap-2">
-          <Rate disabled allowHalf defaultValue={4} className="custom-rate" />
-          <p className="text-sm">(65)</p>
-        </span>
+              <Rate
+                disabled
+                allowHalf
+                defaultValue={Number(aveRating)}
+                className="custom-rate"
+              />
+              <p className="text-sm">{reviews?.length}</p>
+            </span>
             <p className="pb-2 ">
               <span className="font-bold">StockQuentity :</span>{" "}
               {product?.stockQuentity} piece
@@ -85,6 +103,19 @@ const ProductDetails = () => {
             >
               Add To Cart
             </button>
+          </div>
+        </div>
+        {/* second section */}
+        {/* product rating and review area */}
+        <div className=" mt-10 grid grid-cols-1 md:grid-cols-3 relative gap-5">
+          {/* right side */}
+          <div className="p-5 md:max-h-screen  md:sticky md:top-20 md:col-span-1 bg-white rounded ">
+            {/* show rating area */}
+            <ManageRating product={product} />
+          </div>
+          {/* left side */}
+          <div className=" md:col-span-2 overflow-auto bg-white rounded">
+            <ProductReview id={product?._id as string} />
           </div>
         </div>
       </div>

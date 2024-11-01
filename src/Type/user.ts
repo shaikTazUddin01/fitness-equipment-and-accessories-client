@@ -68,7 +68,7 @@ export type TUserData = {
   email: string;
   gender: "Male" | "Female" | "Other";
   name: string;
-
+image?:string;
   phoneNumber: string;
   role?: "user";
   isDeleted: boolean;

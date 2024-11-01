@@ -7,7 +7,8 @@ export default {
         primaryColor: '#081621',
         secondaryColor: "#282727",
         bgColor:"#F4F4F4",
-        textSecondary:"#e57f2c"
+        textSecondary:"#e57f2c",
+        hoverSecondart:"#f97618"
       },
     },
   },

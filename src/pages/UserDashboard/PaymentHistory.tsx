@@ -12,7 +12,7 @@ const PaymentHistory = () => {
   }
 
   const orderHistroy=data?.data
-console.log(orderHistroy);
+// console.log(orderHistroy);
   return (<div>
 <div className="min-h-[80vh] max-w-7xl flex flex-col" >
         {orderHistroy?.length > 0 ? (
