@@ -6,11 +6,16 @@ import userImage from "../../../assets/Userimage.png";
 import { AiOutlineMenuFold } from "react-icons/ai";
 import { MdClose } from "react-icons/md";
 import { useFinduserQuery } from "../../../redux/features/auth/User/userApi";
+import { useGetCategoryQuery } from "../../../redux/features/category/category.api";
+// import { TCategory } from "../../../Type";
 
 const Navbar = () => {
   //handle redux store
   const { user, token } = useAppSelector((state) => state.userLoginInfo);
+// get category
+const {data}=useGetCategoryQuery(undefined)
 
+// const categories=data?.data
   
   const userEmail = user?.user;
   // console.log(user);
@@ -18,7 +23,7 @@ const Navbar = () => {
 
   const currentUserInFo=currentuser?.data
 
-  console.log(currentUserInFo);
+  
 
 
   //navigation items
