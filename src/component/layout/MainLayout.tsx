@@ -7,7 +7,7 @@ const MainLayout = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="hidden lg:block sticky top-0 z-50">
+      <div className="hidden lg:block sticky top-0 z-10">
         <SubNavbar />
       </div>
       <div className="flex-grow">
