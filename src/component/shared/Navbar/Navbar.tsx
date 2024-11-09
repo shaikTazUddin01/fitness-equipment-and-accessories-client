@@ -1,10 +1,10 @@
-import { FaSearch } from "react-icons/fa";
-import logo from "../../../assets/logo.png";
+import { FaSearch, FaUser, FaUserCog } from "react-icons/fa";
+import logo from "../../../assets/epicfit.png";
 import { GrCart } from "react-icons/gr";
 import { useAppSelector } from "../../../redux/hooks/hooks";
 import userImage from "../../../assets/Userimage.png";
 import { AiOutlineMenuFold } from "react-icons/ai";
-import { MdClose } from "react-icons/md";
+import { MdAdminPanelSettings, MdClose, MdSettingsAccessibility } from "react-icons/md";
 import { useFinduserQuery } from "../../../redux/features/auth/User/userApi";
 import { useGetCategoryQuery } from "../../../redux/features/category/category.api";
 // import { TCategory } from "../../../Type";
@@ -12,19 +12,16 @@ import { useGetCategoryQuery } from "../../../redux/features/category/category.a
 const Navbar = () => {
   //handle redux store
   const { user, token } = useAppSelector((state) => state.userLoginInfo);
-// get category
-const {data}=useGetCategoryQuery(undefined)
+  // get category
+  const { data } = useGetCategoryQuery(undefined);
 
-// const categories=data?.data
-  
+  // const categories=data?.data
+
   const userEmail = user?.user;
   // console.log(user);
-  const { data:currentuser } = useFinduserQuery(userEmail);
+  const { data: currentuser } = useFinduserQuery(userEmail);
 
-  const currentUserInFo=currentuser?.data
-
-  
-
+  const currentUserInFo = currentuser?.data;
 
   //navigation items
   const navItem = (
@@ -50,10 +47,10 @@ const {data}=useGetCategoryQuery(undefined)
   );
   return (
     <div
-      className={`text-white bg-primaryColor fixed z-20 shadow-xl  w-full h-[20]`}
+      className={`text-white bg-primaryColor  z-20 shadow-xl  w-full h-[20]`}
     >
-      <div className={`navbar max-w-7xl mx-auto`}>
-        <div className="navbar-start">
+      <div className={`navbar max-w-7xl mx-auto p-0`}>
+        <div className="navbar-start flex-1">
           {/* drawer */}
           <div className="drawer lg:hidden">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -87,7 +84,7 @@ const {data}=useGetCategoryQuery(undefined)
                   <MdClose />
                 </button>
                 {/* Sidebar content here */}
-                <div className="mt-10 mx-auto">
+                <div className="mt-10 mx-auto border border-red">
                   <a href="/">
                     <img src={logo} alt="" className="h-full " />
                   </a>
@@ -106,31 +103,89 @@ const {data}=useGetCategoryQuery(undefined)
           </div>
         </div>
         {/* when screen is lg then work this part*/}
-        <div className="navbar-center hidden lg:flex ">
-          <ul className="menu menu-horizontal px-1 text-[16px]">{navItem}</ul>
+        <div className="navbar-center hidden lg:flex gap-5 ">
+          <form action="">
+            <div className="relative flex items-center">
+              <input
+                className="border  w-[600px] text-sm px-2 py-[6px] rounded-md"
+                placeholder="Search in thunder..."
+              />
+              <span className="absolute text-black end-2 cursor-pointer">
+                <FaSearch />
+              </span>
+            </div>
+          </form>
+          <div>
+            {/* <a href="/cart">
+            <GrCart />{" "}
+          </a> */}
+          </div>
+          {/* <ul className="menu menu-horizontal px-1 text-[16px]">{navItem}</ul> */}
         </div>
         {/*  */}
-        <div className="navbar-end flex gap-4 items-center text-[20px] cursor-pointer">
-          <a href="/products">
+        <div className="justify-end flex gap-8 items-center  cursor-pointer min-w-[30%] ">
+          {/* <a href="/products">
             <FaSearch></FaSearch>
-          </a>
+          </a> */}
           {/* <FaRegUser></FaRegUser> */}
 
-          <a href="/cart">
-            <GrCart />{" "}
+          {/* ------ */}
+          <div className="hover:text-textSecondary">
+          <a href={"/about"}>
+            <div className="flex items-center gap-2">
+              <div className="text-2xl text-textSecondary">
+                <MdAdminPanelSettings />
+              </div>
+              <div className="space-y-0 flex flex-col">
+                <span className="text-[13px]">Poclicy</span>
+                <span className="text-[10px]">privacy policy</span>
+              </div>
+            </div>
           </a>
+          </div>
+          {/* ------ */}
+
           {/* toogle user */}
-          {user && token && (
-            <div>
+
+          {user && token ? (
+            <div className="hover:text-textSecondary">
               <a href="/user/dashboard">
-              {
-                currentuser && currentUserInFo?.image !="" &&currentUserInFo?.image ?
-                <img src={currentUserInFo?.image} alt="" className="size-10 cursor-pointer rounded-full" />
-                :<img src={userImage} alt="" className="size-10 rounded-full cursor-pointer" />
-              }
+                 
+                    <div className="flex items-center gap-2">
+                      <div className="text-2xl text-textSecondary">
+                        <FaUserCog />
+                      </div>
+                      <div className="space-y-0 flex flex-col ">
+                        <span className="text-[13px]">Account</span>
+                        <span className="text-[10px] ">
+                          profile or dashboard
+                        </span>
+                      </div>
+                    </div>
               </a>
             </div>
-          )}
+          ):
+          
+          <div className="hover:text-textSecondary">
+              <a href="/login">
+                    <div className="flex items-center gap-2">
+                      <div className="text-2xl text-textSecondary">
+                        <FaUserCog />
+                      </div>
+                      <div className="space-y-0 flex flex-col ">
+                        <span className="text-[13px]">Account</span>
+                        <span className="text-[10px] ">
+                          login or signup
+                        </span>
+                      </div>
+                    </div>
+              </a>
+            </div>
+          }
+
+          <a href="/cart" className="hover:text-textSecondary text-2xl">
+            <GrCart />{" "}
+          </a>
           {/* ---end--- */}
         </div>
       </div>

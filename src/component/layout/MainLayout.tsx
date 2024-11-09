@@ -5,16 +5,15 @@ import SubNavbar from "../shared/Navbar/SubNavbar";
 
 const MainLayout = () => {
   return (
-    <div>
-      <Navbar></Navbar>
-      <div className="pt-14 md:pt-[68px] ">
-        <div>
-          <SubNavbar />
-        </div>
-        <Outlet></Outlet>
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <div className="hidden lg:block sticky top-0 z-50">
+        <SubNavbar />
       </div>
-
-      <Footer></Footer>
+      <div className="flex-grow">
+        <Outlet />
+      </div>
+      <Footer />
     </div>
   );
 };

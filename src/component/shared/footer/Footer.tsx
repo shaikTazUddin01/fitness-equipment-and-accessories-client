@@ -1,7 +1,7 @@
 // import logo from '/vite.svg'
 import { FaFacebookF, FaLinkedin } from "react-icons/fa";
 import { MdOutgoingMail } from "react-icons/md";
-import logo from "../../../assets/logo.png";
+import logo from "../../../assets/epicfit.png";
 
 const Footer = () => {
   return (
