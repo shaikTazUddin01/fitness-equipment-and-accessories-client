@@ -1,53 +1,54 @@
-import { useCallback, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
-import { searchProduct } from "../../redux/features/products/searchProduct.slice";
-import debounce from 'lodash/debounce';
+/* eslint-disable prefer-const */
+import { FaSearch } from "react-icons/fa";
+import Debounce from "../../utiles/Debounce";
+import { useEffect, useState } from "react";
+import { useGetProductsQuery } from "../../redux/features/products/products.api";
+import { TProduct } from "../../Type";
 
 const SearchProduct = () => {
-  const { register, handleSubmit,reset } = useForm();
-
-  const dispatch = useAppDispatch();
-
-  //get reset value
-  const resetFilter=useAppSelector((state)=>state.resetFilter.reset)
-
-  // Debounced search handler
-  const debouncedSearch = useCallback(
-    debounce((data) => {
-      dispatch(searchProduct({ searchItem: data.searchItem }));
-    }, 200), 
-    [dispatch]
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState<TProduct[]>([]);
+  // debounce function
+  const debouncedSearchTerm = Debounce(searchTerm, 500);
+// get product data query
+  const { data: productsData, isLoading: productLoading } = useGetProductsQuery(
+    {}
   );
 
+  let products = productsData?.data;
 
-// handle search
-  const handleSearch = (data: any) => {
-    // dispatch(searchProduct({ searchItem: data?.searchItem }));
-    debouncedSearch(data)
+  // filter search product
+  useEffect(() => {
+    if (debouncedSearchTerm && products) {
+      const searchItem = products?.filter((product: TProduct) =>
+        product?.name
+          .toLocaleLowerCase()
+          .includes(debouncedSearchTerm.toLocaleLowerCase())
+      );
+      setFilteredProducts(searchItem);
+    }
+  }, [debouncedSearchTerm, products]);
+
+  // handle search
+  const handleSearch = (e: any) => {
+    setSearchTerm(e.target.value);
   };
-  //reset search field
-  useEffect(()=>{
-    if (resetFilter ==="reset") {
-      reset()
-  }
-  },[reset,resetFilter])
+
+  console.log(filteredProducts);
+
   return (
-    <form action="" className="flex gap-2" onClick={handleSubmit(handleSearch)}>
-      <div className="form-control w-[70%]">
+    <form action="" className="flex gap-2">
+      <div className="relative flex items-center text-black">
         <input
-          type="text"
-          placeholder="Search Here..."
-          className="input input-bordered border-textSecondary"
-          {...register("searchItem")}
+          className="border  w-[600px] text-sm p-2 rounded-md"
+          placeholder="Search in thunder..."
+          name="search"
+          onChange={(e) => handleSearch(e)}
         />
+        <span className="absolute text-black end-2 cursor-pointer">
+          <FaSearch />
+        </span>
       </div>
-      <button
-        type="submit"
-        className="bg-textSecondary px-4 hover:bg-hoverSecondart rounded-lg text-white "
-      >
-        Search
-      </button>
     </form>
   );
 };

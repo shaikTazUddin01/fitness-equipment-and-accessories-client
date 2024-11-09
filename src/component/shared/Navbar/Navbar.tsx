@@ -4,9 +4,14 @@ import { GrCart } from "react-icons/gr";
 import { useAppSelector } from "../../../redux/hooks/hooks";
 import userImage from "../../../assets/Userimage.png";
 import { AiOutlineMenuFold } from "react-icons/ai";
-import { MdAdminPanelSettings, MdClose, MdSettingsAccessibility } from "react-icons/md";
+import {
+  MdAdminPanelSettings,
+  MdClose,
+  MdSettingsAccessibility,
+} from "react-icons/md";
 import { useFinduserQuery } from "../../../redux/features/auth/User/userApi";
 import { useGetCategoryQuery } from "../../../redux/features/category/category.api";
+import SearchProduct from "../../Products/SearchProduct";
 // import { TCategory } from "../../../Type";
 
 const Navbar = () => {
@@ -105,15 +110,8 @@ const Navbar = () => {
         {/* when screen is lg then work this part*/}
         <div className="navbar-center hidden lg:flex gap-5 ">
           <form action="">
-            <div className="relative flex items-center">
-              <input
-                className="border  w-[600px] text-sm px-2 py-[6px] rounded-md"
-                placeholder="Search in thunder..."
-              />
-              <span className="absolute text-black end-2 cursor-pointer">
-                <FaSearch />
-              </span>
-            </div>
+           
+              <SearchProduct/>
           </form>
           <div>
             {/* <a href="/cart">
@@ -131,17 +129,17 @@ const Navbar = () => {
 
           {/* ------ */}
           <div className="hover:text-textSecondary">
-          <a href={"/about"}>
-            <div className="flex items-center gap-2">
-              <div className="text-2xl text-textSecondary">
-                <MdAdminPanelSettings />
+            <a href={"/about"}>
+              <div className="flex items-center gap-2">
+                <div className="text-2xl text-textSecondary">
+                  <MdAdminPanelSettings />
+                </div>
+                <div className="space-y-0 flex flex-col">
+                  <span className="text-[13px]">Poclicy</span>
+                  <span className="text-[10px]">privacy policy</span>
+                </div>
               </div>
-              <div className="space-y-0 flex flex-col">
-                <span className="text-[13px]">Poclicy</span>
-                <span className="text-[10px]">privacy policy</span>
-              </div>
-            </div>
-          </a>
+            </a>
           </div>
           {/* ------ */}
 
@@ -150,38 +148,32 @@ const Navbar = () => {
           {user && token ? (
             <div className="hover:text-textSecondary">
               <a href="/user/dashboard">
-                 
-                    <div className="flex items-center gap-2">
-                      <div className="text-2xl text-textSecondary">
-                        <FaUserCog />
-                      </div>
-                      <div className="space-y-0 flex flex-col ">
-                        <span className="text-[13px]">Account</span>
-                        <span className="text-[10px] ">
-                          profile or dashboard
-                        </span>
-                      </div>
-                    </div>
+                <div className="flex items-center gap-2">
+                  <div className="text-2xl text-textSecondary">
+                    <FaUserCog />
+                  </div>
+                  <div className="space-y-0 flex flex-col ">
+                    <span className="text-[13px]">Account</span>
+                    <span className="text-[10px] ">profile or dashboard</span>
+                  </div>
+                </div>
               </a>
             </div>
-          ):
-          
-          <div className="hover:text-textSecondary">
+          ) : (
+            <div className="hover:text-textSecondary">
               <a href="/login">
-                    <div className="flex items-center gap-2">
-                      <div className="text-2xl text-textSecondary">
-                        <FaUserCog />
-                      </div>
-                      <div className="space-y-0 flex flex-col ">
-                        <span className="text-[13px]">Account</span>
-                        <span className="text-[10px] ">
-                          login or signup
-                        </span>
-                      </div>
-                    </div>
+                <div className="flex items-center gap-2">
+                  <div className="text-2xl text-textSecondary">
+                    <FaUserCog />
+                  </div>
+                  <div className="space-y-0 flex flex-col ">
+                    <span className="text-[13px]">Account</span>
+                    <span className="text-[10px] ">login or signup</span>
+                  </div>
+                </div>
               </a>
             </div>
-          }
+          )}
 
           <a href="/cart" className="hover:text-textSecondary text-2xl">
             <GrCart />{" "}
