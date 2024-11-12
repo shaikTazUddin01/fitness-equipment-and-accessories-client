@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useGetCategoryQuery } from "../../../redux/features/category/category.api";
 import { TCategory, TProduct } from "../../../Type";
-import { Dropdown, Skeleton } from "antd";
 import { useGetProductsQuery } from "../../../redux/features/products/products.api";
 
 const SubNavbar = () => {

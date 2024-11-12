@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prefer-const */
 import { FaSearch } from "react-icons/fa";
 import Debounce from "../../utiles/Debounce";
@@ -6,13 +7,19 @@ import { useGetProductsQuery } from "../../redux/features/products/products.api"
 import { TProduct } from "../../Type";
 import { Divider } from "antd";
 
-const SearchProduct = () => {
+
+type SearchProductProps = {
+  searchboxWidthpx?: number;
+  searchboxWidthps?: number;
+};
+
+const SearchProduct = ({searchboxWidthpx ,searchboxWidthps}:SearchProductProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredProducts, setFilteredProducts] = useState<TProduct[]>([]);
   // debounce function
   const debouncedSearchTerm = Debounce(searchTerm, 500);
   // get product data query
-  const { data: productsData, isLoading: productLoading } = useGetProductsQuery(
+  const { data: productsData} = useGetProductsQuery(
     {}
   );
 
@@ -38,14 +45,17 @@ const SearchProduct = () => {
   // console.log(filteredProducts);
 
   return (
-    <div className="relative z-50">
+    <div className="relative z-50 ">
       <form action="" className="flex gap-2">
-        <div className="relative flex items-center text-black">
+      <div className="relative flex items-center text-black" style={{ width: searchboxWidthps ? `${searchboxWidthps}%` : `${searchboxWidthpx}px` }}>
           <input
-            className="border  w-[600px] text-sm p-2 rounded-md"
+            style={{
+              width: "100%", 
+            }}
+            className="border text-sm p-2 rounded-md"
             placeholder="Search in thunder..."
             name="search"
-            onChange={(e) => handleSearch(e)}
+            onChange={handleSearch}
           />
           <span className="absolute text-black end-2 cursor-pointer">
             <FaSearch />

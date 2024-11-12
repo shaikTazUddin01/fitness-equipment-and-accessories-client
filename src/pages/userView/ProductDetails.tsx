@@ -10,15 +10,16 @@ import ManageRating from "../../component/ManageRatingArea/ManageRating";
 import ProductReview from "../../component/ManageRatingArea/ProductReview";
 import { useGetReviewQuery } from "../../redux/features/review/reviewApi";
 import { TReview } from "../../Type/review";
+import { FaHome } from "react-icons/fa";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const { data, isLoading } = useGetSingleProductsQuery({ _id: id });
 
   const product = data?.data;
-// get review section
-  const { data: review ,isLoading :pLoading} = useGetReviewQuery(id);
-  
+  // get review section
+  const { data: review, isLoading: pLoading } = useGetReviewQuery(id);
+
   const dispatch = useAppDispatch();
   // get my cart
   const mycartProduct = useAppSelector(
@@ -32,9 +33,12 @@ const ProductDetails = () => {
     return <Spring></Spring>;
   }
   // calculate review
-  const reviews=review?.data?.review
-  const sumOfTotalReview=reviews?.reduce((acc:number,curr:TReview)=>acc+Number(curr?.rating),0)
-  const aveRating=Number(sumOfTotalReview/reviews?.length);
+  const reviews = review?.data?.review;
+  const sumOfTotalReview = reviews?.reduce(
+    (acc: number, curr: TReview) => acc + Number(curr?.rating),
+    0
+  );
+  const aveRating = Number(sumOfTotalReview / reviews?.length);
 
   // add product to cart
   const handleAddToCart = () => {
@@ -65,7 +69,25 @@ const ProductDetails = () => {
   };
   return (
     <div>
-      <div className=" max-w-7xl mx-auto min-h-screen py-10">
+      <div className=" max-w-7xl mx-auto min-h-screen pb-10">
+        <div className="flex gap-2 text-sm items-center my-5 text-[#545454]">
+          <a href="/" className="hover:text-textSecondary">
+          <span className="text-[16px]">
+          <FaHome />
+          </span>
+          </a>
+          <span className="text-[12px]">/</span>
+          <a href="/products" className="hover:text-textSecondary">
+          <span>Products</span>
+          </a>
+          <span className="text-[12px]">/</span>
+          <a href={`/products/${product?.category}`} className="hover:text-textSecondary">
+          <span>{product?.category}</span>
+          </a>
+
+          <span className="text-[12px]">/</span>
+          <span>{product?.name}</span>
+        </div>
         <div className="flex  flex-col gap-10 lg:flex-row px-5 md:px-20 my-16 xl:my-0 items-center bg-white  py-10">
           <div className="w-full lg:w-[40%] md:bg-white lg:bg-none md:shadow-2xl flex justify-center rounded-xl">
             <img src={product?.images} className="max-w-sm rounded-lg w-full" />

@@ -1,16 +1,14 @@
-import { FaSearch, FaUser, FaUserCog } from "react-icons/fa";
+import {  FaUserCog } from "react-icons/fa";
 import logo from "../../../assets/epicfit.png";
 import { GrCart } from "react-icons/gr";
 import { useAppSelector } from "../../../redux/hooks/hooks";
-import userImage from "../../../assets/Userimage.png";
 import { AiOutlineMenuFold } from "react-icons/ai";
 import {
   MdAdminPanelSettings,
   MdClose,
-  MdSettingsAccessibility,
 } from "react-icons/md";
-import { useFinduserQuery } from "../../../redux/features/auth/User/userApi";
-import { useGetCategoryQuery } from "../../../redux/features/category/category.api";
+// import { useFinduserQuery } from "../../../redux/features/auth/User/userApi";
+// import { useGetCategoryQuery } from "../../../redux/features/category/category.api";
 import SearchProduct from "../../Products/SearchProduct";
 // import { TCategory } from "../../../Type";
 
@@ -18,15 +16,15 @@ const Navbar = () => {
   //handle redux store
   const { user, token } = useAppSelector((state) => state.userLoginInfo);
   // get category
-  const { data } = useGetCategoryQuery(undefined);
+  // const { data } = useGetCategoryQuery(undefined);
 
   // const categories=data?.data
 
-  const userEmail = user?.user;
+  // const userEmail = user?.user;
   // console.log(user);
-  const { data: currentuser } = useFinduserQuery(userEmail);
+  // const { data: currentuser } = useFinduserQuery(userEmail);
 
-  const currentUserInFo = currentuser?.data;
+  // const currentUserInFo = currentuser?.data;
 
   //navigation items
   const navItem = (
@@ -111,7 +109,7 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex gap-5 ">
           <form action="">
            
-              <SearchProduct/>
+              <SearchProduct searchboxWidthpx={550}/>
           </form>
           <div>
             {/* <a href="/cart">
