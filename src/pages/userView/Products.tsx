@@ -7,6 +7,7 @@ import ProductCard from "../../component/Products/ProductCard";
 import { TProduct } from "../../Type";
 import PriceRangeFiltering from "../../component/Products/PriceRangeFiltering";
 import ProductCardLoader from "../../component/shared/Loading/ProductLoaderCard";
+import Pagination from "../../utiles/Pagination";
 
 const Products = () => {
   // get sort, search, and price range values
@@ -45,10 +46,14 @@ const Products = () => {
           <>
           
             {products && products.length > 0 ? (
+              <div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-7">
                 {products.map((item: TProduct) => (
                   <ProductCard key={item?._id} product={item} />
                 ))}
+              </div>
+              {/* pagination */}
+              <Pagination totalProducts={products?.length}/>
               </div>
             ) : (
               <div>

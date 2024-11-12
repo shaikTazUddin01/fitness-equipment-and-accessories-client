@@ -34,8 +34,8 @@ const ProductsSection = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 ">
         {
         isLoading?
-Array.from({length:8})?.map((_,idx)=><ProductCardLoader key={idx}/>)
-        :products?.slice(0, 8).map((product: TProduct) => {
+Array.from({length:10})?.map((_,idx)=><ProductCardLoader key={idx}/>)
+        :products?.slice(0, 10).map((product: TProduct) => {
           return <ProductCard key={product?._id} product={product}></ProductCard>;
         })}
       </div>
