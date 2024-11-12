@@ -14,6 +14,7 @@ import ProductCard from "../Products/ProductCard";
 import { TProduct } from "../../Type";
 import Spring from "../shared/Loading/Spring";
 import { FaArrowRight } from "react-icons/fa";
+import ProductCardLoader from "../shared/Loading/ProductLoaderCard";
 // import ReactRating from "../shared/rating/ReactRating";
 
 const ProductsSection = () => {
@@ -21,9 +22,7 @@ const ProductsSection = () => {
   const products = data?.data;
   // console.log(products);
 
-  if (isLoading) {
-    return <Spring></Spring>;
-  }
+  
   return (
     <div className="mt-16">
       <div className="text-center ">
@@ -33,7 +32,10 @@ const ProductsSection = () => {
         ></SectionTitle>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 ">
-        {products?.slice(0, 8).map((product: TProduct) => {
+        {
+        isLoading?
+Array.from({length:8})?.map((_,idx)=><ProductCardLoader key={idx}/>)
+        :products?.slice(0, 8).map((product: TProduct) => {
           return <ProductCard key={product?._id} product={product}></ProductCard>;
         })}
       </div>

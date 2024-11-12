@@ -92,6 +92,7 @@ if (pLoading) {
           {" "}
           Add To Cart
         </button>
+        {/* <div className="w-16 h-16 bg-gray-300 animate-pulse"></div> */}
       </div>
     </div>
   );

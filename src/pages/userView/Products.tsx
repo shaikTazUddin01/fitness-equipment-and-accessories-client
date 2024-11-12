@@ -6,68 +6,56 @@ import FIlterProduct from "../../component/Products/FIlterProduct";
 import ProductCard from "../../component/Products/ProductCard";
 import { TProduct } from "../../Type";
 import PriceRangeFiltering from "../../component/Products/PriceRangeFiltering";
-// import { useLocation } from "react-router-dom";
-
+import ProductCardLoader from "../../component/shared/Loading/ProductLoaderCard";
 
 const Products = () => {
-  // const location=useLocation()
-  // console.log(location?.state);
-  // get sort value
+  // get sort, search, and price range values
   const sortProductByPrice = useAppSelector((state) => state?.sortProduct?.sort);
-  const priceRange=useAppSelector((state)=>state.priceRange)
-  const filterPrice=priceRange?.priceRange
-  
-  // get search value
-  const searchProduct = useAppSelector(
-    (state) => state?.searchProduct?.searchItem
-  );
-  //get selected category
-  // const selectedCategory = useAppSelector(
-  //   (state) => state.categoryFilter?.categoris
-  // );
+  const priceRange = useAppSelector((state) => state.priceRange);
+  const filterPrice = priceRange?.priceRange;
+  const searchProduct = useAppSelector((state) => state?.searchProduct?.searchItem);
 
-  // console.log(selectedCategory);
-
+  // Fetch products with filters
   const { data, isLoading } = useGetProductsQuery({
     sortProductByPrice,
     searchProduct,
-    priceRange:filterPrice
-    // selectedCategory :selectedCategory?.length ? selectedCategory:"" 
+    priceRange: filterPrice,
   });
-  const products = data?.data;
-  // console.log(products);
-  //use loading
-  if (isLoading) {
-    return <Spring></Spring>;
-  }
 
-  
+  const products = data?.data;
 
   return (
     <div className="min-h-screen pb-20 pt-10 flex flex-col-reverse md:flex-row gap-5 px-5 xl:px-0 max-w-7xl mx-auto">
-      {/* filter category left side bar */}
+      {/* Left sidebar for filters */}
       <div className="md:w-[25%] rounded-lg">
-        <div>
-
-        <PriceRangeFiltering/>
-        </div>
-        <SidebarFilter ></SidebarFilter>
+        <PriceRangeFiltering />
+        <SidebarFilter />
       </div>
-      {/* product and search side bar */}
+
+      {/* Main content area for products */}
       <div className="md:w-[75%]">
-        <FIlterProduct></FIlterProduct>
-        {products.length > 0 ? (
+      <FIlterProduct />
+        {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-7">
-            {products?.map((item: TProduct) => (
-              <ProductCard key={item?._id} product={item}></ProductCard>
+            {Array.from({ length: 8 }).map((_, idx) => (
+              <ProductCardLoader key={idx} />
             ))}
           </div>
         ) : (
-          <div>
-            <h1 className="text-2xl text-center mt-10">
-              No Product Found.!
-            </h1>
-          </div>
+          <>
+          
+            {products && products.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-7">
+                {products.map((item: TProduct) => (
+                  <ProductCard key={item?._id} product={item} />
+                ))}
+              </div>
+            ) : (
+              <div>
+                <h1 className="text-2xl text-center mt-10">No Product Found!</h1>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
