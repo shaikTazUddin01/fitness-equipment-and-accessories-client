@@ -15,7 +15,8 @@ const SubNavbar = () => {
   const categories = data?.data;
 
   let items;
-  const filterByCategory = products?.data?.filter(
+  // console.log("-->",);
+  const filterByCategory = products?.data?.result?.filter(
     (item: TProduct) => item?.category == categoryItem
   );
 
@@ -52,9 +53,9 @@ const SubNavbar = () => {
   //navigation items
 
   return (
-    <div className="bg-white shadow-xl border-b-2">
+    <div className="bg-white shadow-xl border-b-2 px-2">
       <div className="py-1 max-w-7xl mx-auto " onMouseLeave={handleMouseLeave}>
-        <div className="flex flex-wrap justify-between gap-2 ">
+        <div className="flex flex-wrap xl:justify-between gap-2 ">
           {categoryLoading
             ? Array.from({ length: 8 }).map((_, idx) => (
                 <div

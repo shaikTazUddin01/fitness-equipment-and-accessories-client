@@ -8,6 +8,7 @@ import { productCart } from "../../redux/features/myCart/myCart.slice";
 import { useGetReviewQuery } from "../../redux/features/review/reviewApi";
 import { TReview } from "../../Type/review";
 import Spring from "../shared/Loading/Spring";
+import ProductCardLoader from "../shared/Loading/ProductLoaderCard";
 const ProductCard = ({ product }: { product: TProduct }) => {
   const { _id, name, price, images } = product;
 
@@ -23,7 +24,7 @@ const { data: review ,isLoading :pLoading} = useGetReviewQuery(_id);
  );
 
 if (pLoading) {
-  return <Spring></Spring>
+  return <ProductCardLoader/>
 }
 
    // calculate review

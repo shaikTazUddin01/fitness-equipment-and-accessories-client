@@ -9,7 +9,7 @@ import ProductCardLoader from "../shared/Loading/ProductLoaderCard";
 
 const FeaturedProducts = () => {
   const { data, isLoading } = useGetProductsQuery({ feature: "True" });
-  const products = data?.data;
+  const products = data?.data?.result;
 
   return (
     <div className="mt-16">

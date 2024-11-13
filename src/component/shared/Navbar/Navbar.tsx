@@ -50,7 +50,7 @@ const Navbar = () => {
   );
   return (
     <div
-      className={`text-white bg-primaryColor  z-20 shadow-xl  w-full h-[20]`}
+      className={`text-white bg-primaryColor  z-20 shadow-xl px-2  w-full h-[20]`}
     >
       <div className={`navbar max-w-7xl mx-auto p-0`}>
         <div className="navbar-start flex-1">

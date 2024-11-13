@@ -23,7 +23,7 @@ const SearchProduct = ({searchboxWidthpx ,searchboxWidthps}:SearchProductProps) 
     {}
   );
 
-  let products = productsData?.data;
+  let products = productsData?.data?.result;
 
   // filter search product
   useEffect(() => {

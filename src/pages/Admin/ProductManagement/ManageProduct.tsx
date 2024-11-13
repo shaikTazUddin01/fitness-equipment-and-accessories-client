@@ -27,7 +27,7 @@ const ManageProduct = () => {
   const { data: Pdata, isLoading } = useGetProductsQuery({});
   const [deleteProductItem] = useDeleteProductMutation();
 
-  const products: TProduct[] = Pdata?.data;
+  const products: TProduct[] = Pdata?.data?.result;
   // console.log(products);
 
   if (isLoading) {

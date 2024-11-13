@@ -8,7 +8,7 @@ import { TProduct } from "../../Type";
 const ProductManagement = () => {
   const { data, isLoading } = useGetProductsQuery({});
 
-  const products = data?.data;
+  const products = data?.data?.result;
   console.log(products);
 // console.log("refatch--->",refetch());
   if (isLoading) {

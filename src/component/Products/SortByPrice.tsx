@@ -26,11 +26,12 @@ const SortByPrice = () => {
   }, [reset, resetFilter]);
   return (
     <form action="" onChange={handleSubmit(handleSortByPrice)}>
+      <label className="text-sm">Sort By : {"  "}</label>
       <select
-        className="select select-success w-full md:w-[150px] max-w-xs border-textSecondary "
+        className="select bg-slate-200 select-sm w-full md:w-[100px] max-w-xs  "
         {...register("sort")}
       >
-        <option defaultValue="">Sort By Price</option>
+        <option defaultValue="">Default</option>
         <option value={"asc"}>Price(low to High)</option>
         <option value={"dsc"}>Price(High to Low)</option>
       </select>

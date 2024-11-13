@@ -12,15 +12,15 @@ import SectionTitle from "../shared/sectionTitle/SectionTitle";
 import { useGetProductsQuery } from "../../redux/features/products/products.api";
 import ProductCard from "../Products/ProductCard";
 import { TProduct } from "../../Type";
-import Spring from "../shared/Loading/Spring";
+// import Spring from "../shared/Loading/Spring";
 import { FaArrowRight } from "react-icons/fa";
 import ProductCardLoader from "../shared/Loading/ProductLoaderCard";
 // import ReactRating from "../shared/rating/ReactRating";
 
 const ProductsSection = () => {
   const { data, isLoading } = useGetProductsQuery({});
-  const products = data?.data;
-  // console.log(products);
+  const products = data?.data?.result;
+  console.log(products);
 
   
   return (

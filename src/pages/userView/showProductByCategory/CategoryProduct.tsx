@@ -6,6 +6,9 @@ import { TProduct } from "../../../Type";
 import ProductCard from "../../../component/Products/ProductCard";
 import PriceRangeFiltering from "../../../component/Products/PriceRangeFiltering";
 import { useAppSelector } from "../../../redux/hooks/hooks";
+import ProductCardLoader from "../../../component/shared/Loading/ProductLoaderCard";
+import Pagination from "../../../utiles/Pagination";
+import CategoriesFiltering from "../../../component/Products/SidebarFilter";
 
 const CategoryProduct = () => {
   const { pathname } = useLocation();
@@ -17,28 +20,38 @@ const CategoryProduct = () => {
 const searchProduct = useAppSelector(
   (state) => state?.searchProduct?.searchItem
 );
-  const { data: catProducts } = useGetProductsQuery({
+  const { data: catProducts,isLoading } = useGetProductsQuery({
     selectedCategory: category,
     priceRange:filterPrice,
     searchProduct
   });
 
-  const products = catProducts?.data;
+  const products = catProducts?.data?.result;
 //   console.log(products?.length);
   return (
-    <div className="min-h-screen pb-20 pt-10 flex flex-col-reverse md:flex-row gap-5 px-5 xl:px-0 max-w-7xl mx-auto">
+    <div className="min-h-screen pb-20 pt-5 flex flex-col-reverse md:flex-row gap-5 px-5 xl:px-0 max-w-7xl mx-auto">
       {/* filter category left side bar */}
       <div className="md:w-[25%] rounded-lg">
         <PriceRangeFiltering/>
+       <CategoriesFiltering/>
       </div>
       {/* product and search side bar */}
       <div className="md:w-[75%]">
         <FIlterProduct></FIlterProduct>
-        {products?.length > 0 ? (
+
+        {
+        isLoading?
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-7">
+       { Array.from({length:6})?.map((_,idx)=><ProductCardLoader key={idx}/>)}
+        </div>
+       : products?.length > 0 ? (
+        <div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-7">
             {products?.map((item: TProduct) => (
               <ProductCard key={item?._id} product={item}></ProductCard>
             ))}
+          </div>
+          <Pagination totalProducts={catProducts?.data?.totalProducts}/>
           </div>
         ) : (
           <div>

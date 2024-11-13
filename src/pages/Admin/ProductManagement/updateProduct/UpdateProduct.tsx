@@ -44,9 +44,10 @@ const UpdateProduct = ({ items }: { items: Partial<TProduct> }) => {
 
   // handle update
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    console.log("data-->", data);
+    // console.log("data-->", data);
     const toastId = toast.loading("Loading...");
     try {
+      // console.log(data);
       const res = await updateProduct({ id: key, data: data });
 
       // console.log("res--->", res);
@@ -79,7 +80,7 @@ const UpdateProduct = ({ items }: { items: Partial<TProduct> }) => {
             defaultFieldValue={name}
           ></THInput>
           <THInput
-            name={"image"}
+            name={"images"}
             label={"Product Image"}
             type={"text"}
             defaultFieldValue={images}
