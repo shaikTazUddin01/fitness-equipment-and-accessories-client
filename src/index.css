@@ -95,4 +95,5 @@ span.ant-layout-sider-zero-width-trigger.ant-layout-sider-zero-width-trigger-lef
 .custom-rate .ant-rate-star-first,
 .custom-rate .ant-rate-star-second {
   color: #cdcbcb; 
+  margin: -3px;
 }
