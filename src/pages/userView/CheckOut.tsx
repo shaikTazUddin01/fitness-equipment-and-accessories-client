@@ -28,7 +28,7 @@ const CheckOut = () => {
           <img src={images} alt="" className="w-[350px]" />
         </div>
         <div className="w-full pr-10 ">
-          <h1 className="text-2xl">Product Name : {name}</h1>
+          <h1 className="text-xl font-semibold">Product Name : {name}</h1>
           <h3 className="pb-2">Category : {category}</h3>
           <div className="flex items-center justify-between py-2">
             <h1 className="text-[16px]">Qty : {quentity}</h1>
@@ -39,9 +39,9 @@ const CheckOut = () => {
             <h3>$2</h3>
           </div>
           <div className="bg-primaryColor w-full h-[2px]"></div>
-          <div className="flex justify-between pt-2">
+          <div className="flex justify-between pt-2 font-bold">
             <h1>{quentity} Item(s) . Subtotal : </h1>
-            <h1>${price * quentity + 2}</h1>
+            <h1 >${price * quentity + 2}</h1>
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@ const CheckOut = () => {
           <h1>$2</h1>
         </div>
         <div className="bg-primaryColor w-full h-[2px]"></div>
-        <div className="flex justify-between pt-2 text-[16px]">
+        <div className="flex justify-between pt-2 text-[16px] font-bold">
           <h1>Total Price </h1>
           <h1>${price * quentity + 2}</h1>
         </div>

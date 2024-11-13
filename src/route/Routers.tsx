@@ -59,7 +59,7 @@ const Routers = createBrowserRouter([
         element: <Cart></Cart>,
       },
       {
-        path: "cashout/:id",
+        path: "checkout/:id",
         element: (
           <ProtectedRoute>
             <CheckOut></CheckOut>

@@ -100,6 +100,7 @@ const PlaceOrder = ({ CheckOutProduct }: { CheckOutProduct: TProduct }) => {
             </button>
           </form>
           {/* <form className="card-body" onSubmit={handleSubmit}> */}
+          <h1 className="text-center text-xl font-semibold mt-3 -mb-2">Enter Your Order Details</h1>
           <THForm onSubmit={onSubmit}>
             <THInput
               label="Name"
