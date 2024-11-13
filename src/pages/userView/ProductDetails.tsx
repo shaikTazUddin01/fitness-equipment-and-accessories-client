@@ -70,6 +70,7 @@ const ProductDetails = () => {
   return (
     <div>
       <div className=" max-w-7xl mx-auto min-h-screen pb-10">
+        {/*page navigator */}
         <div className="flex gap-2 text-sm items-center my-5 text-[#545454]">
           <a href="/" className="hover:text-textSecondary">
           <span className="text-[16px]">
@@ -88,6 +89,7 @@ const ProductDetails = () => {
           <span className="text-[12px]">/</span>
           <span>{product?.name}</span>
         </div>
+        {/* --- */}
         <div className="flex  flex-col gap-10 lg:flex-row px-5 md:px-20 my-16 xl:my-0 items-center bg-white  py-10">
           <div className="w-full lg:w-[40%] md:bg-white lg:bg-none md:shadow-2xl flex justify-center rounded-xl">
             <img src={product?.images} className="max-w-sm rounded-lg w-full" />
