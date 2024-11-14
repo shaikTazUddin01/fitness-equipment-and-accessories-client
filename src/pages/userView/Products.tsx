@@ -70,7 +70,7 @@ const Products = () => {
             <>
               {products && products?.result?.length > 0 ? (
                 <div>
-                  <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-3">
+                  <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-3">
                     {products?.result?.map((item: TProduct) => (
                       <ProductCard key={item?._id} product={item} />
                     ))}

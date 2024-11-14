@@ -54,7 +54,7 @@ const [maxPrice, setMaxPrice] = useState(5000);
         <div className="divider mt-0"></div>
         <div className="space-y-2">
           <Slider
-            trackStyle={[{ backgroundColor: "#e57f2c" }]}
+            trackStyle={[{ backgroundColor: "#ef4a23" }]}
             range
             step={10}
             value={sliderValue}

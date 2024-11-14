@@ -10,11 +10,13 @@ import {
 // import { useFinduserQuery } from "../../../redux/features/auth/User/userApi";
 // import { useGetCategoryQuery } from "../../../redux/features/category/category.api";
 import SearchProduct from "../../Products/SearchProduct";
+// import { Badge } from "antd";
 // import { TCategory } from "../../../Type";
 
 const Navbar = () => {
   //handle redux store
   const { user, token } = useAppSelector((state) => state.userLoginInfo);
+  const cartProduct = useAppSelector((state) => state.productCard?.productCart);
   // get category
   // const { data } = useGetCategoryQuery(undefined);
 
@@ -173,9 +175,13 @@ const Navbar = () => {
             </div>
           )}
 
-          <a href="/cart" className="hover:text-textSecondary text-2xl">
+         <div className="flex relative">
+          <a href="/cart" className="hover:text-textSecondary text-2xl text-white">
+      {/* <Avatar shape="square" size="large" /> */}
             <GrCart />{" "}
           </a>
+          <p className="bg-textSecondary items-start font-semibold text-[10px] rounded-full absolute -top-2 -end-2 border text-center size-4">{cartProduct?.length?cartProduct?.length:"0"}</p>
+          </div>
           {/* ---end--- */}
         </div>
       </div>

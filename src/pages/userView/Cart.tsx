@@ -37,7 +37,7 @@ const Cart = () => {
       ) : (
         <div>
           <h1 className="text-center text-3xl  mt-10">
-            No Item Added To The Cart..!
+            No Product Added To The Cart..!
           </h1>
         </div>
       )}
