@@ -1,15 +1,16 @@
-import {  FaUserCog } from "react-icons/fa";
+import { FaUserCog } from "react-icons/fa";
 import logo from "../../../assets/epicfit.png";
 import { GrCart } from "react-icons/gr";
 import { useAppSelector } from "../../../redux/hooks/hooks";
 import { AiOutlineMenuFold } from "react-icons/ai";
-import {
-  MdAdminPanelSettings,
-  MdClose,
-} from "react-icons/md";
+import { MdAdminPanelSettings, MdClose } from "react-icons/md";
 // import { useFinduserQuery } from "../../../redux/features/auth/User/userApi";
 // import { useGetCategoryQuery } from "../../../redux/features/category/category.api";
 import SearchProduct from "../../Products/SearchProduct";
+import { TCategory, TProduct } from "../../../Type";
+import { useState } from "react";
+import { useGetCategoryQuery } from "../../../redux/features/category/category.api";
+import { useGetProductsQuery } from "../../../redux/features/products/products.api";
 // import { Badge } from "antd";
 // import { TCategory } from "../../../Type";
 
@@ -17,39 +18,26 @@ const Navbar = () => {
   //handle redux store
   const { user, token } = useAppSelector((state) => state.userLoginInfo);
   const cartProduct = useAppSelector((state) => state.productCard?.productCart);
-  // get category
-  // const { data } = useGetCategoryQuery(undefined);
 
-  // const categories=data?.data
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const { data, isLoading: categoryLoading } = useGetCategoryQuery(undefined);
+  // product query
+  const { data: products, isLoading: productLoading } = useGetProductsQuery({});
 
-  // const userEmail = user?.user;
-  // console.log(user);
-  // const { data: currentuser } = useFinduserQuery(userEmail);
+  // categories
+  const categories = data?.data;
 
-  // const currentUserInFo = currentuser?.data;
-
-  //navigation items
-  const navItem = (
-    <>
-      <li>
-        <a href={"/"}>Home</a>
-      </li>
-      <li>
-        <a href={"/products"}>Collection</a>
-      </li>
-      {/* <li>
-        <a href={"/productManagement"}>Product Management</a>
-      </li> */}
-      <li>
-        <a href={"/about"}>About Us</a>
-      </li>
-      {!user && !token && (
-        <li>
-          <a href={"/login"}>login</a>
-        </li>
-      )}
-    </>
+  const filterByCategory = products?.data?.result?.filter(
+    (item: TProduct) => item?.category == activeCategory
   );
+
+  //handle product loading
+
+  const handleCategoryClick = (category: string) => {
+    setActiveCategory(activeCategory === category ? null : category);
+    
+  };
+ 
   return (
     <div
       className={`text-white bg-primaryColor  z-20 shadow-xl px-2  w-full h-[20]`}
@@ -89,12 +77,47 @@ const Navbar = () => {
                   <MdClose />
                 </button>
                 {/* Sidebar content here */}
-                <div className="mt-10 mx-auto border border-red">
+                <div className="">
                   <a href="/">
-                    <img src={logo} alt="" className="h-full " />
+                    <img
+                      src={logo}
+                      alt=""
+                      className="h-full w-[70%] mb-3 -mt-2"
+                    />
                   </a>
-                  <div className="flex flex-col justify-center items-center text-lg">
-                    {navItem}
+                  <div className="flex flex-col gap-1">
+                    {categories?.map((category: TCategory) => {
+                      return (
+                        <div key={category?._id}>
+                          <p
+                            className="px-1 py-[2px] hover:bg-textSecondary rounded-t"
+                            onClick={() => handleCategoryClick(category?.name)}
+                          >
+                            {category?.name}
+                          </p>
+
+                          {activeCategory == category?.name &&(
+                            <div className="  bg-white px-1 py-[2px] text-black">
+                              {filterByCategory?.length>0 ? filterByCategory?.map((product: TProduct) => (
+                                
+                                  <a
+                                  key={product?._id}
+                                    href={`/productDetails/${product?._id}`}
+                                    className="text-sm  "
+                                  >
+                                    {product?.name}
+                                  </a>
+                                
+                              )):
+                              <div>
+                                <p>No Product Avaliable.!</p>
+                              </div>
+                              }
+                            </div>
+                          ) }
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -110,8 +133,7 @@ const Navbar = () => {
         {/* when screen is lg then work this part*/}
         <div className="navbar-center hidden lg:flex gap-5 ">
           <form action="">
-           
-              <SearchProduct searchboxWidthpx={550}/>
+            <SearchProduct searchboxWidthpx={550} />
           </form>
           <div>
             {/* <a href="/cart">
@@ -175,12 +197,17 @@ const Navbar = () => {
             </div>
           )}
 
-         <div className="flex relative">
-          <a href="/cart" className="hover:text-textSecondary text-2xl text-white">
-      {/* <Avatar shape="square" size="large" /> */}
-            <GrCart />{" "}
-          </a>
-          <p className="bg-textSecondary items-start font-semibold text-[10px] rounded-full absolute -top-2 -end-2 border text-center size-4">{cartProduct?.length?cartProduct?.length:"0"}</p>
+          <div className="flex relative">
+            <a
+              href="/cart"
+              className="hover:text-textSecondary text-2xl text-white"
+            >
+              {/* <Avatar shape="square" size="large" /> */}
+              <GrCart />{" "}
+            </a>
+            <p className="bg-textSecondary items-start font-semibold text-[10px] rounded-full absolute -top-2 -end-2 border text-center size-4">
+              {cartProduct?.length ? cartProduct?.length : "0"}
+            </p>
           </div>
           {/* ---end--- */}
         </div>
