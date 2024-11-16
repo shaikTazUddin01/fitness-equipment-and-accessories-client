@@ -34,7 +34,7 @@ const CategoriesFiltering = () => {
           {categories?.data?.map((category: TCategory) => (
             <a href={`/products/${category?.name}`} key={category?._id}>
               <p
-                className={`hover:text-textSecondary ${formattedUrl == category?.name ?"text-textSecondary":""}`}
+                className={` hover:text-textSecondary ${formattedUrl == category?.name ?"text-textSecondary":""}`}
                 onClick={() => filterByCategory(category?.name)}
               >
                 {" "}

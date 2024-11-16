@@ -20,6 +20,9 @@ const Products = () => {
   const searchProduct = useAppSelector(
     (state) => state?.searchProduct?.searchItem
   );
+  const category = useAppSelector(
+    (state) => state?.categoryFilter?.categoris
+  );
   const { skip, limit } = useAppSelector((state) => state?.pagination);
   // console.log(skip, limit);
   // Fetch products with filters
@@ -29,6 +32,7 @@ const Products = () => {
     priceRange: filterPrice,
     skip: skip,
     limit: limit,
+    selectedCategory:category
   });
 
   const products = data?.data;

@@ -45,12 +45,17 @@ const SearchProduct = ({searchboxWidthpx ,searchboxWidthps}:SearchProductProps) 
   // console.log(filteredProducts);
 
   return (
-    <div className="relative z-50 ">
+    <div className="relative z-50 w-full">
       <form action="" className="flex gap-2">
-      <div className="relative flex items-center text-black" style={{ width: searchboxWidthps ? `${searchboxWidthps}%` : `${searchboxWidthpx}px` }}>
+      <div className="relative flex items-center text-black" 
+      style={{
+        width: searchboxWidthps ? `${searchboxWidthps}%` : `${searchboxWidthpx}px`,
+      }}
+      >
           <input
             style={{
               width: "100%", 
+           
             }}
             className="border text-sm p-2 rounded-md"
             placeholder="Search in thunder..."

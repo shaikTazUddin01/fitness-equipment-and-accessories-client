@@ -101,7 +101,7 @@ const ProductCard = ({ product }: { product: TProduct }) => {
             ({reviews?.length ? reviews?.length : "0"})
           </p>
         </span>
-        {pathname !== "/" && (
+        {/* {pathname !== "/" && ( */}
           <>
           <button
             className="bg-slate-100 hover:bg-slate-200 rounded-md py-1 text-textSecondary text-sm flex items-center gap-1 justify-center"
@@ -114,7 +114,7 @@ const ProductCard = ({ product }: { product: TProduct }) => {
             Add To Cart
           </button>
           </>
-        )}
+        {/* )} */}
         {/* <div className="w-16 h-16 bg-gray-300 animate-pulse"></div> */}
       </div>
     </div>
