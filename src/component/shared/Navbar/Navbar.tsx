@@ -4,14 +4,15 @@ import { GrCart } from "react-icons/gr";
 import { useAppSelector } from "../../../redux/hooks/hooks";
 import { AiOutlineMenuFold } from "react-icons/ai";
 import { MdAdminPanelSettings, MdClose } from "react-icons/md";
-// import { useFinduserQuery } from "../../../redux/features/auth/User/userApi";
-// import { useGetCategoryQuery } from "../../../redux/features/category/category.api";
 import SearchProduct from "../../Products/SearchProduct";
 import { TCategory, TProduct } from "../../../Type";
 import { useState } from "react";
 import { useGetCategoryQuery } from "../../../redux/features/category/category.api";
 import { useGetProductsQuery } from "../../../redux/features/products/products.api";
-// import { Badge } from "antd";
+import { GoPlus } from "react-icons/go";
+import { LuMinus } from "react-icons/lu";
+import { IoSearch } from "react-icons/io5";
+
 // import { TCategory } from "../../../Type";
 
 const Navbar = () => {
@@ -22,7 +23,7 @@ const Navbar = () => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const { data, isLoading: categoryLoading } = useGetCategoryQuery(undefined);
   // product query
-  const { data: products, isLoading: productLoading } = useGetProductsQuery({});
+  const { data: products } = useGetProductsQuery({});
 
   // categories
   const categories = data?.data;
@@ -35,15 +36,15 @@ const Navbar = () => {
 
   const handleCategoryClick = (category: string) => {
     setActiveCategory(activeCategory === category ? null : category);
-    
   };
- 
+
   return (
     <div
       className={`text-white bg-primaryColor  z-20 shadow-xl px-2  w-full h-[20]`}
     >
       <div className={`navbar max-w-7xl mx-auto p-0`}>
-        <div className="navbar-start flex-1">
+        <div className="navbar-start lg:w-[33%]">
+          {/* responsive nav */}
           {/* drawer */}
           <div className="drawer lg:hidden">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -60,7 +61,7 @@ const Navbar = () => {
                 aria-label="close sidebar"
                 className="drawer-overlay"
               ></label>
-              <div className="menu bg-primaryColor text-white min-h-full w-[65%] p-4 relative">
+              <div className="menu bg-white text-black min-h-full w-[65%] relative">
                 {/* Close Button */}
                 <button
                   onClick={() => {
@@ -72,52 +73,81 @@ const Navbar = () => {
                     }
                   }}
                   aria-label="close sidebar"
-                  className="absolute top-4 right-4 text-2xl font-bold"
+                  className="absolute top-4 right-2 text-2xl font-bold bg-slate-200 rounded"
                 >
                   <MdClose />
                 </button>
                 {/* Sidebar content here */}
                 <div className="">
-                  <a href="/">
-                    <img
-                      src={logo}
-                      alt=""
-                      className="h-full w-[70%] mb-3 -mt-2"
-                    />
-                  </a>
-                  <div className="flex flex-col gap-1">
-                    {categories?.map((category: TCategory) => {
-                      return (
-                        <div key={category?._id}>
-                          <p
-                            className="px-1 py-[2px] hover:bg-textSecondary rounded-t"
-                            onClick={() => handleCategoryClick(category?.name)}
-                          >
-                            {category?.name}
-                          </p>
-
-                          {activeCategory == category?.name &&(
-                            <div className="  bg-white px-1 py-[2px] text-black">
-                              {filterByCategory?.length>0 ? filterByCategory?.map((product: TProduct) => (
-                                
-                                  <a
-                                  key={product?._id}
-                                    href={`/productDetails/${product?._id}`}
-                                    className="text-sm  "
+                  
+                  <div className="flex flex-col gap-1 mt-9">
+                    {categoryLoading
+                      ? Array.from({ length: 8 }).map((_, idx) => (
+                          <div
+                            key={idx}
+                            className="w-32 h-6 bg-gray-200 rounded-md animate-pulse"
+                          ></div>
+                        ))
+                      : categories?.map((category: TCategory) => {
+                          return (
+                            <div key={category?._id}>
+                              <div className="flex items-center justify-between">
+                                <p
+                                  className={`px-1 py-2 hover:text-textSecondary text-sm ${
+                                    activeCategory == category?.name &&
+                                    "text-textSecondary"
+                                  }`}
+                                >
+                                  {category?.name}
+                                </p>
+                                {activeCategory == category?.name ? (
+                                  <span
+                                    className="text-xl"
+                                    onClick={() =>
+                                      handleCategoryClick(category?.name)
+                                    }
                                   >
-                                    {product?.name}
-                                  </a>
-                                
-                              )):
-                              <div>
-                                <p>No Product Avaliable.!</p>
+                                    <LuMinus />
+                                  </span>
+                                ) : (
+                                  <span
+                                    className="text-xl"
+                                    onClick={() =>
+                                      handleCategoryClick(category?.name)
+                                    }
+                                  >
+                                    <GoPlus />
+                                  </span>
+                                )}
                               </div>
-                              }
+                              <div className="w-full h-[1px] bg-slate-200"></div>
+                              {activeCategory == category?.name && (
+                                <div className="  bg-slate-100 px-1 py-[2px] text-black ">
+                                  {filterByCategory?.length > 0 ? (
+                                    filterByCategory?.map(
+                                      (product: TProduct) => (
+                                        <div className="py-1 px-2 hover:text-textSecondary">
+                                          <a
+                                            key={product?._id}
+                                            href={`/productDetails/${product?._id}`}
+                                            className="text-sm"
+                                          >
+                                            {product?.name}
+                                          </a>
+                                          <div className="bg-white h-[1px] w-full"></div>
+                                        </div>
+                                      )
+                                    )
+                                  ) : (
+                                    <div>
+                                      <p>No Product Avaliable.!</p>
+                                    </div>
+                                  )}
+                                </div>
+                              )}
                             </div>
-                          ) }
-                        </div>
-                      );
-                    })}
+                          );
+                        })}
                   </div>
                 </div>
               </div>
@@ -126,31 +156,30 @@ const Navbar = () => {
           {/* drawer */}
           <div className="hidden lg:flex">
             <a href="/">
-              <img src={logo} alt="" className="h-10 " />
+              <img src={logo} alt="" className="w-[160px]" />
             </a>
           </div>
         </div>
         {/* when screen is lg then work this part*/}
-        <div className="navbar-center hidden lg:flex gap-5 ">
+        <div className="navbar-center hidden lg:flex ">
           <form action="">
             <SearchProduct searchboxWidthpx={550} />
           </form>
-          <div>
-            {/* <a href="/cart">
-            <GrCart />{" "}
-          </a> */}
+          <div></div>
+        </div>
+        {/* responsive icon */}
+        <div className="navbar-center  lg:hidden justify-center w-full  pr-12">
+        <div className="lg:hidden flex ">
+            <a href="/">
+              <img src={logo} alt="" className="w-[160px]" />
+            </a>
           </div>
-          {/* <ul className="menu menu-horizontal px-1 text-[16px]">{navItem}</ul> */}
+        
         </div>
         {/*  */}
-        <div className="justify-end flex gap-8 items-center  cursor-pointer min-w-[30%] ">
-          {/* <a href="/products">
-            <FaSearch></FaSearch>
-          </a> */}
-          {/* <FaRegUser></FaRegUser> */}
-
+        <div className="navbar-end flex gap-8 items-center  absolute end-0 z-20 lg:relative">
           {/* ------ */}
-          <div className="hover:text-textSecondary">
+          <div className="hover:text-textSecondary hidden lg:flex ">
             <a href={"/about"}>
               <div className="flex items-center gap-2">
                 <div className="text-2xl text-textSecondary">
@@ -168,7 +197,7 @@ const Navbar = () => {
           {/* toogle user */}
 
           {user && token ? (
-            <div className="hover:text-textSecondary">
+            <div className="hover:text-textSecondary hidden lg:flex">
               <a href="/user/dashboard">
                 <div className="flex items-center gap-2">
                   <div className="text-2xl text-textSecondary">
@@ -182,7 +211,7 @@ const Navbar = () => {
               </a>
             </div>
           ) : (
-            <div className="hover:text-textSecondary">
+            <div className="hover:text-textSecondary hidden lg:flex">
               <a href="/login">
                 <div className="flex items-center gap-2">
                   <div className="text-2xl text-textSecondary">
@@ -196,8 +225,8 @@ const Navbar = () => {
               </a>
             </div>
           )}
-
-          <div className="flex relative">
+          {/* cart */}
+          <div className="flex relative ">
             <a
               href="/cart"
               className="hover:text-textSecondary text-2xl text-white"
@@ -208,6 +237,10 @@ const Navbar = () => {
             <p className="bg-textSecondary items-start font-semibold text-[10px] rounded-full absolute -top-2 -end-2 border text-center size-4">
               {cartProduct?.length ? cartProduct?.length : "0"}
             </p>
+          </div>
+          {/* search */}
+          <div className="text-2xl lg:hidden">
+            <IoSearch />
           </div>
           {/* ---end--- */}
         </div>

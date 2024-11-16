@@ -69,14 +69,11 @@ const CartTableRow = ({ mycart }: { mycart: TProduct }) => {
       <span className="ml-4 font-medium">{name}</span>
       </td>
       <td className="text-center font-semibold">$ {price.toFixed(2)}</td>
-      <td className="flex items-center justify-center gap-2">
+      <td className="flex items-center justify-center gap-2 mt-2">
         <button
           onClick={handleDecrease}
           className="btn btn-xs"
-          // className={`btn btn-xs ${
-          //   myProduct && myProduct.stockQuentity === 1 ? "btn-disabled" : ""
-          // }`}
-          // disabled={myProduct && myProduct.stockQuentity === 1}
+        
         >
           -
         </button>
@@ -86,7 +83,7 @@ const CartTableRow = ({ mycart }: { mycart: TProduct }) => {
         <button
           onClick={handleIncrease}
           className="btn btn-xs"
-          // disabled={myProduct && myProduct.stockQuentity >= productStock}
+          
         >
           +
         </button>
