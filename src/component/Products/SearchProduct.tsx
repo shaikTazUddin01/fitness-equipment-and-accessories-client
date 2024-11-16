@@ -58,7 +58,7 @@ const SearchProduct = ({searchboxWidthpx ,searchboxWidthps}:SearchProductProps) 
            
             }}
             className="border text-sm p-2 rounded-md"
-            placeholder="Search in thunder..."
+            placeholder="Search in Epicfit..."
             name="search"
             onChange={handleSearch}
           />
