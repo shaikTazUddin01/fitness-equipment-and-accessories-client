@@ -1,6 +1,6 @@
- ## Project Name : Fitness Equipment and Accessories.
- **Website Live Link : [https://thunder-fitness.vercel.app/](https://thunder-fitness.vercel.app/)** </br>
- **Website Admin Dashboard : [https://thunder-fitnesscare.netlify.app/admin](https://thunder-fitnesscare.netlify.app/admin)** </br>
+ ## Project Name : EpicFit Mart.
+ **Website Live Link : [https://epicfit.vercel.app/](https://epicfit.vercel.app/)** </br>
+ **Website Admin Dashboard : [https://epicfit.vercel.app/admin](https://epicfit.vercel.app/admin)** </br>
  **Server Live Link : [https://fitness-equipment-server-silk.vercel.app](https://fitness-equipment-server-silk.vercel.app/)**  </br> </br>
 **Admin Email : taz@gmail.com** </br>
 **Admin Password : 1234567** </br>

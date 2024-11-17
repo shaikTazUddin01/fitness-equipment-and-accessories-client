@@ -1,6 +1,6 @@
 import { Layout, Menu } from "antd";
 
-import logo from "../../assets/logo.png";
+import logo from "../../assets/epicfit.png";
 
 import SidebarGenarator from "../../utiles/sidebarGenarator";
 

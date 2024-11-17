@@ -9,11 +9,11 @@ import { useGetReviewQuery } from "../../redux/features/review/reviewApi";
 import { TReview } from "../../Type/review";
 // import Spring from "../shared/Loading/Spring";
 import ProductCardLoader from "../shared/Loading/ProductLoaderCard";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
 const ProductCard = ({ product }: { product: TProduct }) => {
-  const { pathname } = useLocation();
-  console.log(pathname);
+  // const { pathname } = useLocation();
+  // console.log(pathname);
   const { _id, name, price, images } = product;
 
   // get review section

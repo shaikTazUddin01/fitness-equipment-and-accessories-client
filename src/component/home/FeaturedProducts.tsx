@@ -36,7 +36,7 @@ const FeaturedProducts = () => {
         </div>
       </div>
       <div className="flex justify-end mt-5">
-        <a href="/products">
+        <a href="/products?feature">
           <p className="flex items-center gap-2">
             Explore more
             <FaArrowRight />

@@ -31,33 +31,40 @@ const Dashboard = () => {
   return (
     <div>
       {/* boxes */}
-      <div className="grid grid-cols-3 gap-5">
-        <div className=" p-5 flex justify-center gap-5 rounded-xl items-center border shadow min-h-20">
-          <div className="text-3xl">
-            <MdAdminPanelSettings />
-          </div>
-          <div className="text-xl font-semibold ">
-            <p>Total Admin : {admin?.data?.length}</p>
-          </div>
-        </div>
-        <div className=" p-5 flex justify-center gap-5 rounded-xl items-center border shadow min-h-20">
-          <div className="text-3xl">
-            <FaUserFriends />
-          </div>
-          <div className="text-xl font-semibold ">
-            <p>Total User : {user?.data?.length}</p>
-          </div>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+  {/* Total Admin */}
+  <div className="p-6 flex flex-col md:flex-row justify-center items-center gap-4 bg-white rounded-lg border border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
+    <div className="p-4 bg-blue-100 text-blue-500 rounded-full">
+      <MdAdminPanelSettings className="text-4xl" />
+    </div>
+    <div className="text-center md:text-left">
+      <p className="text-sm text-gray-500">Total Admin</p>
+      <p className="text-2xl font-bold text-gray-800">{admin?.data?.length}</p>
+    </div>
+  </div>
 
-        <div className=" p-5 flex justify-center gap-5 rounded-xl items-center border shadow min-h-20">
-          <div className="text-3xl">
-            <RiMoneyDollarCircleFill />
-          </div>
-          <div className="text-xl font-semibold ">
-            <p>Total Earn : {totalEarn}</p>
-          </div>
-        </div>
-      </div>
+  {/* Total User */}
+  <div className="p-6 flex flex-col md:flex-row justify-center items-center gap-4 bg-white rounded-lg border border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
+    <div className="p-4 bg-green-100 text-green-500 rounded-full">
+      <FaUserFriends className="text-4xl" />
+    </div>
+    <div className="text-center md:text-left">
+      <p className="text-sm text-gray-500">Total Users</p>
+      <p className="text-2xl font-bold text-gray-800">{user?.data?.length}</p>
+    </div>
+  </div>
+
+  {/* Total Earnings */}
+  <div className="p-6 flex flex-col md:flex-row justify-center items-center gap-4 bg-white rounded-lg border border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
+    <div className="p-4 bg-yellow-100 text-yellow-500 rounded-full">
+      <RiMoneyDollarCircleFill className="text-4xl" />
+    </div>
+    <div className="text-center md:text-left">
+      <p className="text-sm text-gray-500">Total Earnings</p>
+      <p className="text-2xl font-bold text-gray-800">${totalEarn}</p>
+    </div>
+  </div>
+</div>
       {/* charts */}
       <div>
         <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-5">

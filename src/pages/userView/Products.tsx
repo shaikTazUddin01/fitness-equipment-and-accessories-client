@@ -9,8 +9,22 @@ import ProductCardLoader from "../../component/shared/Loading/ProductLoaderCard"
 import Pagination from "../../utiles/Pagination";
 import CategoriesFiltering from "../../component/Products/SidebarFilter";
 import { FaHome } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 
 const Products = () => {
+
+  const {search}=useLocation()
+  const queryParams= new URLSearchParams(search)
+  console.log(queryParams);
+
+  let feature="False"
+
+  if (queryParams.has("feature")) {
+    feature=
+      "True"
+    
+  }
+// console.log(feature);
   // get sort, search, and price range values
   const sortProductByPrice = useAppSelector(
     (state) => state?.sortProduct?.sort
@@ -32,7 +46,9 @@ const Products = () => {
     priceRange: filterPrice,
     skip: skip,
     limit: limit,
-    selectedCategory:category
+    selectedCategory:category,
+    feature:feature
+    
   });
 
   const products = data?.data;
@@ -51,6 +67,15 @@ const Products = () => {
         <a href="/products" className="hover:text-textSecondary">
           <span>Products</span>
         </a>
+        {
+          queryParams?.has("feature") &&
+          <>
+        <span className="text-[12px]">/</span>
+        <a href="/products?feature" className="hover:text-textSecondary">
+          <span>Feature</span>
+        </a>
+        </>
+        }
       </div>
       {/* --- */}
 

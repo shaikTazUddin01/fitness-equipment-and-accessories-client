@@ -6,7 +6,7 @@
 import { Layout, Menu } from "antd";
 // import { createElement } from "react";
 // import { NavLink } from "react-router-dom";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/epicfit.png";
 // import { NavLink } from "react-router-dom";
 import SidebarGenarator from "../../utiles/sidebarGenarator";
 
