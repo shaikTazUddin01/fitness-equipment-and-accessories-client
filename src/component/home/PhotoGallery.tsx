@@ -4,7 +4,7 @@ import photos from "./photos";
 
 const PhotoGallery = () => {
   return (
-    <div className="py-14">
+    <div className="py-16">
       <div className="text-center">
         <SectionTitle heading="Inspiring Customer Moments" subHeading="Memorable moments captured with our products."></SectionTitle>
       </div>

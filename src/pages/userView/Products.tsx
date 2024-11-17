@@ -14,8 +14,9 @@ import { useLocation } from "react-router-dom";
 const Products = () => {
 
   const {search}=useLocation()
+  // console.log(search);
   const queryParams= new URLSearchParams(search)
-  console.log(queryParams);
+  // console.log(queryParams);
 
   let feature="False"
 
@@ -37,6 +38,7 @@ const Products = () => {
   const category = useAppSelector(
     (state) => state?.categoryFilter?.categoris
   );
+  // console.log(category);
   const { skip, limit } = useAppSelector((state) => state?.pagination);
   // console.log(skip, limit);
   // Fetch products with filters

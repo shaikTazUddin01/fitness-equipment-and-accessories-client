@@ -4,9 +4,10 @@ import { useFormContext } from "react-hook-form";
 type TTextArea = {
   label: string;
   name: string;
+  defaultValue?:string
 };
 
-const THTextArea = ({ label, name }: TTextArea) => {
+const THTextArea = ({ label, name ,defaultValue}: TTextArea) => {
   const { register } = useFormContext();
   return (
     <div className="form-control">
@@ -17,6 +18,7 @@ const THTextArea = ({ label, name }: TTextArea) => {
         placeholder={`${label}`}
         className="input input-bordered"
         {...register(name)}
+        defaultValue={defaultValue}
         required
       />
     </div>

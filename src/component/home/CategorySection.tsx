@@ -34,7 +34,7 @@ const CategorySection = () => {
            
             
            : categories?.slice(0,7)?.map((category: TCategory) => (
-              <a href={`/products/${category?.name}`} >
+              <a href={`/products/${category?.name}`} key={category?._id} >
             
                 <div className=" shadow border-[#d8d8d8] hover:border-[#b0b0b0] hover:cursor-pointer bg-white text-black transform hover:shadow-xl transition-all duration-200 ease-in-out rounded-md p-2 min-h-[207px]" onClick={()=>handleNavigate(category?.name)}>
                   <img

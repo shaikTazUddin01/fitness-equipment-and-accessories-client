@@ -73,88 +73,11 @@ const aveRating=Number(sumOfTotalReview/reviews?.length);
       </div>
       :""
       }
-      {/* right side */}
-      {/* <div className="w-full mt-5">
-        
-        <div className="flex justify-center items-center gap-5">
-          <div className="w-[50%]">
-            <Rate
-              disabled
-              allowHalf
-              defaultValue={5}
-              className="custom-rate text-[16px]"
-            />
-          </div>
-          <div className="bg-textSecondary h-3  rounded w-[80%]"></div>
-          <div className="w-[10%]">
-            <h1>15</h1>
-          </div>
-        </div>
-      
-        <div className="flex justify-center items-center gap-5">
-          <div className="w-[50%]">
-            <Rate
-              disabled
-              allowHalf
-              defaultValue={4}
-              className="custom-rate text-[16px]"
-            />
-          </div>
-          <div className="bg-textSecondary h-3  rounded w-[80%]"></div>
-          <div className="w-[10%]">
-            <h1>10</h1>
-          </div>
-        </div>
-        
-        <div className="flex justify-center items-center gap-5">
-          <div className="w-[50%]">
-            <Rate
-              disabled
-              allowHalf
-              defaultValue={3}
-              className="custom-rate text-[16px]"
-            />
-          </div>
-          <div className="bg-textSecondary h-3  rounded w-[80%]"></div>
-          <div className="w-[10%]">
-            <h1>0</h1>
-          </div>
-        </div>
-        
-        <div className="flex justify-center items-center gap-5">
-          <div className="w-[50%]">
-            <Rate
-              disabled
-              allowHalf
-              defaultValue={2}
-              className="custom-rate text-[16px]"
-            />
-          </div>
-          <div className="bg-textSecondary h-3  rounded w-[80%]"></div>
-          <div className="w-[10%]">
-            <h1>1</h1>
-          </div>
-        </div>
-       
-        <div className="flex justify-center items-center gap-5">
-          <div className="w-[50%]">
-            <Rate
-              disabled
-              allowHalf
-              defaultValue={1}
-              className="custom-rate text-[16px]"
-            />
-          </div>
-          <div className="bg-[#d2d2d2] h-3  rounded w-[80%]"></div>
-          <div className="w-[10%]">
-            <h1>0</h1>
-          </div>
-        </div>
-      </div> */}
+   
       {/* sent product rating */}
-      <div className="pt-10">
+      <div className="pt-5">
         <h1>Leave a Rating & Review</h1>
-        <div className="text-center pt-3">
+        <div className="text-center pt-1">
           <Rate
             allowHalf
             defaultValue={5}
@@ -163,7 +86,7 @@ const aveRating=Number(sumOfTotalReview/reviews?.length);
           />
         </div>
         <div className="max-auto flex justify-center ">
-          <form className="flex flex-col w-full gap-5" onSubmit={handleSubmit}>
+          <form className="flex flex-col w-full gap-2" onSubmit={handleSubmit}>
             <TextArea
               rows={4}
               placeholder="Send Your review"
@@ -174,7 +97,8 @@ const aveRating=Number(sumOfTotalReview/reviews?.length);
             {
               user?
               <button
-              className="w-full btn btn-sm bg-textSecondary hover:bg-hoverSecondart text-white py-1 px-3 rounded"
+              className="w-full btn btn-sm bg-textSecondary hover:bg-hoverSecondart text-white 
+              py-1 px-3 rounded"
               type="submit"
             >
               Submit

@@ -38,7 +38,7 @@ const CategoriesFiltering = () => {
                 onClick={() => filterByCategory(category?.name)}
               >
                 {" "}
-                #{category?.name}
+                {category?.name}
               </p>
             </a>
           ))}

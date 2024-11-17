@@ -34,8 +34,9 @@ const Footer = () => {
 
           {/* About Us Section */}
           <div>
-            <h3 className="text-lg font-bold uppercase mb-4">About Us</h3>
+            <h3 className="text-lg font-bold uppercase mb-4">Menu</h3>
             <ul className="space-y-2 text-sm text-gray-400">
+              <li><a href="/" className="hover:text-white">Home</a></li>
               <li><a href="/products" className="hover:text-white">All Products</a></li>
               <li><a href="/cart" className="hover:text-white">See Your Cart</a></li>
               <li><a href="/about" className="hover:text-white">Privacy Policy</a></li>

@@ -26,7 +26,7 @@ const FeaturedProducts = () => {
                 <ProductCardLoader key={idx} />
               ))
             : products?.map((product: TProduct) => (
-                <div>
+                <div key={product?._id}>
                   <ProductCard
                     key={product?._id}
                     product={product}

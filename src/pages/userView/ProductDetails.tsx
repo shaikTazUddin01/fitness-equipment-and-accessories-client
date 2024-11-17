@@ -91,7 +91,7 @@ const ProductDetails = () => {
         </div>
         {/* --- */}
         <div className="flex  flex-col gap-10 lg:flex-row px-5 md:px-20 my-16 xl:my-0 items-center bg-white  py-10">
-          <div className="w-full lg:w-[40%] md:bg-white lg:bg-none md:shadow-2xl flex justify-center rounded-xl">
+          <div className="w-full lg:w-[40%] md:bg-white lg:bg-none flex justify-center rounded-xl">
             <img src={product?.images} className="max-w-sm rounded-lg w-full" />
           </div>
           <div className=" lg:w-[60%]">

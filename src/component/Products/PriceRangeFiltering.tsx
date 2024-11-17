@@ -70,7 +70,7 @@ const [maxPrice, setMaxPrice] = useState(5000);
             />
             <input
               className="border border-textSecondary w-20 text-center rounded input-xs"
-              value={maxPrice}
+              value={sliderValue[1]}
               onChange={(e) => handleEndValue(e.target.value)}
             />
           </div>

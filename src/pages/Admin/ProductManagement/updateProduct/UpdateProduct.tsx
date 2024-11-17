@@ -15,6 +15,7 @@ import DashboardSpring from "../../../../component/shared/Loading/DashboardSprin
 import { TProduct } from "../../../../Type";
 // import { CiEdit } from "react-icons/ci";
 import { RiEdit2Line } from "react-icons/ri";
+import THTextArea from "../../../../component/form/THTextArea";
 
 const featureOption = [{ name: "True" }, { name: "False" }];
 
@@ -39,8 +40,18 @@ const UpdateProduct = ({ items }: { items: Partial<TProduct> }) => {
     setIsModalOpen(false);
   };
 
-  const { key, name, price, images, category, stockQuentity, isFeature } =
-    items;
+  const {
+    key,
+    name,
+    price,
+    images,
+    category,
+    stockQuentity,
+    isFeature,
+    detail,
+  } = items;
+
+  // console.log(items);
 
   // handle update
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -69,7 +80,7 @@ const UpdateProduct = ({ items }: { items: Partial<TProduct> }) => {
   return (
     <div>
       <Button type="primary" onClick={showModal} className="text-xl">
-        <RiEdit2Line/>
+        <RiEdit2Line />
       </Button>
       <Modal open={isModalOpen} onCancel={handleCancel} footer={null}>
         <THForm onSubmit={onSubmit}>
@@ -109,6 +120,7 @@ const UpdateProduct = ({ items }: { items: Partial<TProduct> }) => {
             items={categoris}
             defaultFieldValue={category}
           ></THSelect>
+          <THTextArea label="Details" name="detail" defaultValue={detail} />
 
           <div className="form-control mt-6">
             <button className="btn btn-neutral" type="submit">

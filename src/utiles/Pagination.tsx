@@ -19,7 +19,7 @@ const Pagination = ({ totalProducts }: { totalProducts: number }) => {
   }, [page, limit, dispatch]);
   const totalPage = Math.ceil(totalProducts / (limit as number));
 
-  console.log(totalPage, page);
+  // console.log(totalPage, page);
 
   return (
     <div className="flex justify-end mt-5">

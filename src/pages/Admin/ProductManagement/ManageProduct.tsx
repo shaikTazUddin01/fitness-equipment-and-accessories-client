@@ -123,7 +123,7 @@ const ManageProduct = () => {
   ];
 
   const tableData: DataType[] = products?.map(
-    ({ _id, images, name, price, category, stockQuentity, isFeature }) => ({
+    ({ _id, images, name, price, category, stockQuentity, isFeature ,detail}) => ({
       key: _id,
       images: images,
       name: name,
@@ -131,6 +131,7 @@ const ManageProduct = () => {
       isFeature: isFeature,
       stockQuentity: stockQuentity,
       category: category,
+detail:detail
     })
   );
 
